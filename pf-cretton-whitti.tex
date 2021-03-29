@@ -1,0 +1,54 @@
+% !TeX spellcheck = es
+\documentclass[11pt, titlepage]{article}
+\input{tex/preamble.tex}
+\input{tex/macros.tex}
+\input{tex/code.tex}
+\input{tex/footmult.tex}
+\lhead{ LIA}
+\newcommand{\mldivide}{\,{\boldsymbol{\backslash}}\,}
+\usepackage{pdfpages}
+\author{Patricio Whittingslow \and Luis Cretton}
+\begin{document}
+\begin{titlepage}
+	
+	\centering
+	{\small LIA Aerospace \par}
+	
+	
+	\vspace{8cm}
+	{\Huge Gimballed EDF propelled VTVL vehicle design and control  \par}
+	\vspace{2cm}
+	{ \large {
+			Patricio Whittingslow \\ Luis Cretton 
+		\par}}
+	\vspace{4cm}
+	\today
+	
+\end{titlepage}
+
+\input{chapter/intro.tex}
+
+\input{chapter/model2d_es.tex}
+\input{chapter/threeDdemo.tex}
+
+\input{chapter/software.tex}
+
+
+\subsection*{Agradecimientos}
+Dan Etenberg por hacer todo posible. Ben Romarowski por ayuda con la dinámica de cuerpo rígido y aerodinámica de los flaps.
+
+
+
+
+\bibliography{tex/biblio} % Indica archivo
+\bibliographystyle{plainnat} %estilo de bibliografia
+% \bibliographystyle{unsrtnat}
+%\includepdf[fitpaper=false,landscape]{pdf/Vistaexplotada5.pdf}
+\end{document}
+
+
+
+
+%\begin{equation}
+%	\left(\begin{array}{ccc} \cos\left(r\right)\,\cos\left(s\right) & \cos\left(s\right)\,\sin\left(q\right)\,\sin\left(r\right)-\cos\left(q\right)\,\sin\left(s\right) & \sin\left(q\right)\,\sin\left(s\right)+\cos\left(q\right)\,\cos\left(s\right)\,\sin\left(r\right)\\ \cos\left(r\right)\,\sin\left(s\right) & \cos\left(q\right)\,\cos\left(s\right)+\sin\left(q\right)\,\sin\left(r\right)\,\sin\left(s\right) & \cos\left(q\right)\,\sin\left(r\right)\,\sin\left(s\right)-\cos\left(s\right)\,\sin\left(q\right)\\ -\sin\left(r\right) & \cos\left(r\right)\,\sin\left(q\right) & \cos\left(q\right)\,\cos\left(r\right) \end{array}\right)
+%\end{equation}

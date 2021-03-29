@@ -1,0 +1,56 @@
+
+Para el control del sistema se va emplear un regulador LQR con los siguientes pesos de las variables de estado \texttt{Q} y costos de inputs \texttt{R}:
+\begin{lstlisting}[caption={Definición de pesos y costos del regulador LQR.}]
+QDqrs = 1e-4;
+Qqrs = 1e-4;
+Ract = 1000; 
+Qdiag = [  1 % x 
+	1        % y
+	5        % z
+	Qqrs     % q yaw 
+	Qqrs     % r pitch
+	1e-5     % s roll
+	1        % Dx
+	1        % Dy
+	1        % Dz
+	QDqrs    % Dq
+	QDqrs    % Dr
+	1e-5     % Ds
+];
+Q = diag(Qdiag);
+%      u:  F   alpha beta  delta
+R = diag([1e-3  Ract Ract 1e-5]);
+Kr = lqr(A,B,Q,R);
+\end{lstlisting}
+\todo{Estos valores están outdated, se usaban para el control viejo}
+El sistema es simulado con las ecuaciones no-lineales obtenidas de la sección \ref{subsec:modeloMatematico} donde los inputs $\Cu$ son controlados por el regulador LQR con full-state feedback. Se supone conocido $\Cx$ con precisión arbitraria y sin delay. 
+
+
+%\subsection{Control del sistema lineal}
+%El sistema descrito arriba por las variables de estado de la ecuación \eqref{eq:ssVariables3D} pueden ser linealizadas y descritas como un sistema de la forma $\dot{\Cx} = \MA \Cx + \MB \Cu$. El sistema se linealiza alrededor de un punto de equilibrio $\Cx_\equilibrium$
+%
+%\begin{equation}
+%	\Cx_\equilibrium =\left[ \begin{array}{cccccccccccc}
+%	x_\equilibrium & y_\equilibrium & z_\equilibrium & 0 & 0 & 0  &  0 & 0 & 0 & 0 & 0 & 0
+%	\end{array}\right]\tp
+%\end{equation}
+%
+
+%
+
+
+%\subsection{Modelado de vehículo diseñado}
+%El vehículo diseñado consta de un \textit{Electrónic Ducted Fan} (EDF) para propulsión. Debido a esto se tienen que agregar consideraciones adicionales al sistema debido a la rotación de la turbina del propulsor. Se toma en cuenta el efecto de precesión giroscópica y el torque inducido por aceleración, los cuales se pueden agrupar en un solo término $\frac{\di \vec{L}}{\di t}$.
+%
+%Se puede decir que el rotor experimenta rotación alrededor de un eje fijo. Este eje es solidario a la dirección en la cual es apuntado el flujo por los actuadores que corresponden a las variables de estado $\alpha$ y $\beta$. Este eje en cambio está sujeto a movimiento respecto un punto fijo (el punto fijo el el centro del cardán).
+%
+%Se define una transformación del sistema cuerpo al sistema propulsor con los ángulos de actuación del cardán. 
+%\begin{equation}
+%	\MT_\Nme{G}( \vec{v} ) = \operatorname{rot}( \operatorname{rot} (\vec{v}, -\alpha, \imath), -\beta, \jmath)
+%\end{equation}
+%donde $\imath$ y $\jmath$ son los vectores unitarios con dirección $x$ e $y$ del sistema vehículo, dado por las filas 1 y 2 de la matriz $\MT$ (ecuación \ref{eq:matrizTransfoVehiculo}).
+%
+%A su vez, $\operatorname{rot}$ es la función que rota un vector $\vec{v}$ cierto ángulo $\mu$ alrededor de un eje $\hat{n}$ en el espacio.
+%\begin{equation}
+%	 \operatorname{rot}(\vec{v}, \mu, \hat{n}) = (1-\cos(\mu)) (\vec{v}\cdot \hat{n}) \hat{n} + \cos(\mu) \vec{v} - \sin(\mu) (\hat{n}\times \vec{v})
+%\end{equation}

@@ -1,0 +1,56 @@
+% !TeX root = ../pf-cretton-whitti.tex
+\usepackage{amssymb}
+\usepackage{alphalph}
+
+\makeatletter
+\newcommand*{\myfnsymbolsingle}[1]{%
+	\ensuremath{%
+ 		\ifcase#1% 0
+ 		\or % 1
+ 		*%   
+ 		\or % 2
+ 		\dagger
+ 		\or % 3  
+ 		\ddagger
+ 		\or % 4   
+ 		\mathsection
+ 		\or % 5
+ 		\mathparagraph
+ 		\or
+ 		\lozenge
+ 		\or
+ 		\aleph
+ 		\or
+ 		\backepsilon
+ 		\or
+ 		\flat
+ 		\or 
+ 		\maltese
+ 		\or
+ 		\circledast
+ 		\or
+ 		\gimel
+ 		\or
+ 		\wp
+ 		\else % >= 7
+ 		\@ctrerr  
+ 		\fi
+	}%   
+}   
+\makeatother
+
+\newcommand*{\myfnsymbol}[1]{%
+	\myfnsymbolsingle{\value{#1}}%
+}
+
+% remove upper boundary by multiplying the symbols if needed
+\newalphalph{\myfnsymbolmult}[mult]{\myfnsymbolsingle}{}
+
+\renewcommand*{\thefootnote}{%
+	\myfnsymbolmult{\value{footnote}}%
+}
+
+
+\renewcommand*{\thefootnote}{%
+	\myfnsymbolmult{\value{footnote}}%
+}

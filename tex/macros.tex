@@ -1,0 +1,153 @@
+% !TeX root = ../main.tex
+
+
+
+%% ROCKET
+\newcommand{\CG}{{\mathrm{CG}}}
+\newcommand{\LCG}{L_\CG}
+\def\equilibrium{\mathrm{eq}}
+
+
+%% DIFFERENTIAL OPERATOR
+\makeatletter
+\providecommand*{\diff}%
+{\@ifnextchar^{\DIfF}{\DIfF^{}}}
+\def\DIfF^#1{%
+	\mathop{\mathrm{\mathstrut d}}%
+	\nolimits^{#1}\gobblespace}
+\def\gobblespace{%
+	\futurelet\diffarg\opspace}
+\def\opspace{%
+	\let\DiffSpace\!%
+	\ifx\diffarg(%
+	\let\DiffSpace\relax
+	\else
+	\ifx\diffarg[%
+	\let\DiffSpace\relax
+	\else
+	\ifx\diffarg\{%
+	\let\DiffSpace\relax
+	\fi\fi\fi\DiffSpace}
+
+%% CONTROL:
+\newcommand{\dimfont}[1]{\ensuremath{#1}}
+\newcommand{\Cme}[1]{\mathbf{#1}}
+\newcommand{\Mme}[1]{\mathbf{#1}}
+\newcommand{\Nme}[1]{\mathrm{#1}}
+\newcommand{\Ts}{T_s}
+
+\newcommand{\eye}{\Mme{I}}
+%transpose
+\def\dt{\Delta t}
+\def\tp{\!^{\top}\!}
+% Small
+\def\MA{\Mme{A}}
+\def\MB{\Mme{B}}
+\def\MC{\Mme{C}}
+\def\MD{\Mme{D}}
+\def\ME{\Mme{E}}
+
+\def\MQ{\Mme{Q}}
+\def\MR{\Mme{R}}
+\def\MK{\Mme{K}}
+\def\MW{\Mme{W}}
+\def\MX{\Mme{X}}
+\def\MV{\Mme{V}}
+\def\ctrb{\Mme{Y}}
+\def\Mzero{\Mme{0}}
+\def\obsv{\Mme{\mathcal{O}}}
+
+\newcommand{\ts}[2]{\left. #1\right|_{ #2}}
+
+\def\error{\varepsilon}
+\def\Cx{\Cme{x}}
+\def\Cf{\Cme{f}}
+\def\Cy{\Cme{y}}
+\def\Cu{\Cme{u}}
+\def\Cn{\Cme{n}}
+\def\Cd{\Cme{d}}
+\def\Czero{\Cme{0}}
+\def\Cv{\Cme{v}}
+\def\Cz{\Cme{z}}
+\def\Cw{\Cme{w}}
+
+\def\Jcost{\Cme{\mathcal{J}}}
+% RK4
+\def\Ca{\Cme{a}}
+\def\Cb{\Cme{b}}
+\def\Cc{\Cme{c}}
+
+
+\def\noise{{n}}
+\def\disturb{{d}}
+\newcommand{\di}{\ensuremath{\textrm{d}}}
+
+\newcommand{\Matlab}{{\sc Matlab}}
+
+\def\matdiv{\bm{\textbackslash}}
+
+\newcommand{\spartial}[2]{\frac{\partial {#1}}{\partial {#2}}}
+\newcommand{\dpartial}[2]{\frac{\partial^2 #1}{\partial #2 ^2}}
+
+%# ROBUST
+\def\lap{\mathcal{L}}
+\newcommand\lapc[1]{\lap \left\{#1\right\}}
+\newcommand\ilapc[1]{\lap^{-1} \left\{#1\right\}}
+\def\xbar{\bar{x}}
+\def\ubar{\bar{u}} 
+
+\def\MP{\Mme{P}}
+\def\ML{\Mme{L}}
+\def\MT{\Mme{T}}
+\def\MS{\Mme{S}}
+
+
+\def\Cr{\Cme{r}}
+\def\Cn{\Cme{n}}
+
+\def\openloop{{\textrm{\tiny{LA}}}}
+\def\closedloop{{ \textrm{\tiny{LC}}}}
+\def\true{{ \textrm{\tiny{real}}}}
+
+% RIGID BODY MECHANICS
+\newcommand{\frm}[1]{\mathrm{#1}}  % Frame of reference
+\newcommand{\ogn}[1]{\mathcal{#1}} % Frame origin / point of reference
+\newcommand{\skw}[1]{\tilde{#1}}   % skew matrix notation
+\newcommand{\uveci}{{\bm{\hat{\textnormal{\bfseries\i}}}}}
+\newcommand{\uvecj}{{\bm{\hat{\textnormal{\bfseries\j}}}}}
+\DeclareRobustCommand{\uvec}[1]{{% Unit length vector of arbitrary orientation
+		\ifcsname uvec#1\endcsname
+		\csname uvec#1\endcsname
+		\else
+		\bm{\hat{\mathbf{#1}}}%
+		\fi
+}}
+\DeclareRobustCommand{\avec}[1]{{%
+		\underline{#1} %		\bm{\mathbf{#1}}%
+}}
+\DeclareRobustCommand{\bvec}[1]{{% Orthogonal basis vector
+%		\ifcsname bvec#1\endcsname
+%		\csname bvec#1\endcsname
+%		\else
+		\bm{\hat{\mathbf{#1}}}%
+%		\fi
+}}
+\def\tform{\mathbf{A}}
+\newcommand{\transform}[1]{\tform^\frm{#1}}
+\newcommand{\dottransform}[1]{\dot{\tform}^\frm{#1}}
+\def\attitude{\mathbf{H}}
+\newcommand{\inertia}[2]{J_{\ogn{#1}}^{\frm{#2}}}
+\newcommand{\inertiarotor}[2]{\inertia{\!\mathrm{r}#1}{#2}}
+
+
+\makeatletter
+\newcommand*\bigcdot{\mathpalette\bigcdot@{.5}}
+\newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\makeatother
+
+% THEOREMS/ EXERCISES
+\usepackage{amsthm}
+\theoremstyle{definition}
+%\newtheorem{definition}{Definition}[chapter]
+%\newtheorem{theorem}{Teorema}[chapter]
+%\newtheorem{exercise}{Ejercicio}[chapter]
