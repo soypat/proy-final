@@ -1,7 +1,7 @@
 
 \section{Modelo 2D simplificado}
 
-Esta siguiente sección detallará el tratamiento matemático efectuado para controlar un vehículo con propulsión vectorizada en el plano. El proposito es ilustrar a un nivel simple las herramientas que serán aplicadas para controlar el vehículo diseñado.
+Esta siguiente sección detallará el tratamiento matemático efectuado para controlar un vehículo con propulsión vectorizada en el plano. El propósito es ilustrar a un nivel simple las herramientas que serán aplicadas para controlar el vehículo diseñado.
 
 \begin{figure}[htb!]
 	\centering
@@ -27,15 +27,15 @@ donde \(\LCG\) y \(F\) están en función del tiempo, $m =m_0 - \int \dot{m} $ y
 
 Vale la pena aclarar que no se tomarán en cuenta los siguientes efectos:
 \begin{itemize}
-	\item Fuerza de drag
+	\item Coeficiente de arrastre
 	\item Viento
 	\item \textit{Fuel sloshing}
-	\item Efectos relativisticos
+	\item Efectos relativistas
 \end{itemize}
 
 \subsection{Armado de sistema lineal}
 
-Se propone un punto de operación alrededor del cual se linealizan las ecuaciones. El estado del vehículo es \textit{vertical y quieto en el espacio}. \footnote{La linealización esd valida solo para un vehículo vertical. Se debrá modificar el método para modelar un vehículo orbital.} 
+Se propone un punto de operación alrededor del cual se efectúa la linealización las ecuaciones. El estado del vehículo es \textit{vertical y quieto en el espacio}. \footnote{La linealización es valida solo para un vehículo vertical. Se deberá modificar el método para modelar un vehículo orbital.} 
 
 \begin{align*}
 	\gamma^* = 0 \\
@@ -49,7 +49,7 @@ El número de variables de estado será igual a número de almacenadores de ener
 
 \begin{enumerate}
 	\item[$z$] Energía potencial por la gravedad
-	\item[$\dot{y},\dot{z}$] Energía cinetica del vehículo
+	\item[$\dot{y},\dot{z}$] Energía cinética del vehículo
 	\item[$\dot{\gamma}$] Momento angular del vehículo
 \end{enumerate}
 entonces, las variables de estado son las siguientes
@@ -80,7 +80,7 @@ Abajo están las ecuaciones de estados
 \dot{x_6} = \frac{\LCG \cdot F}{I_{xx}} \beta = \frac{\LCG \cdot mg}{I_{xx}} u_2 
 \end{equation}
 
-donde $\Ts$ es el periodo de sampleo.
+donde $\Ts$ es el periodo de muestreo.
 
 Los vectores de entrada y salida son
 \[

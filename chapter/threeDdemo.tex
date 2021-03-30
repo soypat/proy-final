@@ -10,7 +10,7 @@ Se hará referencia a la figura \ref{fig:FBD2D} para explicar las variables en j
 
 \subsection{Notación}
 
-La notación es la del libro \textit{Rigid Body Dynamics of Mechanisms, Theoretical Basics} \cite{hahn2013rigid}. Se requiere un tratamiento algebraico explicito de los marcos de referencia y representación debido al caso especial de un \textit{gimballed rotor}. Este tratamiento facilita la programación de la simulación y subsecuentemente el control, el cual se volvería ambiguo y complejo con un tratamiento más común.
+La notación es la del libro \textit{Rigid Body Dynamics of Mechanisms, Theoretical Basics} \cite{hahn2013rigid}. Se requiere un tratamiento algebraico explicito de los marcos de referencia y representación debido al caso especial de un \textit{gimballed rotor}. Este tratamiento facilita la programación de la simulación y subsecuentemente el control, el cual se volvería ambiguo y complejo con un tratamiento más común o simplificado.
 
 \begin{description}
 	\item[{\(\avec{r}_{\ogn{CO}}=[x,y,z]\)}] : Posici\'on absoluta del centro de masa del veh\'iculo leasé ``posición de $\ogn{C}$ respecto $\ogn{O}$'')
@@ -216,9 +216,9 @@ El momento angular del vehículo respecto de su centro de masa ($\ogn{C}$) y rep
 		 m_{g}\cdot \skw{\avec{r}}^\frm{N}_\ogn{RC} \cdot\dot{\avec{r}}^\frm{N}_\ogn{RC} }_\text{Cardán \& EDF} + \underbrace{ \transform{NG} \cdot J_{\!r\ogn{R}}^\frm{G} \cdot \omega_{\!r}^\frm{G} + m_{r}\cdot \skw{\avec{r}}^\frm{N}_\ogn{RC} \cdot\dot{\avec{r}}^\frm{N}_\ogn{RC}}_\text{Rotor}
 \end{equation}
 
-Esta ecuación describe los efectos de tener un cardán con un rotor integrado acoplado al vehículo sin embargo algunos términos se podrían considerar negligibles debido al diseño del cardán. 
+Esta ecuación describe los efectos de tener un cardán con un rotor integrado acoplado al vehículo sin embargo algunos términos se podrían considerar despreciables debido al diseño del cardán. 
 
-Ámbos gimbals del cardán tienen su eje de giro cercano a su centro de masa lo cual significa que la velocidad relativa entre los puntos $\ogn{R}$ y $\ogn{C}$ va tener poco impacto sobre los torques internos del vehículo. Se considera que
+Ambos gimbals del cardán tienen su eje de giro cercano a su centro de masa lo cual significa que la velocidad relativa entre los puntos $\ogn{R}$ y $\ogn{C}$ va tener poco impacto sobre los torques internos del vehículo. Se considera que
 \begin{equation}
 \dot{\avec{r}}_\ogn{RC}  = 0
 \end{equation}

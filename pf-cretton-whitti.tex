@@ -4,6 +4,7 @@
 \input{tex/macros.tex}
 \input{tex/code.tex}
 \input{tex/footmult.tex}
+\input{tex/glossary.tex}
 \lhead{ LIA}
 \newcommand{\mldivide}{\,{\boldsymbol{\backslash}}\,}
 \usepackage{pdfpages}
@@ -26,6 +27,20 @@
 	
 \end{titlepage}
 
+\begin{abstract}
+	Un resumen debería no incluir referencias y no superar 250 palabras.
+\end{abstract}
+
+\newpage
+\tableofcontents
+\newpage
+\printunsrtglossaries
+\vfill
+\hrule
+\vspace{-1cm}
+\subsection*{Nota del autor}
+Si el documento es abierto desde un lector PDF moderno (Chrome, Adobe Acrobat Reader, entre otros), se podrá navegar el mismo mediante las referencias (haciendo click derecho).
+\newpage
 \input{chapter/intro.tex}
 
 \input{chapter/model2d_es.tex}
@@ -35,20 +50,13 @@
 
 
 \subsection*{Agradecimientos}
-Dan Etenberg por hacer todo posible. Ben Romarowski por ayuda con la dinámica de cuerpo rígido y aerodinámica de los flaps.
+Dan Etenberg por hacer todo posible. Ben Romarowski por ayuda con la dinámica de cuerpo rígido y aerodinámica de los álabes.
 
 
 
 
 \bibliography{tex/biblio} % Indica archivo
-\bibliographystyle{plainnat} %estilo de bibliografia
+\bibliographystyle{plainnat} %estilo de bibliografía
 % \bibliographystyle{unsrtnat}
 %\includepdf[fitpaper=false,landscape]{pdf/Vistaexplotada5.pdf}
 \end{document}
-
-
-
-
-%\begin{equation}
-%	\left(\begin{array}{ccc} \cos\left(r\right)\,\cos\left(s\right) & \cos\left(s\right)\,\sin\left(q\right)\,\sin\left(r\right)-\cos\left(q\right)\,\sin\left(s\right) & \sin\left(q\right)\,\sin\left(s\right)+\cos\left(q\right)\,\cos\left(s\right)\,\sin\left(r\right)\\ \cos\left(r\right)\,\sin\left(s\right) & \cos\left(q\right)\,\cos\left(s\right)+\sin\left(q\right)\,\sin\left(r\right)\,\sin\left(s\right) & \cos\left(q\right)\,\sin\left(r\right)\,\sin\left(s\right)-\cos\left(s\right)\,\sin\left(q\right)\\ -\sin\left(r\right) & \cos\left(r\right)\,\sin\left(q\right) & \cos\left(q\right)\,\cos\left(r\right) \end{array}\right)
-%\end{equation}
