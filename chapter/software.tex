@@ -21,8 +21,11 @@ La Raspberry Pi provee un entorno con Linux instalado que permite la programaci�
     \item Rendimiento - Superior a Python, Java y Matlab. Comparable a C
     \item Estable - \textit{The Go 1 promise} (La promesa Go 1)
     \item Comprobado -  Usado en sistemas de alto-riesgo/alta-complejidad (Kubernetes, Docker, Go-HEP)
+    \item Portable - Todos los programas Go compilan a código nativo (código de máquina) para cualquier arquitectura y sistema operativo. Incluso se puede programar microcontroladores (TinyGo)
 \end{itemize}
 \clearpage
+
+
 \subsection{Flujo de control}
 \begin{figure}[!htb]
     \centering
@@ -34,10 +37,17 @@ La Raspberry Pi provee un entorno con Linux instalado que permite la programaci�
 Se ilustra el flujo de control a grandes rasgos usando un CFG en la figura \ref{fig:flightProgram}. El programa principal corre la rutina \texttt{overlord} que a su vez comanda \texttt{flightProgram} y espera que esta devuelva control a \texttt{overlord}. El propósito de \texttt{overlord} es guardar el estado del vehículo y ante una falla irrecuperable en \texttt{flightProgram}, terminar con todas las corrutinas generadas por \texttt{flightProgram} y sus afiliadas y a su vez reiniciar \texttt{flightProgram} nuevamente con el último estado antes de la falla.
 
 
+\subsection{Interfaz con hardware}
 
+Como se mencionó anteriormente, la computadora elegida tiene varios puertos que servirán como interfases con periféricos, entre ellos 
 
+\begin{itemize}
+    \item ADC (sensores)
+    \item Generadores de PWM (para actuadores)
+    \item Blinkenlights
+\end{itemize}
 
-
+Para la interacción del software con el hardware se usará la librería \href{https://periph.io}{periph.io}. Esta librería permite la interacción a través de los protocolos de comunicación de la Raspberry Pi. Los drivers para los periféricos fueron programados según la información dada en las datasheet.
 
 
 
