@@ -18,7 +18,7 @@ Se modelaron las siguientes imperfecciones en el sistema:
 
 \begin{itemize}
     \item Delay en medición/actuación
-    \item Desalineación de sensores (acelerómetro y giróscopo)
+    \item Desalineación de sensores (acelerómetro y giroscopio)
 \end{itemize}
 
 La matriz costo asociada al equilibrio es construida asignando los siguientes valores a la diagonal: 5 a las posiciones globales, 1 a las velocidades, 1e-3 a la velocidad del rotor del EDF, 1e-4 a la velocidad angular en pitch y yaw del vehículo, y 1e-5 a las variables restantes (actuadores, ángulos de Euler y velocidad angular en roll).
@@ -28,4 +28,42 @@ La matriz costo asociada a los actuadores es diagonal con los siguientes valores
 
 \subsection{Resultados de simulación}
 
+Todos los ejes $x$ corresponden al tiempo en segundos.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.8\linewidth]{fig/pos_edf}
+    \caption{Posición del vehículo}
+    \label{fig:pos_edf}
+\end{figure}
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.6\linewidth]{fig/eulerang_edf}
+    \caption{Ángulos de euler}
+    \label{fig:eulerang_edf}
+\end{figure}
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.6\linewidth]{fig/angvel_edf.eps}
+    \caption{Velocidad angular del vehículo}
+    \label{fig:angvel_edf.eps}
+\end{figure}
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.6\linewidth]{fig/actuator_edf}
+    \caption{Actuación angular del gimbal.}
+    \label{fig:actuator_edf}
+\end{figure}
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.6\linewidth]{fig/rotor_edf}
+    \caption{Velocidad y aceleración angular del rotor.}
+    \label{fig:rotor_edf}
+\end{figure}
+
+% \afterpage{\clearepage}
 
