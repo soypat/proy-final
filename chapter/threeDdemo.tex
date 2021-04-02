@@ -120,19 +120,18 @@ Se escriben las variables de estado y el vector input, donde $F$ es la fuerza qu
 		\avec{r}_\ogn{CO}^\frm{N} & \avec{\eta} &\dot{\avec{r}}_\ogn{CO}^\frm{N} &  \avec{\omega}_\frm{BN}^\frm{B} & \omega_r & \alpha & \beta & \delta
 	\end{array}\right] \tp
 \end{equation}
-\begin{equation}
+\begin{equation}\label{eq:ssInputs3D}
 	\Cu = \begin{bmatrix}
 		\tau_c & \dot{\alpha} & \dot{\beta} & \dot{\delta}
 	\end{bmatrix} \tp
 \end{equation}
+En la próxima sección se buscará obtener el vector de variables de estado derivado en el tiempo $\dot{\Cx}$.
 
-\subsection{Modelo matemático} \label{subsec:modeloMatematico}
+\subsection{Ecuaciones diferenciales} \label{subsec:modeloMatematico}
+
 \def\scos{\operatorname{c}}
 \def\ssin{\operatorname{s}}
 Definimos la transformación de los ángulos euler con una matriz de transformación $\transform{BN}$ donde $\scos$ y $\ssin$ son las funciones coseno y seno, respectivamente.
- 
-%\def\scos{\cos}
-%\def\ssin{\sin}
 
 \begin{equation} \label{eq:matrizTransfoVehiculo}
 	\transform{BN} = \begin{bmatrix}
@@ -205,6 +204,13 @@ La aceleración angular en el marco $\frm{B}$ sale del desarrollo de la sección
 
 El rotor y los servos son modelados como de primer orden por el momento. Son limitados por velocidad máxima según sus especificaciones.
 
+Las ecuaciones diferenciales se pueden entonces escribir
+\begin{equation} \label{eq:ssDiffVariables3D}
+	\dot{\Cx} = \left[
+	\begin{array}{cccccccc}
+		\dot{\avec{r}}_\ogn{CO}^\frm{N}& \dot{\avec{\eta}} &\ddot{\avec{r}}_\ogn{CO}^\frm{N} & {}^\frm{B}\frac{\di }{\di t} \left(\avec{\omega}_\frm{BN}^\frm{B} \right) & \dot{\omega}_r & \dot{\alpha} & \dot{\beta} & \dot{\delta}
+	\end{array}\right] \tp
+\end{equation}
 
 \subsection{Dinámica angular del vehículo} \label{ssec:ecuacionangular}
 
