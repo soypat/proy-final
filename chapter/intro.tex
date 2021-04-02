@@ -18,8 +18,27 @@ Los vehículos VTVL eléctricos son propulsados por hélices en su mayoría y co
     \item Inclinar al rotor durante su funcionamiento causa una fuerza perpendicular a la dirección de inclinación conocido como el efecto giroscópico. 
 \end{itemize}
 
-El primer punto es mitigado fácilmente agregando álabes a la salida del chorro para enderezar el flujo y contrarrestar la rotación. El segundo punto solo se resuelve conociendo las ecuaciones de momento angular y controlando actuadores con un sistema de control a lazo cerrado.
+El primer punto es mitigado fácilmente agregando álabes a la salida del chorro para enderezar el flujo y contrarrestar la rotación. El segundo punto solo se resuelve conociendo las ecuaciones de momento angular y controlando actuadores con un sistema de control a lazo cerrado. Los sistemas vistos en la figura \ref{fig:vbat_icarus} tienen la particularidad de poder ser representados con relativa facilidad usando un solo marco de referencia inercial para el cálculo de las ecuaciones de momento angular. 
 
+\subsection{Estudio - Agua como propelente}
+Se estudió también la posibilidad de propulsar el vehículo con agua a presión. La figura \ref{fig:bottlerocket} muestra los resultados de una simulación de un vehículo pequeño de aluminio con un tanque a presión lleno en parte de agua y aire a 200 bar. En el mejor de los casos se llegaba a un tiempo de vuelo cercano a los 4 segundos que no es suficiente para comprobar un sistema de control. 
+
+Para optimizar este problema se modificaba
+
+\begin{itemize}
+    \item Diámetro de la tobera -- más empuje vs. menos tiempo de vuelo controlado
+    \item Volumen de agua -- más tiempo de vuelo vs. mayor peso de vehículo
+\end{itemize}
+
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.8\linewidth]{fig/bottlerocket}
+    \caption{Análisis preliminar para un vehículo propulsado por agua a presión. La presión es absoluta.}
+    \label{fig:bottlerocket}
+\end{figure}
+
+\newpage
 
 
 
