@@ -41,9 +41,20 @@ investigación del \textit{fuel sloshing} en vehículos con tanques esbeltos.
 Los sistemas de vehículos orbitales tienen sistemas complejos que deben ser testeados en una primera etapa mediante algún ensayo controlado. El vehículo que se desarrolla en el presente documento podría ser usado para tales fines como una plataforma para pruebas como ser el despliegue de una nariz o etapa, comprobación de sensores y actuadores a gran velocidad y con empuje variable.
 
 
+\section{Estudios}
+En lo que se refiere a la construcción del vehículo, el diseño propuesto paso por varias etapas y
+decisiones de ingeniería hasta su forma final. Desde su diseño en lápiz y papel hasta la
+simulación del CAD con el detalle del ultimo bulón del ensamble para poder recoger datos de
+momentos de inercia, centros de masa y la dinámica del vehículo.
 
-\subsection{Estudio - Agua como propelente}
-Se estudió la posibilidad de propulsar el vehículo con agua a presión. La figura \ref{fig:bottlerocket} muestra los resultados de una simulación de un vehículo pequeño de aluminio con un tanque a presión lleno en parte de agua y aire a 200 bar. En el mejor de los casos se llegaba a un tiempo de vuelo cercano a los 4 segundos que no es suficiente para comprobar un sistema de control. 
+\subsection{Agua como propelente}\label{ssec:propAgua}
+El primer prototipo muy distante del diseño final perteneciente a este trabajo, consistía en un
+recipiente a presión con agua, abulonado a un chasis, con un gimbal y actuadores para poder redirigir el
+empuje. 
+
+\medskip
+
+La figura \ref{fig:bottlerocket} muestra los resultados de una simulación de un vehículo pequeño de aluminio con un recipiente a presión lleno en parte de agua y aire a 200 bar. La simulación considera masa variable y una transición isoentrópica del gas en el recipiente. En el mejor de los casos se llegaba a un tiempo de vuelo cercano a los 4 segundos que no es suficiente para comprobar un sistema de control. 
 
 Para optimizar este problema se modificaba
 
@@ -53,17 +64,25 @@ Para optimizar este problema se modificaba
 \end{itemize}
 
 
-\begin{figure}[htb]
+\begin{figure}[!ht]
     \centering
     \includegraphics[width=0.8\linewidth]{fig/bottlerocket}
-    \caption{Análisis preliminar para un vehículo propulsado por agua a presión. La presión es la del tanque (absoluta).}
+    \caption{Análisis preliminar para un vehículo propulsado por agua a presión. La presión es la del tanque (absoluta). El peso estructural que se utilizó fue de 10kg.}
     \label{fig:bottlerocket}
 \end{figure}
 
-\newpage
+\subsection{Turbina}\label{ssec:turbina}
+Se propuso la construcción de una turbina de combustible líquido, como método de propulsión
+del vehículo favorable debido al excelente cociente de peso-empuje.
+
+Esta idea se vio descartada por la pandemia que estamos atravesando (COVID19) debido a que
+no teníamos acceso al taller de la institución para poder realizar en tiempo y forma el
+dispositivo mecánico, que era la primer tarea inmediata a tener en banco de pruebas
+asegurando su funcionamiento en optimas condiciones, para luego proseguir con el desarrollo
+del vehículo y el sistema de control.
 
 
-\subsection{Propulsión eléctrica}
+\subsection{Propulsión eléctrica} \label{ssec:propelectrica}
 
 
 \begin{figure}[htb]
@@ -72,6 +91,18 @@ Para optimizar este problema se modificaba
     \caption{Dos vehículos VTVL eléctricos modernos. ``VBat'' (Izq.) y ``Ikarus'' (Der.).}
     \label{fig:vbat_icarus}
 \end{figure}
+
+Luego de descartar las ideas vistas en \ref{ssec:propAgua} y \ref{ssec:turbina} se pasó al análisis de la incorporación de una turbina eléctrica que es un dispositivo ya existente en el mercado, no en nuestro país, pero que podría llegar a importarse mediante una
+inversión privada.\footnote{Agradecemos a \gls{lia} por hacerse cargo de la compra de todos los elementos necesarios para la fabricación del cohete.}
+
+\medskip
+
+La pandemia azoto duro a todo tipo de acción que se intento tomar, incluso la compra de
+componentes, ya no mas la fabricación, se vio afectada, además de las políticas cambiantes de
+nuestro país con respecto a la compra y la entrada de productos importados a suelo argentino.
+Incluso la compra y llegada de los productos fue un motivo de festejo luego de un tortuoso
+trayecto.
+
 
 %Estos vehículos suelen ser la primera de muchas etapas para el desarrollo de un vehículo que cumple con los requisitos de la misión final.
 Para lograr estas tareas generalmente los vehículos VTVL de baja escala generalmente son propulsados por motores eléctricos. %También existen alternativas al método de propulsión que se consideraron pero dado el alcance de un proyecto de universidad se decidió por un diseño compuesto por elementos comercialmente disponibles.\footnote{\textit{Commercial off the shelf} (COTS)}
