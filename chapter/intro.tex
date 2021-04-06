@@ -88,24 +88,18 @@ del vehículo y el sistema de control.
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.8\linewidth]{fig/vbat_icarus.png}
-    \caption{Dos vehículos VTVL eléctricos modernos. ``VBat'' (Izq.) y ``Ikarus'' (Der.).}
+    \caption{Dos vehículos VTVL eléctricos modernos. ``VBat'' (Izq.) y ``\href{https://hackaday.com/2018/08/31/single-rotor-drone-a-thrust-vectoring-monocopter/}{Ikarus}'' (Der.).}
     \label{fig:vbat_icarus}
 \end{figure}
 
 Luego de descartar las ideas vistas en \ref{ssec:propAgua} y \ref{ssec:turbina} se pasó al análisis de la incorporación de una turbina eléctrica que es un dispositivo ya existente en el mercado, no en nuestro país, pero que podría llegar a importarse mediante una
-inversión privada.\footnote{Agradecemos a \gls{lia} por hacerse cargo de la compra de todos los elementos necesarios para la fabricación del cohete.}
+inversión privada.\footnote{Agradecemos a \gls{lia} por hacerse cargo de la compra de todos los elementos necesarios para la fabricación del cohete.} Dado el alcance de un proyecto de universidad se decidió por un diseño compuesto por elementos comercialmente disponibles.\footnote{\textit{Commercial off the shelf} (COTS)}
+
 
 \medskip
 
-La pandemia azoto duro a todo tipo de acción que se intento tomar, incluso la compra de
-componentes, ya no mas la fabricación, se vio afectada, además de las políticas cambiantes de
-nuestro país con respecto a la compra y la entrada de productos importados a suelo argentino.
-Incluso la compra y llegada de los productos fue un motivo de festejo luego de un tortuoso
-trayecto.
 
-
-%Estos vehículos suelen ser la primera de muchas etapas para el desarrollo de un vehículo que cumple con los requisitos de la misión final.
-Para lograr estas tareas generalmente los vehículos VTVL de baja escala generalmente son propulsados por motores eléctricos. %También existen alternativas al método de propulsión que se consideraron pero dado el alcance de un proyecto de universidad se decidió por un diseño compuesto por elementos comercialmente disponibles.\footnote{\textit{Commercial off the shelf} (COTS)}
+Para lograr estas tareas generalmente los vehículos VTVL de baja escala generalmente son propulsados por motores eléctricos.
 
 \medskip
 
@@ -116,4 +110,6 @@ Los vehículos VTVL eléctricos son propulsados por hélices en su mayoría y co
     \item Inclinar al rotor durante su funcionamiento causa una fuerza perpendicular a la dirección de inclinación conocido como el efecto giroscópico. 
 \end{itemize}
 
-El primer punto es mitigado fácilmente agregando álabes a la salida del chorro para enderezar el flujo y contrarrestar la rotación. El segundo punto solo se resuelve conociendo las ecuaciones de momento angular y controlando actuadores con un sistema de control a lazo cerrado. Los sistemas vistos en la figura \ref{fig:vbat_icarus} tienen la particularidad de poder ser representados con relativa facilidad usando un solo marco de referencia inercial para el cálculo de las ecuaciones de momento angular. 
+El primer punto es mitigado fácilmente agregando álabes a la salida del chorro para enderezar el flujo y contrarrestar la rotación. El segundo punto solo se resuelve conociendo las ecuaciones de momento angular y controlando actuadores con un sistema de control a lazo cerrado. Los sistemas vistos en la figura \ref{fig:vbat_icarus} tienen la particularidad de poder ser representados con relativa facilidad usando un solo marco de referencia inercial para el cálculo de las ecuaciones de momento angular.
+
+Existen placas pre-programadas para vehículos multirrotores, pero en el caso de vehículos monorrotores de hélice fija se precisa re-programar la placa para compensar por el efecto giroscópico y agregar dinámica de álabes ya que no existe software disponible aún para esta configuración. En el caso de tener una hélice móvil se suma un nivel de complejidad agregada debido al despeje de las ecuaciones de momento angular (ver sección \ref{sec:ecuacionesRigid}). Al momento de escribir este documento aún no hay desarrollo disponible de carácter público para esta configuración.

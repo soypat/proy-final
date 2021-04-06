@@ -1,3 +1,34 @@
 \section{Diseño mecánico}
 
 En el marco de este proyecto, es de interés el diseño mecánico del mecanismo de control semejante un vehículo propulsado por combustión externa. Estos últimos suelen ser dirigidos por toberas montadas sobre un cardán. En el caso de un vehículo eléctrico de una hélice se tendría que montar el sistema de propulsión centrado en un gimbal para no obstruir el flujo.
+
+Existen diversas maneras de impulsar un vehículo de forma eléctrica. Luego de un cuidadoso estudio y discusión de ingeniería se decidió optar por un \gls{edf}, quien juega un rol central en el diseño pues es lo que se intenta controlar para llevar a cabo la navegación y guiado. Se analizo
+ir por un EDF de aluminio, por una cuestión de durabilidad, relación empuje-peso, reducir probabilidad de fallas y roturas en sucesivos experimentos. 
+Los EDF de aluminio solo se consiguen en el exterior y su precio es en dolares\footnote{El cambio de divisas es desfavorable para el lugar donde se desarrolla este proyecto.}. Esto trae varios inconvenientes en lo referente al presupuesto acotado, logística, compra y obtención. Los EDF
+disponibles de plástico tienen una relación de empuje-diámetro mucho menor con respecto a
+los de aluminio. Cabe destacar que el costo de un EDF de plástico y un EDF de aluminio son cercanos para diámetros similares.
+
+\medskip
+
+Para el diseño del gimbal se propuso una distribución de los mecanismos de actuación con
+servos concéntricos a los ejes de rotación. Para evitar de esta manera complejidad de
+mecanismos, cantidad de piezas de conexión entre servo y ejes, manufactura de mecanismos,
+uniones rotoides, y obtener así un mapeo lineal del ángulo de actuación. El único intermediario
+es el rodamiento que como se dispuso en la configuración ocupa el mínimo lugar posible justo
+por encima de la estría del servo y se lleva las cargas.
+Este mecanismo viene con la de una reducción de la resolución del ángulo de actuación comparado a un sistema actuado por un mecanismo biela-manivela.
+
+\todo{Incluir estudio de resolución de servo}
+
+\subsection{Contexto de pandemia}
+Las medidas tomadas durante la pandemia por el gobierno fueron muy estrictas e influenció a todo tipo de acción que se quiso tomar. Durante el primer año de pandemia no nos pudimos reunir físicamente para discutir ideas de diseño, lo cual dificultó el avance físico del proyecto como así también la toma de decisiones y la comunicación entre partes, crucial en el inicio de todos proyectos de ingeniería.
+
+\medskip
+
+Una de las mayores complicaciones que se tuvo fue la compra de
+componentes, además de la fabricación, que se vio afectada, por las políticas cambiantes de
+nuestro país con respecto a la compra y la entrada de productos importados a suelo argentino.
+Incluso la compra y llegada de los productos fue un motivo de festejo luego de un tortuoso
+trayecto.
+
+
