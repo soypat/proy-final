@@ -1,6 +1,8 @@
-\section{Diseño mecánico}
+\section{Diseño}
 
 En el marco de este proyecto, es de interés el diseño mecánico del mecanismo de control semejante un vehículo propulsado por combustión externa. Estos últimos suelen ser dirigidos por toberas montadas sobre un cardán. En el caso de un vehículo eléctrico de una hélice se tendría que montar el sistema de propulsión centrado en un gimbal para no obstruir el flujo.
+
+\subsection{Selección de propulsador}
 
 Existen diversas maneras de impulsar un vehículo de forma eléctrica. Luego de un cuidadoso estudio y discusión de ingeniería se decidió optar por un \gls{edf}, quien juega un rol central en el diseño pues es lo que se intenta controlar para llevar a cabo la navegación y guiado. Se analizo
 ir por un EDF de aluminio, por una cuestión de durabilidad, relación empuje-peso, reducir probabilidad de fallas y roturas en sucesivos experimentos. 
@@ -8,7 +10,9 @@ Los EDF de aluminio solo se consiguen en el exterior y su precio es en dolares\f
 disponibles de plástico tienen una relación de empuje-diámetro mucho menor con respecto a
 los de aluminio. Cabe destacar que el costo de un EDF de plástico y un EDF de aluminio son cercanos para diámetros similares.
 
-\medskip
+\todo{Hablar del bucle}
+
+\subsection{Diseño de la mecánica}
 
 Para el diseño del gimbal se propuso una distribución de los mecanismos de actuación con
 servos concéntricos a los ejes de rotación. Para evitar de esta manera complejidad de
@@ -16,7 +20,76 @@ mecanismos, cantidad de piezas de conexión entre servo y ejes, manufactura de m
 uniones rotoides, y obtener así un mapeo lineal del ángulo de actuación. El único intermediario
 es el rodamiento que como se dispuso en la configuración ocupa el mínimo lugar posible justo
 por encima de la estría del servo y se lleva las cargas.
-Este mecanismo viene con la de una reducción de la resolución del ángulo de actuación comparado a un sistema actuado por un mecanismo biela-manivela.
+Este mecanismo viene con la desventaja de una reducción de la resolución del ángulo de actuación comparado a un sistema actuado por un mecanismo biela-manivela.
+
+\medskip
+
+El material seleccionado para la fabricación del gimbal fue aluminio serie siete mil calidad
+aeroespacial. Esta construido de una sola pieza, siendo el elemento que se lleva las tensiones
+en todo momento en variabilidad de ángulos hacia el fuselaje, por ello la decisión de ser de la
+serie de mayor resistencia mecánica de los aluminios comerciales.
+
+\medskip
+
+Los rodamientos seleccionados son de dimensiones 18mm exterior, 10mm interior y 7mm de espesor,
+elegidos de esta manera por una cuestión de espacio para poder pasar la estría de los
+servomotores por dentro, dejando un espesor de la pared del estriado de 2.5mm,
+para evitar fisuras y hacer posible la manufactura de la pieza. La forma de generar el estriado
+interno, es la de indentar con un patrón sobre un agujero previo de diámetro medio a los
+valores máximos y mínimos de las crestas y valles de la estría. Esta operación debe hacerse con
+el material en bruto para no arruinar las tolerancias que necesitan los rodamientos. Los
+rodamientos se montarían clavados, minimizando el peso al no agregar seguers ni tapas con
+bulones.
+
+\medskip 
+
+Los ejes del gimbal estarían en disposición simplemente apoyada y de forma axisimétrica para prevenir perturbaciones dinámicas por desbalanceo.
+
+\medskip
+
+Con respecto al fuselaje, al inicio se pensó una envolvente cilíndrica para el anillo externo del
+gimbal. Luego se diseñó un desarrollo reticulado optimizado, se pasó por diferentes modelos e
+ideas, hasta que se combinaron varios puntos fuertes de cada idea. La envolvente del gimbal se fabrica de forma rolada y optimizada en peso a raíz de
+una planchuela de aluminio vaciada y luego generando su forma cilíndrica.\footnote{Contiene al
+anillo del gimbal.} Esto distribuye las masas de manera más favorable con menos espacio
+ocupado (dinámica-peso). Aguas arriba del gimbal se opto por un chasis tubular, con diversos
+vaciados, que mediante flejes puede soportar cada elemento que se acopla al cohete por
+medio de uniones abulonadas. Permitiendo mediante sus aberturas el acceso a cada
+componente del vehículo, proporcionando, además, una renovación del aire para una
+evacuación del calor generado, y un flujo abundante hacia la admisión del EDF.
+
+\medskip
+
+De la manera que se construye el gimbal puede entregar una rotación entera sin hacer contacto con la estructura. Se elige esta configuración por posibles desviaciones del proyecto en el
+futuro, calculamos que utilizaremos menos de 20$^\circ$ de rotación de cada eje de gimbal ($\pm$10$^\circ$).
+
+\subsection{Posición de baterías}
+
+La la decisión de donde posicionar las baterías surgía de querer simular un vehículo semejante a los VTVL de la industria aeroespacial y también la posibilidad de tener una inercia favorable para los margenes de estabilidad. Estos dos últimos puntos sugieren que la posición ideal para las baterías es arriba de todo. Esto haría que el punto alrededor del cual se linealizó las ecuaciones de movimiento sea más estable. Luego de una conversación con Pablo Cossutta, un ingeniero electrónico especialista en sistemas de potencia, se optó por la configuración encontrada en el documento. Las baterías se encuentran cerca del EDF para alejar las líneas de potencia trifásica correspondientes al motor brushlesss de lo que es la electrónica digital. Al inestabilizar el punto de operación se obtiene una mejora en la respuesta ante actuaciones permitiendo una corrección de trayectoria más rápida.\footnote{Este resultado es deseado cuando se desea tener mejor rendimiento por ángulo de actuación, como sucede con los \textit{aviones caza} que utilizan este fenómeno a conveniencia.}
+
+
+\subsection{Selección de servos} \label{ssec:servoSeleccion}
+\newcommand{\micro}{\ensuremath{\mu}}
+\newcommand{\grad}{\ensuremath{^\circ}}
+Para obtener una buena respuesta del vehículo ante actuaciones se debe acotar la resolución necesaria. Según \cite{castillo2018efectos}, l aresolución angular de un servo es de 
+
+
+\[
+R_p = \frac{\theta \cdot T_D}{PW}  
+\]
+donde $\theta$ es el angulo de barrido del servo (especificado por el fabricante), $T_D$ es el tiempo muerto y $PW$ es el ancho de pulso operativo. 
+
+El servo seleccionado es el SC1258TG. Tiene las siguientes especificaciones
+
+\begin{itemize}
+    \item Tiempo muerto (\textit{deadband}) 3\micro s
+    \item Rango de ancho de pulso mínimo y máximo 800-2100\micro s
+    \item Posición neutra 1500\micro s
+    \item Ángulo de barrido operativo 100\grad (para 1000-2000\micro s)
+    \item Velocidad 1,05 rad/s
+\end{itemize}
+
+Se tiene entonces una resolución mínima de 0,3\grad~ con un ancho de pulso de 2000\micro s. Esta resolución es alimentada como parámetro de actuación en las simulaciones.
 
 \todo{Incluir estudio de resolución de servo}
 
