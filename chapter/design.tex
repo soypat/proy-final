@@ -71,12 +71,13 @@ La la decisión de donde posicionar las baterías surgía de querer simular un v
 \subsection{Selección de servos} \label{ssec:servoSeleccion}
 \newcommand{\micro}{\ensuremath{\mu}}
 \newcommand{\grad}{\ensuremath{^\circ}}
-Para obtener una buena respuesta del vehículo ante actuaciones se debe acotar la resolución necesaria. Según \cite{castillo2018efectos}, l aresolución angular de un servo es de 
+Para obtener una buena respuesta del vehículo ante actuaciones se debe acotar la resolución necesaria. Según \cite{castillo2018efectos}, la resolución angular de un servo analógico está dada por
 
 
 \[
 R_p = \frac{\theta \cdot T_D}{PW}  
 \]
+
 donde $\theta$ es el angulo de barrido del servo (especificado por el fabricante), $T_D$ es el tiempo muerto y $PW$ es el ancho de pulso operativo. 
 
 El servo seleccionado es el SC1258TG. Tiene las siguientes especificaciones
@@ -87,11 +88,29 @@ El servo seleccionado es el SC1258TG. Tiene las siguientes especificaciones
     \item Posición neutra 1500\micro s
     \item Ángulo de barrido operativo 100\grad (para 1000-2000\micro s)
     \item Velocidad 1,05 rad/s
+    \item Controlador digital
 \end{itemize}
 
-Se tiene entonces una resolución mínima de 0,3\grad~ con un ancho de pulso de 2000\micro s. Esta resolución es alimentada como parámetro de actuación en las simulaciones.
+Se tiene entonces una resolución mínima de 0,3\grad~ con un ancho de pulso de 2000\micro s. Esta cuenta cede la resolución para un servo analógico, en el caso de tener un servo digital se toma el límite superior entre este valor y la resolución del controlador digital. Como el fabricante no especifica el controlador utilizado, se supone el peor de los casos: un controlador de 8 bits. Este caso tiene una resolución de 0,4\grad~.
 
-\todo{Incluir estudio de resolución de servo}
+Esta resolución es alimentada como parámetro de actuación en las simulaciones.
+
+
+\subsection{Selección de electrónica}
+
+Se pasó por varias etapas hasta llegar a la decisión final del controlador. Se empezó planteando la utilización de una Raspberry Pi 4B+ para controlar los actuadores con PWM. Esta configuración requiriría el diseño de una placa ad-hoc para desacoplar galvánicamente la Raspberry del controlador de velocidad del EDF (\gls{esc})
+
+El \textbf{controlador} a usar es el ARM Cortex-A72 que sería comprado en el paquete comercial (\gls{soc}) conocido como \textit{Raspberry Pi 4B+}. El producto provee salidas para los siguientes usos
+
+\begin{itemize}
+    \item \glsxtrshort{uart}
+    \item \glsxtrshort{spi}
+    \item \glsxtrshort{i2c}
+    \item \glsxtrshort{gpio}
+\end{itemize}
+
+El controlador ira montado sobre una placa cuyo desarrollo pertenece a LIA Aerospace denominada \textbf{LIA-Board}. Esta placa hace interfaz con el controlador mediante el GPIO header del \gls{soc}. Esto le permite al controlador acceder a los periféricos y salidas disponibles del LIA-Board que controlaran los actuadores y leerán los sensores.
+
 
 \subsection{Contexto de pandemia}
 Las medidas tomadas durante la pandemia por el gobierno fueron muy estrictas e influenció a todo tipo de acción que se quiso tomar. Durante el primer año de pandemia no nos pudimos reunir físicamente para discutir ideas de diseño, lo cual dificultó el avance físico del proyecto como así también la toma de decisiones y la comunicación entre partes, crucial en el inicio de todos proyectos de ingeniería.
