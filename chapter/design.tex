@@ -2,15 +2,70 @@
 
 En el marco de este proyecto, es de interés el diseño mecánico del mecanismo de control semejante un vehículo propulsado por combustión externa. Estos últimos suelen ser dirigidos por toberas montadas sobre un cardán. En el caso de un vehículo eléctrico de una hélice se tendría que montar el sistema de propulsión centrado en un gimbal para no obstruir el flujo.
 
-\subsection{Selección de propulsador}
+\subsection{Selección de propulsor}
 
-Existen diversas maneras de impulsar un vehículo de forma eléctrica. Luego de un cuidadoso estudio y discusión de ingeniería se decidió optar por un \gls{edf}, quien juega un rol central en el diseño pues es lo que se intenta controlar para llevar a cabo la navegación y guiado. Se analizo
-ir por un EDF de aluminio, por una cuestión de durabilidad, relación empuje-peso, reducir probabilidad de fallas y roturas en sucesivos experimentos. 
+Los requerimientos para el propulsor son los siguientes
+
+\begin{itemize}
+    \item Empuje que mantenga altura del vehículo para la máxima actuación del gimbal
+    \item Disponible comercialmente
+    \item Precio de propulsor y accesorios relevantes dentro de presupuesto
+    \item Durabilidad ante pruebas físicas en cuanto a la duración del proyecto
+\end{itemize}
+
+Estos requerimientos fueron los primeros especificados para el diseño del vehículo. El diseño estructural y la selección de componentes electrónicos parten del propulsor seleccionado ya que este es la pieza central para lograr los objetivos propuestos y la que más puede variar en especificaciones técnicas.
+
+\medskip 
+
+Existen diversas maneras de impulsar un vehículo de forma eléctrica. Luego de un cuidadoso estudio y discusión de ingeniería se decidió optar por un \gls{edf}, quien juega un rol central en el diseño pues es lo que se intenta controlar para llevar a cabo la navegación y guiado.
+
+
+\medskip
+
+Se generó una lista de EDF's de diferentes diámetros disponibles comercialmente.
+
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{l|r|r|r|}
+    & \multicolumn{1}{l|}{70mm} & \multicolumn{1}{l|}{90mm} & \multicolumn{1}{l|}{120mm} \\ \hline
+    Masa estructural {[}kg{]}           & 0,4                       & 1                         & 2                          \\ \hline
+    Masa batería       {[}kg{]}                 & 0,9                       & 1,9                       & 2                          \\ \hline
+    Mas electrónica {[}kg{]}            & 0,5                       & 1                         & 1                          \\ \hline
+    Empuje restante {[}kgf{]}           & 0,01                      & 0,478                     & 3,116                      \\ \hline
+    Tiempo vuelo {[}s{]}                & 252,972973                & 183,5294118               & 131,8309859                \\ \hline
+    Precio baterías-propulsor {[}usd{]} & 165,075                   & 365,15                    & 693,005                    \\ \hline
+    Costo total {[}ars{]}               & 23968,06463               & 53017,95425               & 101313,866                 \\ \hline
+    \end{tabular}
+    \caption{Estudio de diferentes EDF's disponibles en el mercado. El requerimiento excluyente para la selección de batería fue que permita vuelo sostenido por 2 minutos.}
+    \label{tab:edfseleccion}
+\end{table}
+
+
+El \textit{empuje restante} de la tabla \ref{tab:edfseleccion} es el empuje que sobra luego de restar el peso del vehículo al empuje nominal del EDF. Este empuje dará margen para maniobrar y recuperar la orientación luego de una perturbación externa.
+
+\medskip
+
 Los EDF de aluminio solo se consiguen en el exterior y su precio es en dolares\footnote{El cambio de divisas es desfavorable para el lugar donde se desarrolla este proyecto.}. Esto trae varios inconvenientes en lo referente al presupuesto acotado, logística, compra y obtención. Los EDF
 disponibles de plástico tienen una relación de empuje-diámetro mucho menor con respecto a
 los de aluminio. Cabe destacar que el costo de un EDF de plástico y un EDF de aluminio son cercanos para diámetros similares.
+\todo{juntar estos dos parrafos (arriba y abajo) en uno}
 
-\todo{Hablar del bucle}
+\medskip
+
+Los EDF que fueron analizados son los más baratos que
+se encontraron en eBay y son provenientes de Hong Kong. Como condición de selección excluyente para cumplir con el requerimiento de durabilidad el hecho de que sean de aluminio ya que deberán resistir test y pruebas físicas
+(durabilidad) además de la fabricación y vinculación mecánica de actuadores de aluminio
+(tensiones). Son todos de aluminio y se espera .\todo{corregir esto}
+
+\medskip
+
+Se decidió por el EDF de 120mm, motor brushless alimentado por una batería Li-Po 12s (48V) 5000mAh 50c/100c para la construcción del prototipo. Este EDF mantiene un empuje resultante positivo para un ángulo de actuación de aproximadamente 45\grad , el cual supera el ángulo actuado máximo de las simulaciones.
+
+
+
+
+
+
 
 \subsection{Diseño de la mecánica}
 
@@ -38,7 +93,7 @@ para evitar fisuras y hacer posible la manufactura de la pieza. La forma de gene
 interno, es la de indentar con un patrón sobre un agujero previo de diámetro medio a los
 valores máximos y mínimos de las crestas y valles de la estría. Esta operación debe hacerse con
 el material en bruto para no arruinar las tolerancias que necesitan los rodamientos. Los
-rodamientos se montarían clavados, minimizando el peso al no agregar seguers ni tapas con
+rodamientos se montarían clavados, minimizando el peso al no agregar anillos seguers ni tapas con
 bulones.
 
 \medskip 
@@ -65,12 +120,11 @@ futuro, calculamos que utilizaremos menos de 20$^\circ$ de rotación de cada eje
 
 \subsection{Posición de baterías}
 
-La la decisión de donde posicionar las baterías surgía de querer simular un vehículo semejante a los VTVL de la industria aeroespacial y también la posibilidad de tener una inercia favorable para los margenes de estabilidad. Estos dos últimos puntos sugieren que la posición ideal para las baterías es arriba de todo. Esto haría que el punto alrededor del cual se linealizó las ecuaciones de movimiento sea más estable. Luego de una conversación con Pablo Cossutta, un ingeniero electrónico especialista en sistemas de potencia, se optó por la configuración encontrada en el documento. Las baterías se encuentran cerca del EDF para alejar las líneas de potencia trifásica correspondientes al motor brushlesss de lo que es la electrónica digital. Al inestabilizar el punto de operación se obtiene una mejora en la respuesta ante actuaciones permitiendo una corrección de trayectoria más rápida.\footnote{Este resultado es deseado cuando se desea tener mejor rendimiento por ángulo de actuación, como sucede con los \textit{aviones caza} que utilizan este fenómeno a conveniencia.}
+La la decisión de donde posicionar las baterías surgía de querer simular un vehículo semejante a los VTVL con motores a reacción y también la posibilidad de tener una inercia favorable para los margenes de estabilidad. Estos dos últimos puntos sugieren que la posición ideal para las baterías es arriba de todo. Esto haría que el punto alrededor del cual se linealizó las ecuaciones de movimiento sea más estable. Luego de una conversación con Pablo Cossutta, un ingeniero electrónico especialista en sistemas de potencia, se optó por la configuración encontrada en el documento. Las baterías se encuentran cerca del EDF para alejar las líneas de potencia trifásica correspondientes al motor brushlesss de lo que es la electrónica digital. Al inestabilizar el punto de operación se obtiene una mejora en la respuesta ante actuaciones permitiendo una corrección de trayectoria más rápida.\footnote{Este resultado es deseado cuando se desea tener mejor rendimiento por ángulo de actuación, como sucede con los \textit{aviones caza} que utilizan este fenómeno a conveniencia.}
 
 
 \subsection{Selección de servos} \label{ssec:servoSeleccion}
-\newcommand{\micro}{\ensuremath{\mu}}
-\newcommand{\grad}{\ensuremath{^\circ}}
+
 Para obtener una buena respuesta del vehículo ante actuaciones se debe acotar la resolución necesaria. Según \cite{castillo2018efectos}, la resolución angular de un servo analógico está dada por
 
 
@@ -95,10 +149,25 @@ Se tiene entonces una resolución mínima de 0,3\grad~ con un ancho de pulso de 
 
 Esta resolución es alimentada como parámetro de actuación en las simulaciones.
 
+\subsection{Tren de aterrizaje}
+Se definen algunos requerimientos para el tren de aterrizaje
+\begin{itemize}
+    \item Cada pata será dimensionada para soportar 20 veces el peso del vehículo. Este factor de seguridad toma en cuenta la posibilidad de aterrizaje desparejo y el factor dinámico de un impacto \todo{20 veces? Cuantas veces?}
+    \item Facilidad de fabricación y armado
+\end{itemize}
 
-\subsection{Selección de electrónica}
+El primer diseño consistía en una estructura reticulada, la cual se decidió abandonar por la dificultad del armado y sucesivas soldaduras, consecuentes alineaciones por las dilataciones térmicas.
 
-Se pasó por varias etapas hasta llegar a la decisión final del controlador. Se empezó planteando la utilización de una Raspberry Pi 4B+ para controlar los actuadores con PWM. Esta configuración requiriría el diseño de una placa ad-hoc para desacoplar galvánicamente la Raspberry del controlador de velocidad del EDF (\gls{esc})
+\medskip
+
+El diseño seleccionado consiste en unas patas compuestas de una placa de aluminio vaciada y soldada a la estructura principal del fuselaje. Otorga rigidez a expensas de bajo peso y facilidad de construcción.
+
+
+\subsection{Selección de controlador y sensores}
+
+Se pasó por dos etapas hasta llegar a la decisión final del controlador. Se empezó planteando la utilización de una Raspberry Pi 4B+ para controlar los actuadores con PWM. Esta configuración requeriría el diseño de una placa ad-hoc para desacoplar galvánicamente la Raspberry del controlador de velocidad del EDF (\gls{esc}). Se descartó esta idea a favor de usar una combinación de Raspberry Pi y una placa propia de LIA Aerospace.
+
+\medskip
 
 El \textbf{controlador} a usar es el ARM Cortex-A72 que sería comprado en el paquete comercial (\gls{soc}) conocido como \textit{Raspberry Pi 4B+}. El producto provee salidas para los siguientes usos
 

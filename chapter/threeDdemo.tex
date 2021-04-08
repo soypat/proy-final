@@ -1,5 +1,6 @@
 
 \section{Ecuaciones de movimiento de cuerpo rígido} \label{sec:ecuacionesRigid}
+A continuación se mostrarán las ecuaciones de movimiento en el espacio usadas para controlar el vehículo.
 Se hará referencia a la figura \ref{fig:FBD2D} para explicar las variables en juego en el modelo 3D debido a la dificultad inherente de mostrar las 16 variables de estado en un dibujo del modelo 3D.
 
 \begin{figure}[htb!]
@@ -10,10 +11,10 @@ Se hará referencia a la figura \ref{fig:FBD2D} para explicar las variables en j
 
 \subsection{Notación}
 
-La notación es la del libro \textit{Rigid Body Dynamics of Mechanisms, Theoretical Basics} \cite{hahn2013rigid}. Se requiere un tratamiento algebraico explicito de los marcos de referencia y representación debido al caso especial de un \textit{gimballed rotor}. Este tratamiento facilita la programación de la simulación y subsecuentemente el control, el cual se volvería ambiguo y complejo con un tratamiento más común o simplificado.
+La notación es la del libro \textit{Rigid Body Dynamics of Mechanisms, Theoretical Basics} \cite{hahn2013rigid}. Se requiere un tratamiento algebraico explicito de los marcos de referencia y representación debido al caso especial de un \textit{gimballed rotor}. Este tratamiento facilita la programación de la simulación y, en consecuencia, el control, el cual se volvería ambiguo y complejo con un tratamiento más común o simplificado.
 
 \begin{description}
-	\item[{\(\avec{r}_{\ogn{CO}}=[x,y,z]\)}] : Posici\'on absoluta del centro de masa del veh\'iculo leasé ``posición de $\ogn{C}$ respecto $\ogn{O}$'')
+	\item[{\(\avec{r}_{\ogn{CO}}=[x,y,z]\)}] : Posición absoluta del centro de masa del vehículo léase ``posición de $\ogn{C}$ respecto $\ogn{O}$'')
 	\item[{\(\avec{r}_{\ogn{RC}}\)}] : Posición del centro de masa del cardán respecto al centro de masa del vehículo
 	\item[{\( \avec{\eta}=[\phi,\theta,\psi] \)}] : Ángulos de actitud del vehículo (Ángulos Euler)
 	\item[\( \avec{\omega}_r^{\frm{G}} \)] : Velocidad angular del rotor del EDF representado en el marco $\frm{G}$ (dirección constante)
