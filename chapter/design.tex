@@ -48,14 +48,6 @@ El \textit{empuje restante} de la tabla \ref{tab:edfseleccion} es el empuje que 
 Los EDF de aluminio solo se consiguen en el exterior y su precio es en dolares\footnote{El cambio de divisas es desfavorable para el lugar donde se desarrolla este proyecto.}. Esto trae varios inconvenientes en lo referente al presupuesto acotado, logística, compra y obtención. Los EDF
 disponibles de plástico tienen una relación de empuje-diámetro mucho menor con respecto a
 los de aluminio. Cabe destacar que el costo de un EDF de plástico y un EDF de aluminio son cercanos para diámetros similares.
-\todo{juntar estos dos parrafos (arriba y abajo) en uno}
-
-\medskip
-
-Los EDF que fueron analizados son los más baratos que
-se encontraron en eBay y son provenientes de Hong Kong. Como condición de selección excluyente para cumplir con el requerimiento de durabilidad el hecho de que sean de aluminio ya que deberán resistir test y pruebas físicas
-(durabilidad) además de la fabricación y vinculación mecánica de actuadores de aluminio
-(tensiones). Son todos de aluminio y se espera .\todo{corregir esto}
 
 \medskip
 
@@ -152,8 +144,13 @@ Esta resolución es alimentada como parámetro de actuación en las simulaciones
 \subsection{Tren de aterrizaje}
 Se definen algunos requerimientos para el tren de aterrizaje
 \begin{itemize}
-    \item Cada pata será dimensionada para soportar 20 veces el peso del vehículo. Este factor de seguridad toma en cuenta la posibilidad de aterrizaje desparejo y el factor dinámico de un impacto \todo{20 veces? Cuantas veces?}
-    \item Facilidad de fabricación y armado
+    \item Las patas se dimensionaron para soportar 10 veces el peso del vehículo. Este factor de seguridad toma en cuenta la posibilidad de aterrizaje desparejo y el factor dinámico de un impacto. %\todo{20 veces? Cuantas veces?}
+    \item Facilidad de fabricación y armado.
+    \item Permitir funcionamiento del vehículo sin interferir con partes móviles.
+    \item Permitir flujo libre al EDF.
+    \item Buena relación peso-rigidez.
+    \item Posibilidad de acople de mecanismo de suspensión.
+    \item Mantenga una distancia prudente entre el EDF y la superficie de apoyo para mitigar el efecto suelo.
 \end{itemize}
 
 El primer diseño consistía en una estructura reticulada, la cual se decidió abandonar por la dificultad del armado y sucesivas soldaduras, consecuentes alineaciones por las dilataciones térmicas.
@@ -180,6 +177,16 @@ El \textbf{controlador} a usar es el ARM Cortex-A72 que sería comprado en el pa
 
 El controlador ira montado sobre una placa cuyo desarrollo pertenece a LIA Aerospace denominada \textbf{LIA-Board}. Esta placa hace interfaz con el controlador mediante el GPIO header del \gls{soc}. Esto le permite al controlador acceder a los periféricos y salidas disponibles del LIA-Board que controlaran los actuadores y leerán los sensores.
 
+\subsection{Sistema anti rolido}
+
+Para contrarestar el torque generado por la energía rotacional otorgado al flujo de salida se tiene que implementar un sistema \textit{anti-roll}.
+
+\medskip
+
+Se diseño un sistema anti rolido, controlando el movimiento en el eje z del cohete. El mismo
+está compuesto de dos servomotores de actuación espejada. Estos están ubicados por debajo del EDF para utilizar la energía del flujo saliente mitigando este efecto. Los álabes son actuados de forma directa por dos servos. Un anillo ensamblado al EDF desarmable hace que el accionar de los álabes se encuentre en una disposición simplemente apoyada. La extensión de las dos piezas de aluminio que son los
+soportes del EDF hacen posible la fijación de los micro servos para el comando de los flaps.
+
 
 \subsection{Contexto de pandemia}
 Las medidas tomadas durante la pandemia por el gobierno fueron muy estrictas e influenció a todo tipo de acción que se quiso tomar. Durante el primer año de pandemia no nos pudimos reunir físicamente para discutir ideas de diseño, lo cual dificultó el avance físico del proyecto como así también la toma de decisiones y la comunicación entre partes, crucial en el inicio de todos proyectos de ingeniería.
@@ -191,5 +198,3 @@ componentes, además de la fabricación, que se vio afectada, por las políticas
 nuestro país con respecto a la compra y la entrada de productos importados a suelo argentino.
 Incluso la compra y llegada de los productos fue un motivo de festejo luego de un tortuoso
 trayecto.
-
-
