@@ -9,6 +9,7 @@ Se hará referencia a la figura \ref{fig:FBD2D} para explicar las variables en j
 	\caption{Marcos de referencia tomados para el análisis de cuerpo rígido. Por simplicidad se toman los centros de masa del cardán y del rotor como coincidentes en el punto $\ogn{R}$.}
 \end{figure}
 
+\newpage
 \subsection{Notación}
 
 La notación es la del libro \textit{Rigid Body Dynamics of Mechanisms, Theoretical Basics} \cite{hahn2013rigid}. Se requiere un tratamiento algebraico explicito de los marcos de referencia y representación debido al caso especial de un \textit{gimballed rotor}. Este tratamiento facilita la programación de la simulación y, en consecuencia, el control, el cual se volvería ambiguo y complejo con un tratamiento más común o simplificado.
@@ -84,6 +85,7 @@ Se pueden demostrar las siguientes ecuaciones
 
 donde $\omega_{\frm{LR}}^{\frm{L}}$ es la velocidad angular vectorial del marco $\frm{L}$ con respecto a $\frm{R}$ representado en $\frm{L}$, $\transform{RL}$ es la matriz de cosenos directores que transforma una vector de una base ortogonal $\frm{L}$ a otra base ortogonal $\frm{R}$, y $\dottransform{RL}$ es la derivada de la matriz $\transform{RL}$ respecto $\frm{R}$.
 
+\newpage
 
 \subsection{Variables de estado}
 Se tendrán las variables de estado de posición y velocidad donde $z$ positivo es alejándose de la tierra.
@@ -113,6 +115,8 @@ El movimiento cuerpo rígido será descrito por 3 ángulos de Euler (Cardán o B
 
 
 Los ángulos de la vectorización de la tobera serán $\alpha$ y $\beta$. $\delta$ corresponde a los actuadores que contrarrestan el roll del vehículo mediante dos flaps. Los ángulos $\alpha$ y $\beta$ describen la dirección en la que está apuntando la tobera (equivalente a la orientación $\frm{G}$) respecto la dirección del vehículo (marco $\frm{B}$). $\omega_r=\omega_r^\frm{G}$ es la velocidad angular del rotor.
+
+\medskip
 
 Se escriben las variables de estado y el vector input, donde $F$ es la fuerza que hace la tobera sobre el vehículo (la cual depende de la velocidad del vehículo)\footnote{En el código $\phi$, $\theta$ y $\psi$ aparecen como \texttt{q,r,s}}
 \begin{equation} \label{eq:ssVariables3D}
@@ -197,6 +201,7 @@ Los momentos actuantes externos en el marco del vehículo respecto su centro de 
 %
 La aceleración angular en el marco $\frm{B}$ sale del desarrollo de la sección \ref{ssec:ecuacionangular}
 \begin{equation}
+	\hspace{-1cm}
 {}^\frm{B}\frac{\di }{\di t} \left(\avec{\omega}_\frm{BN}^\frm{B} \right) =  \left(\inertia{C}{B}\right)^{-1} \cdot \left( - \skw{\avec{\omega}}_\frm{BN}^\frm{B} \cdot \inertia{C}{B}\cdot \avec{\omega}_{\frm{BN}}^{\frm{B}} - 
 \transform{{BG}} \cdot\skw{\avec{\omega}}_\frm{GB}^\frm{G} \cdot \inertiarotor{R}{G}  \cdot \avec{\omega}_r^\frm{G} -
 \skw{\avec{\omega}}_\frm{BN}^\frm{B} \cdot \inertiarotor{R}{G}  \cdot \avec{\omega}_r^\frm{G} -
@@ -246,6 +251,7 @@ donde $\omega_{\!r}$ es la velocidad del rotor y $\inertiarotor{R}{G}$ es la mat
 Derivamos el momento angular con respecto a $\frm{N}$ y junto con $\inertia{C}{B} \approx \text{constante}$ \footnote{La inercia del vehículo en su propio marco $\inertia{C}{B}$ es constante excepto por las variaciones introducidas al agruparlo con el término del cardán $J_{\!g\ogn{C}}^\frm{B}$, el cual varía en función a la actuación $\alpha,\beta$.}
 
 \begin{IEEEeqnarray*}{rCl}
+	\hspace{-1cm}
 ^{\frm{N}}\dot{L}_{\ogn{C}}^{\frm{N}}  & = & ^{\frm{N}} \frac{\di }{\di t}  \left(\transform{{NB}} \cdot \inertia{C}{B} \cdot \omega_{\frm{BN}}^{\frm{B}} + \transform{{NG}}\cdot \inertiarotor{R}{G} \cdot \omega_r^\frm{G} \right) \\
  & = & \dottransform{NB} \cdot\inertia{C}{B}\cdot \omega_{\frm{BN}}^{\frm{B}} + 
  \transform{{NB}} \cdot \underbrace{ {}^\frm{N}\dot{J}_{\ogn{C}}^\frm{B}}_{\approx 0}\cdot \omega_{\frm{BN}}^{\frm{B}} +
@@ -256,6 +262,7 @@ Derivamos el momento angular con respecto a $\frm{N}$ y junto con $\inertia{C}{B
 la derivada de la inercia del cuerpo se anula y luego se aplica la regla de la cadena a la derivada
 %\transform{{NG}}\cdot {}^\frm{N}\frac{\di}{\di t}\left( \inertiarotor{R}{G}  \cdot \omega_r^\frm{G} \right)
 \begin{IEEEeqnarray*}{rCl}
+	\hspace{-1cm}
 ^{\frm{N}}\dot{L}_{\ogn{C}}^{\frm{N}}  &=&\dottransform{NB} \cdot J_{\ogn{C}}^\frm{B}\cdot \omega_{\frm{BN}}^{\frm{B}} + 
 \transform{{NB}} \cdot \inertia{C}{B}\cdot \dot{\omega}_{\frm{BN}}^{\frm{B}} + 
 \dottransform{NG}\cdot \inertiarotor{R}{G}  \cdot \omega_r^\frm{G} +
@@ -267,6 +274,8 @@ la derivada de la inercia del cuerpo se anula y luego se aplica la regla de la c
  \inertiarotor{R}{G} \cdot {}^\frm{N} \dot{\omega}_{\!r}^{\frm{G}}  \right)
 \end{IEEEeqnarray*}
 donde $ \dot{J}_{\! r\ogn{R}}^\frm{G}$ se puede considerar despreciable por la geometría ligera del conjunto cardán y por actuaciones pequeñas (mencionadas anteriormente).
+
+\medskip
 
 Como el rotor es fijo a al vehículo alrededor de un punto cercano a $\ogn{R}$ y  el movimiento del gimbal es restringido por los actuadores se supone que el rotor es parte del cuerpo rígido del vehículo y se plantea su momento angular como un vector libre. Así podemos igualar $\inertiarotor{R}{G} \equiv \inertiarotor{C}{G} = \inertiarotor{}{G}$, y por extensión, $J_\ogn{R}^{\frm{B}} \equiv J_\ogn{C}^{\frm{B}} $. 
 
@@ -298,7 +307,9 @@ donde $\omega_\frm{GN}^\frm{G} =\omega_\frm{GB}^\frm{G} + \omega_\frm{BN}^\frm{G
 \todo{Esto está bien? el término $ \skw{\omega}_\frm{BN}^\frm{B} \cdot \inertiarotor{}{G}  \cdot \omega_r^\frm{G}$ nos hace ruido}
 
 \vspace{1cm}
+
 \begin{IEEEeqnarray*}{rCl}
+\hspace{-1cm}
 \inertia{C}{B}\cdot \dot{\omega}_{\frm{BN}}^{\frm{B}} & = & - \skw{\omega}_\frm{BN}^\frm{B} \cdot \inertia{C}{B}\cdot \omega_{\frm{BN}}^{\frm{B}} - 
 \transform{{BG}} \cdot\skw{\omega}_\frm{GB}^\frm{G} \cdot \inertiarotor{}{G}  \cdot \omega_r^\frm{G} -
 \transform{{BG}}\transform{{GB}} \cdot\skw{\omega}_\frm{BN}^\frm{B} \cdot \inertiarotor{}{G} \cdot \omega_r^\frm{G} -

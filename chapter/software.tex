@@ -16,9 +16,6 @@ La Raspberry Pi provee un entorno con Linux instalado que permite la programaci�
     \item Portable - Todos los programas Go compilan a código nativo (código de máquina) para cualquier arquitectura y sistema operativo. Incluso se puede programar microcontroladores (TinyGo)
 \end{itemize}
 
-
-\newpage
-
 \subsection{Flujo de control}
 \begin{figure}[!htb]
     \centering
@@ -42,7 +39,7 @@ Como se mencionó anteriormente, la computadora elegida tiene varios puertos que
 
 Para la interacción del software con el hardware se usará la librería \href{https://periph.io}{periph.io}. Esta librería permite la interacción a través de los protocolos de comunicación de la Raspberry Pi. Los drivers para los periféricos fueron programados según la información dada en las datasheet.
 
+
 \subsection{Implementación}
 
-tbc
-
+Al momento de documentar los avances el programa de vuelo tiene 3540 líneas de lógica, de las cuales 1680 corresponden a los drivers de control de periféricos. Se logra controlar la actuación de hasta 12 señales PWM y en simultaneo leer 16 señales de telemetría y guardar a archivo en una tarjeta SD a 1200 muestras por segundo (cada canal). 1060 líneas de código son dedicadas a la interfaz de usuario para facilitar el control del vehículo desde un browser, como por ejemplo Firefox.

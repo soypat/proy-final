@@ -8,6 +8,8 @@ Se investigó la respuesta del vehículo ante perturbaciones Delta-Dirac de orie
 
 El sistema \eqref{eq:ssDiffVariables3D} describe la dinámica no-lineal del vehículo con 16 ecuaciones. Estas pueden ser integradas mediante un método numérico para ecuaciones diferenciales ordinarias multivariables no-autónomas. El requerimiento no-autónomo surge de la necesidad de incorporar el vector $\Cu$ a la integración, el cual incluye las actuaciones en base a lo que leen los sensores. 
 
+\medskip
+
 Para satisfacer el requerimiento no-autónomo se tuvo que implementar un método numérico basado en Runge-Kutta orden 4. El método fue probado y contrastado con soluciones analíticas conocidas.
 
 \subsection{Sistema de control}
@@ -23,6 +25,8 @@ Se modelaron las siguientes imperfecciones en el sistema:
 \end{itemize}
 
 La matriz costo asociada al equilibrio es construida asignando los siguientes valores a la diagonal: 5 a las posiciones globales, 1 a las velocidades, 1e-3 a la velocidad del rotor del EDF, 1e-4 a la velocidad angular en pitch y yaw del vehículo, y 1e-5 a las variables restantes (actuadores, ángulos de Euler y velocidad angular en roll).
+
+\medskip
 
 La matriz costo asociada a los actuadores es diagonal con los siguientes valores: 1000 a actuadores de pitch y yaw del gimbal, 1e-5 al actuador de roll, y 1e-6 al control velocidad del rotor del EDF.
 
@@ -66,6 +70,5 @@ Todos los ejes $x$ corresponden al tiempo en segundos.
     \label{fig:rotor_edf}
 \end{figure}
 
-\null\newpage
-% \afterpage{\clearepage}
+
 
