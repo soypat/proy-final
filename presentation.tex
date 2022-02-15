@@ -1,0 +1,127 @@
+\documentclass[10pt]{beamer}
+\setbeamertemplate{note page}[plain]
+\input{tex/beamer_preamble.tex}
+
+
+\title{Gimballed EDF propelled VTVL \\ 
+vehicle design and control}
+\subtitle{Defensa de proyecto final}
+\date{\today}
+\author{Patricio Whittingslow \\ Luís Cretton}
+
+\input{tex/macros.tex}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Objetivo}
+    \begin{itemize}
+        \item Tecnología central para el desarrollo aeroespacial futuro
+        \item Desarrollo de vehículo plataforma para ensayos a pequeña escala
+    \end{itemize}
+
+    \hspace{0.7cm}
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=0.6\linewidth]{fig/starship.png}
+        \caption{Starship: referente en tecnología de vehículos orbitales reutilizables.}
+        \label{fig:starship}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Estado del arte}
+    \begin{itemize}
+        \item Tecnología monorrotor fijo tiene uso amplio
+    \end{itemize}
+
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=0.8\linewidth]{fig/vbat_icarus.png}
+        \caption{Dos vehículos VTVL eléctricos modernos. ``VBat'' (Izq.) y ``\href{https://hackaday.com/2018/08/31/single-rotor-drone-a-thrust-vectoring-monocopter/}{Ikarus}''.}
+        \label{fig:vbat_icarus}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Estado del arte}
+    \begin{itemize}
+        \item Tecnología monorrotor para empuje vectorial siendo usado por la ESA para ensayar algoritmos de control.
+    \end{itemize}
+
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[height=5cm]{fig/frog_esa.jpg}
+        \caption{FROG de la ESA. Plataforma de ensayo de sistemas.}
+        \label{fig:frog_esa}
+    \end{figure}
+\end{frame}
+
+\section{Diseño}
+
+\begin{frame}{Diseño -- Propulsión másica}
+    \begin{itemize}
+        \item Agua
+        \item Peróxido HTP y cama catalítica
+    \end{itemize}
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[width=0.6\linewidth]{fig/bottlerocket}
+        \caption{Análisis preliminar para un vehículo propulsado por agua a presión. La presión es la del tanque (absoluta). El peso estructural que se utilizó fue de 10kg.}
+        \label{fig:bottlerocket}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Diseño -- Elección de propulsor}
+    \begin{table}[!ht]
+        \centering
+        \begin{tabular}{l|r|r|r}
+    Diámetro de EDF    & \multicolumn{1}{l|}{70mm} & \multicolumn{1}{l|}{90mm} & \multicolumn{1}{l}{120mm} \\ \hline
+        Masa estructural {[}kg{]}           & 0,4                       & 1                         & 2                          \\ \hline
+        Masa batería       {[}kg{]}                 & 0,9                       & 1,9                       & 2                          \\ \hline
+        Mas electrónica {[}kg{]}            & 0,5                       & 1                         & 1                          \\ \hline
+        Empuje restante {[}kgf{]}           & 0,01                      & 0,478                     & 3,116                      \\ \hline
+        Tiempo vuelo {[}s{]}                & 253              & 184              & 132                \\ \hline
+        Precio baterías-propulsor {[}usd{]} & 165                   & 365                   & 693                   \\ \hline
+        Costo total {[}ars{]}               & 23968              & 53017              & 101313                 \\ \hline
+        \end{tabular}
+        \caption{Estudio de diferentes EDF's disponibles en el mercado. El requerimiento excluyente para la selección de batería fue que permita vuelo sostenido por 2 minutos.}
+        \label{tab:edfseleccion}
+    \end{table}
+\end{frame}
+
+\section{Simulación}
+
+\begin{frame}{Simulación -- Modelo matemático}
+    Notación y tratamiento matemático de \cite{hahn2013rigid}.
+    
+    \begin{figure}[htb!]
+        \centering
+        \includegraphics[width=0.5\textwidth]{fig/marcosDiagrama.eps}
+        %\caption{Marcos de referencia tomados para el análisis de cuerpo rígido. Por simplicidad se toman los centros de masa del cardán y del rotor como coincidentes en el punto $\ogn{R}$.}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Simulación -- Modelo matemático}
+    Aceleración angular del vehículo tomando en cuenta efecto giroscopo y fuerzas externas debido a vorticidad.
+    \begin{align*}
+        {}^\frm{B}\frac{\di }{\di t} \left(\avec{\omega}_\frm{BN}^\frm{B} \right) = & \left(\inertia{C}{B}\right)^{-1} \cdot  \left( - \skw{\avec{\omega}}_\frm{BN}^\frm{B} \cdot \inertia{C}{B}\cdot \avec{\omega}_{\frm{BN}}^{\frm{B}} - \transform{{BG}} \cdot\skw{\avec{\omega}}_\frm{GB}^\frm{G} \cdot \inertiarotor{R}{G}  \cdot \avec{\omega}_r^\frm{G} - \right.\\
+     & \left.\skw{\avec{\omega}}_\frm{BN}^\frm{B} \cdot \inertiarotor{R}{G}  \cdot \avec{\omega}_r^\frm{G} -  \transform{{BG}}\cdot  \inertiarotor{C}{G} \cdot  {}^\frm{N} \dot{\avec{\omega}}_{\!r}^{\frm{G}} + \avec{M}_\ogn{C}^\frm{B} \right)
+     \end{align*}
+\end{frame}
+
+\begin{frame}{Simulación -- Control}
+    \begin{itemize}
+        \item Representación espacio de estados.
+        \item Controlador LQR.
+        \item Estimador de actitud Madgewick.
+    \end{itemize}
+    \begin{align}
+        \dot{\Cx} &= \Mme{A} \Cx + \Mme{B} \Cu \\
+        \Cu &= \Mme{K}_{\textrm{LQR}} \left(\Cx-\Cx_0 \right)
+    \end{align}
+\end{frame}
+
+\bibliography{tex/biblio} % Indica archivo
+\bibliographystyle{plainnat} %estilo de bibliografía
+
+\end{document}
