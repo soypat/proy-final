@@ -4,7 +4,7 @@ El diseño, desarrollo, fabricación, armado, simulación y lanzamiento de cohet
 sencilla ni repetida en intervalos de cortos de tiempo, al contrario, suelen llevar décadas y una
 fuerte inversión para que sean posibles estos logros. El diseño y auge de vehículos VTVL viene
 a subsanar estos factores ya que una vez terminada la misión el vehículo se puede reutilizar,
-con mínimas intervenciones, y estaría listo para una nueva misión, atacando estos dos puntos principales anteriormente mencionados, el tiempo y el costo. Esto es a diferencia del método convencional donde el vehículo, luego de completar la misión, pasa a formar parte de basura espacial o, en el mejor de los casos, es recuperado del mar como el caso del Space Shuttle. 
+con mínimas intervenciones, y estaría listo para una nueva misión, atacando estos dos puntos principales anteriormente mencionados, el tiempo y el costo. Esto difiere del método convencional donde el vehículo, luego de completar la misión, pasa a formar parte de basura espacial o, en el mejor de los casos, es recuperado del mar como el caso del Space Shuttle. 
 
 \medskip
 
@@ -45,6 +45,10 @@ investigación del \textit{fuel sloshing} en vehículos con tanques esbeltos.
 
 \medskip
 
+El vehículo provee la capacidad de testear sistemas de control a escala pequeña que en caso de devenir en una falla, el costo total de perdidas seria mucho menor con respecto a un vehículo mas grande con sistemas caros y complejos.  Al tener un sistema de control definido en términos de parámetros del vehículo, se puede escalar para luego ser probado en un vehículo mas grande. Al ser también un sistema más chico y manipulable qué el vehículo de escala grande, tornándose más fácil las pruebas y los problemas de software y hardware de vuelo.
+
+\medskip
+
 
 Los sistemas de vehículos orbitales tienen sistemas complejos que deben ser testeados en una primera etapa mediante algún ensayo controlado. El vehículo que se desarrolla en el presente documento podría ser usado para tales fines como una plataforma para pruebas como ser el despliegue de una nariz o etapa, comprobación de sensores y actuadores a gran velocidad y con empuje variable.
 
@@ -52,8 +56,8 @@ Los sistemas de vehículos orbitales tienen sistemas complejos que deben ser tes
 \section{Estudios}
 En lo que se refiere a la construcción del vehículo, el diseño propuesto paso por varias etapas y
 decisiones de ingeniería hasta su forma final. Desde su diseño en lápiz y papel hasta la
-simulación del CAD con el detalle del ultimo bulón del ensamble para poder recoger datos de
-momentos de inercia, centros de masa y la dinámica del vehículo.
+simulación del CAD con el detalle del ultimo bulón del ensamble para ser cargado al sistema de control en la forma de una matriz de inercia, centro de masa y dinámicas de vuelo, e ir en paralelo retroalimentándose con estos parámetros. En base a esto se realizaron modificaciones sobre el código de control y las simulaciones.
+
 
 \subsection{Agua como propelente}\label{ssec:propAgua}
 El primer prototipo muy distante del diseño final perteneciente a este trabajo, consistía en un
@@ -62,7 +66,7 @@ empuje.
 
 \medskip
 
-La figura \ref{fig:bottlerocket} muestra los resultados de una simulación de un vehículo pequeño de aluminio con un recipiente a presión lleno en parte de agua y aire a 200 bar. La simulación considera masa variable y una transición isoentrópica del gas en el recipiente. En el mejor de los casos se llegaba a un tiempo de vuelo cercano a los 4 segundos que no es suficiente para comprobar un sistema de control. 
+La figura~\ref{fig:bottlerocket} muestra los resultados de una simulación de un vehículo pequeño de aluminio con un recipiente a presión lleno en parte de agua y aire a 200 bar. La simulación considera masa variable y una transición isoentrópica del gas en el recipiente. En el mejor de los casos se llegaba a un tiempo de vuelo cercano a los 4 segundos, que no era adecuado para comprobar el sistema de control en nuestras condiciones. 
 
 Para optimizar este problema se modificaba
 
@@ -79,6 +83,8 @@ Para optimizar este problema se modificaba
     \label{fig:bottlerocket}
 \end{figure}
 
+Esto representa un vuelo de gran aceleración inicial, de mucha violencia, que dificulta la comprobación de sistemas en el que se tienen que tunear varios los parámetros de control y resolver los problemas de hardware que se vaya presentando. 
+
 \subsection{Turbina a reacción}\label{ssec:turbina}
 Se propuso la construcción de una turbina de combustible líquido, como método de propulsión
 del vehículo favorable debido al excelente cociente de peso-empuje.
@@ -90,7 +96,7 @@ asegurando su funcionamiento en optimas condiciones, para luego proseguir con el
 del vehículo y el sistema de control.
 
 
-\subsection{Propulsión eléctrica} \label{ssec:propelectrica}
+\subsection{Propulsión eléctrica}\label{ssec:propelectrica}
 
 
 \begin{figure}[htb]
@@ -100,14 +106,13 @@ del vehículo y el sistema de control.
     \label{fig:vbat_icarus}
 \end{figure}
 
-Luego de descartar las ideas vistas en \ref{ssec:propAgua} y \ref{ssec:turbina} se pasó al análisis de la incorporación de una turbina eléctrica que es un dispositivo ya existente en el mercado, no en nuestro país, pero que podría llegar a importarse mediante una
-inversión privada.\footnote{Agradecemos a \gls{lia} por hacerse cargo de la compra de todos los elementos necesarios para la fabricación del cohete.} Dado el alcance de un proyecto de universidad se decidió por un diseño compuesto por elementos comercialmente disponibles.\footnote{\textit{Commercial off the shelf} (COTS)}
+Luego de descartar las ideas vistas en~\ref{ssec:propAgua} y~\ref{ssec:turbina} se pasó al análisis de la incorporación de una turbina eléctrica que es un dispositivo ya existente en el mercado, no en nuestro país, pero que podría llegar a importarse teniendo en cuenta la pesificación del valor de los componentes en el exterior y los diversos costos asociados a la entrada al país de los mismos, se contemplo desde ese entonces la financiación privada, que la proveyó LIA Aerospace.\footnote{Agradecemos a \gls{lia} por hacerse cargo de la compra de los componentes faltantes que cayeron fuera del presupuesto necesarios para la fabricación del cohete.} 
 
+Dadas las limitaciones de tiempo y alcance de un proyecto de la universidad se decidió por un diseño compuesto por elementos comercialmente disponibles.\footnote{\textit{Commercial off the shelf} (COTS)}
 
 \medskip
 
-
-Para lograr estas tareas generalmente los vehículos VTVL de baja escala generalmente son propulsados por motores eléctricos.
+Para lograr estas tareas los vehículos VTVL de baja escala generalmente son propulsados por motores eléctricos, como es el caso del proyecto FROG de la ESA.\todo{AGREGAR CITA}
 
 \medskip
 
@@ -118,8 +123,8 @@ Los vehículos VTVL eléctricos son propulsados por hélices en su mayoría y co
     \item Inclinar al rotor durante su funcionamiento causa una fuerza perpendicular a la dirección de inclinación conocido como el efecto giroscópico. 
 \end{itemize}
 
-El primer punto es mitigado fácilmente agregando álabes a la salida del chorro para enderezar el flujo y contrarrestar la rotación. El segundo punto solo se resuelve conociendo las ecuaciones de momento angular y controlando actuadores con un sistema de control a lazo cerrado. Los sistemas vistos en la figura \ref{fig:vbat_icarus} tienen la particularidad de poder ser representados con relativa facilidad usando un solo marco de referencia sobre el vehículo para calcular las ecuaciones de momento angular.
+El primer punto puede ser mitigado agregando álabes a la salida del chorro para enderezar el flujo y contrarrestar la rotación. El segundo punto se resuelve conociendo las ecuaciones de momento angular y controlando actuadores con un sistema de control a lazo cerrado. Los sistemas vistos en la figura~\ref{fig:vbat_icarus} suelen tener la particularidad de poder ser representados con relativa facilidad usando un solo marco de referencia sobre el vehículo para calcular las ecuaciones de momento angular.
 
 \medskip
 
-Existen placas pre-programadas para vehículos multirrotores, pero en el caso de vehículos monorrotores de hélice fija se precisa re-programar la placa para compensar por el efecto giroscópico y agregar dinámica de álabes ya que no existe software disponible aún para esta configuración. En el caso de tener una hélice móvil se suma un nivel de complejidad agregada debido al despeje de las ecuaciones de momento angular (ver sección \ref{sec:ecuacionesRigid}). Al momento de escribir este documento aún no hay desarrollo disponible de carácter público para esta configuración.
+Existen placas pre-programadas para vehículos multirrotores, pero en el caso de vehículos monorrotores de hélice fija se precisa re-programar la placa para compensar por el efecto giroscópico y agregar dinámica de álabes ya que no hay software disponible aún para esta configuración. En el caso de tener una hélice móvil se suma un nivel de complejidad agregada debido al despeje de las ecuaciones de momento angular (ver sección~\ref{sec:ecuacionesRigid}). Al momento de escribir este documento aún no hay desarrollo disponible de carácter público para esta configuración.

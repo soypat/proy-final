@@ -249,16 +249,16 @@ El momento angular nos queda simplificado:
 donde $\omega_{\!r}$ es la velocidad del rotor y $\inertiarotor{R}{G}$ es la matriz de inercia del rotor tomado alrededor de su centro de masa representado en coordenadas del marco cardán $\frm{G}$.
 
 
-Derivamos el momento angular con respecto a $\frm{N}$ y junto con $\inertia{C}{B} \approx \text{constante}$ \footnote{La inercia del vehículo en su propio marco $\inertia{C}{B}$ es constante excepto por las variaciones introducidas al agruparlo con el término del cardán $J_{\!g\ogn{C}}^\frm{B}$, el cual varía en función a la actuación $\alpha,\beta$.}
+Derivamos el momento angular con respecto a $\frm{N}$ y junto con $\inertia{C}{B} \approx \text{constante}$\footnote{La inercia del vehículo en su propio marco $\inertia{C}{B}$ es constante excepto por las variaciones introducidas al agruparlo con el término del cardán $J_{\!g\ogn{C}}^\frm{B}$, el cual varía en función a la actuación $\alpha,\beta$.}
 
 \begin{IEEEeqnarray*}{rCl}
 	\hspace{-1cm}
-^{\frm{N}}\dot{L}_{\ogn{C}}^{\frm{N}}  & = & ^{\frm{N}} \frac{\di }{\di t}  \left(\transform{{NB}} \cdot \inertia{C}{B} \cdot \omega_{\frm{BN}}^{\frm{B}} + \transform{{NG}}\cdot \inertiarotor{R}{G} \cdot \omega_r^\frm{G} \right) \\
+^{\frm{N}}\dot{L}_{\ogn{C}}^{\frm{N}}  & = & ^{\frm{N}} \frac{\di}{\di~t}  \left(\transform{{NB}} \cdot \inertia{C}{B} \cdot \omega_{\frm{BN}}^{\frm{B}} + \transform{{NG}}\cdot \inertiarotor{R}{G} \cdot \omega_r^\frm{G} \right) \\
  & = & \dottransform{NB} \cdot\inertia{C}{B}\cdot \omega_{\frm{BN}}^{\frm{B}} + 
- \transform{{NB}} \cdot \underbrace{ {}^\frm{N}\dot{J}_{\ogn{C}}^\frm{B}}_{\approx 0}\cdot \omega_{\frm{BN}}^{\frm{B}} +
+ \transform{{NB}} \cdot \underbrace{ {}^\frm{N}\dot{J}_{\ogn{C}}^\frm{B}}_{\approx~0}\cdot \omega_{\frm{BN}}^{\frm{B}} +
   \transform{{NB}} \cdot \inertia{C}{B}\cdot \dot{\omega}_{\frm{BN}}^{\frm{B}} + 
   \dottransform{NG}\cdot  \inertiarotor{R}{G} \cdot \omega_{\!r}^\frm{G} +
-  \transform{{NG}}\cdot {}^\frm{N}\frac{\di}{\di t}\left( \inertiarotor{R}{G}  \cdot \omega_r^\frm{G} \right)
+  \transform{{NG}}\cdot {}^\frm{N}\frac{\di}{\di~t}\left(\inertiarotor{R}{G}  \cdot \omega_r^\frm{G} \right)
 \end{IEEEeqnarray*}
 la derivada de la inercia del cuerpo se anula y luego se aplica la regla de la cadena a la derivada
 %\transform{{NG}}\cdot {}^\frm{N}\frac{\di}{\di t}\left( \inertiarotor{R}{G}  \cdot \omega_r^\frm{G} \right)
