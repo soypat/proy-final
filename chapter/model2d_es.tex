@@ -1,7 +1,7 @@
 
 \section{Modelo 2D simplificado} \label{sec:model2d}
 
-Esta siguiente sección detallará el tratamiento matemático efectuado para controlar un vehículo con propulsión vectorizada en el plano. El propósito es ilustrar a un nivel simple las herramientas que serán aplicadas para controlar el vehículo diseñado.
+Esta siguiente sección detallará el tratamiento matemático efectuado para controlar un vehículo con propulsión vectorizada en el plano. El propósito es ilustrar a un nivel simple las herramientas que se aplicaron para controlar el vehículo diseñado.
 
 \begin{figure}[htb!]
 	\centering
@@ -12,7 +12,7 @@ Esta siguiente sección detallará el tratamiento matemático efectuado para con
 
 
 \subsection{Modelado matemático}
-Comenzamos con las ecuaciones dinámicas de un vehículo en el plano con control de propulsión vectorizada (por ángulo)
+Se comenzó con las ecuaciones dinámicas de un vehículo en el plano con control de propulsión vectorizada (por ángulo)
 
 \[
 \left\{
@@ -25,7 +25,7 @@ Comenzamos con las ecuaciones dinámicas de un vehículo en el plano con control
 \]
 donde \(\LCG\) y \(F\) están en función del tiempo, $m =m_0 - \int \dot{m} $ y $\theta = \gamma+\beta$. 
 
-Vale la pena aclarar que no se tomarán en cuenta los siguientes efectos:
+Vale la pena aclarar que no se tomaron en cuenta los siguientes efectos:
 \begin{itemize}
 	\item Viento y efectos aerodinámicos
 	\item \textit{Fuel sloshing}
@@ -34,24 +34,24 @@ Vale la pena aclarar que no se tomarán en cuenta los siguientes efectos:
 
 \subsection{Armado de sistema lineal}
 
-Se propone un punto de operación alrededor del cual se efectúa la linealización las ecuaciones. El estado del vehículo es \textit{vertical y quieto en el espacio}. \footnote{La linealización es valida solo para un vehículo vertical. Se deberá modificar el método para modelar un vehículo orbital.} 
+Se propuso un punto de operación alrededor del cual se efectuó la linealización de las ecuaciones. El estado del vehículo alrededor del cual se linealizó fue \textit{vertical y quieto en el espacio}.\footnote{La linealización es valida solo para un vehículo vertical. Se deberá modificar el método para modelar un vehículo orbital.} 
 
 \begin{align*}
 	\gamma^* = 0 \\
 	\beta^* = 0 \\
 	F^* = mg
 \end{align*}
-en este caso $F$ es la desviación del punto de operación. Desde ahora en adelante $\Delta F = F- mg$.
+en este caso $F$ fue la desviación del punto de operación siendo $\Delta F = F- mg$.
 
 \subsection{Representación en espacio de estados}
-El número de variables de estado será igual a número de almacenadores de energía independientes. Estos son
+El número de variables de estado fue igual a número de almacenadores de energía independientes. Estos son
 
 \begin{enumerate}
 	\item[$z$] Energía potencial por la gravedad
 	\item[$\dot{y},\dot{z}$] Energía cinética del vehículo
 	\item[$\dot{\gamma}$] Momento angular del vehículo
 \end{enumerate}
-entonces, las variables de estado son las siguientes
+entonces, las variables de estado fueron las siguientes
 \begin{align*}
 	x_1 = y \\
 	x_2 = \dot{y} \\
@@ -62,13 +62,14 @@ entonces, las variables de estado son las siguientes
 \end{align*}
 donde $\dot{x_1} = x_2$, $\dot{x_3} = x_4$ y $\dot{x_5} = x_6$
 
-Se aprovecha la expansión de Taylor para la linealización de expresiones trigonométricas:
+Se aprovecho la expansión de Taylor para la linealización de expresiones trigonométricas:
 \[
 \sin(x+y)|_{x=x_0+\Delta x,y=y_0+\Delta y} \approx \sin(x_0+y_0) + \cos(x_0 + y_0) (x-x_0) + \cos(x_0 + y_0) (y-y_0)
 \]
+\todo{Revertir cambios tiempo pasado}
+Las ecuaciones dinámicas de los estados 2,3, y 4 fueron dadas por las ecuaciones mostradas al comienzo de esta sección.
 
-Las ecuaciones dinámicas de los estados 2,3, y 4 son dadas por las ecuaciones mostradas al comienzo de esta sección.
-Abajo están las ecuaciones de estados
+Abajo se encuentran las ecuaciones de estados
 \begin{equation}
 	\dot{x_2} = \frac{F}{m} \left( \gamma+\beta \right) = g x_5 + g u_2 
 \end{equation}
@@ -81,7 +82,7 @@ Abajo están las ecuaciones de estados
 
 donde $\Ts$ es el periodo de muestreo.
 
-Los vectores de entrada y salida son
+Los vectores de entrada y salida resultaron
 \[
 \Cme{u}(t) = \begin{bmatrix}
 u_1 \\
@@ -114,7 +115,7 @@ tal que las ecuaciones de salida son
 	y_3 = x_5
 \end{equation}
 
-Se escriben las matrices del sistema y de control ($\Mme{D} = [0]$)
+Se calcularon las matrices del sistema y de control ($\Mme{D} = [0]$)
 \begin{equation} \label{eq:ssmatrices}
 	\Mme{A} = 
 	\left[\begin{array}{cccccc} 0 & 1 & 0 & 0 & 0 & 0\\ 0 & 0 & 0 & 0 & g & 0\\ 0 & 0 & 0 & 1 & 0 & 0\\ 0 & 0 & 0 & 0 & 0 & 0\\ 0 & 0 & 0 & 0 & 0 & 1\\ 0 & 0 & 0 & 0 & 0 & 0 \end{array}\right],\quad \Mme{B} = 

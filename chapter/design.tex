@@ -66,13 +66,13 @@ servos concéntricos a los ejes de rotación. Para evitar de esta manera complej
 mecanismos, cantidad de piezas de conexión entre servo y ejes, manufactura de mecanismos,
 uniones rotoides, y obtener así un mapeo lineal del ángulo de actuación. El único intermediario
 es el rodamiento que como se dispuso en la configuración ocupa el mínimo lugar posible justo
-por encima de la estría del servo y se lleva las cargas.
-Este mecanismo viene con la desventaja de una reducción de la resolución del ángulo de actuación comparado a un sistema actuado por un mecanismo biela-manivela.
+por encima de la estría del servo y se lleva las cargas. 
+
+Se consideró también la implementación de un mecanismo biela-manivela conectando el servo con el gimbal. Este mecanismo fue descartado por la mayor cantidad de piezas lo cual conlleva un aumento de complejidad, fragilidad y peso. 
 
 \medskip
 
-El material seleccionado para la fabricación del gimbal fue aluminio serie siete mil calidad
-aeroespacial. Esta construido de una sola pieza, siendo el elemento que se lleva las tensiones
+El material seleccionado para la fabricación del gimbal fue aluminio 7075 tratado térmicamente debido a su alta resistencia mecánica. Esta construido de una sola pieza, siendo el elemento que se lleva las tensiones
 en todo momento en variabilidad de ángulos hacia el fuselaje, por ello la decisión de ser de la
 serie de mayor resistencia mecánica de los aluminios comerciales.
 
@@ -103,16 +103,19 @@ ocupado (dinámica-peso). Aguas arriba del gimbal se opto por un chasis tubular,
 vaciados, que mediante flejes puede soportar cada elemento que se acopla al cohete por
 medio de uniones abulonadas. Permitiendo mediante sus aberturas el acceso a cada
 componente del vehículo, proporcionando, además, una renovación del aire para una
-evacuación del calor generado, y un flujo abundante hacia la admisión del EDF.
+evacuación del calor generado, y un flujo abundante hacia la admisión del EDF. Estas piezas fueron construidas en aluminio 6061 T6 debido a la soldabilidad, ductilidad, resitencia mecánica y disponibilidad comercial.
 
 \medskip
 
-De la manera que se construye el gimbal puede entregar una rotación entera sin hacer contacto con la estructura. Se elige esta configuración por posibles desviaciones del proyecto en el
-futuro, calculamos que utilizaremos menos de 20$^\circ$ de rotación de cada eje de gimbal ($\pm$10$^\circ$).
+De la manera que se construye el gimbal puede entregar una rotación entera sin hacer contacto con la estructura.\footnote{Sin conectar los cables de potencia del EDF.} Se elige esta configuración por posibles desviaciones del proyecto en el
+futuro. Las simulaciones indican que con $12^\circ$ de rotación de cada eje de gimbal, ($\pm$6$^\circ$, ver figura~\ref{fig:actuator_edf}) se cubren y sobrepasan los requerimientos para el control del vehículo.
 
 \subsection{Posición de baterías}
+\todo{Mejorar organizacion de seccion}
+La decisión de donde posicionar las baterías surgió de querer simular un vehículo semejante a los VTVL con motores a reacción y también la posibilidad de tener una inercia favorable para los margenes de estabilidad. Estos dos últimos puntos sugieren que la posición ideal para las baterías es arriba de todo. Esto haría que el punto alrededor del cual se linealizó las ecuaciones de movimiento sea más estable.
 
-La la decisión de donde posicionar las baterías surgía de querer simular un vehículo semejante a los VTVL con motores a reacción y también la posibilidad de tener una inercia favorable para los margenes de estabilidad. Estos dos últimos puntos sugieren que la posición ideal para las baterías es arriba de todo. Esto haría que el punto alrededor del cual se linealizó las ecuaciones de movimiento sea más estable. Luego de una conversación con Pablo Cossutta, un ingeniero electrónico especialista en sistemas de potencia, se optó por la configuración encontrada en el documento. Las baterías se encuentran cerca del EDF para alejar las líneas de potencia trifásica correspondientes al motor brushlesss de lo que es la electrónica digital. Al inestabilizar el punto de operación se obtiene una mejora en la respuesta ante actuaciones permitiendo una corrección de trayectoria más rápida.\footnote{Este resultado es deseado cuando se desea tener mejor rendimiento por ángulo de actuación, como sucede con los \textit{aviones caza} que utilizan este fenómeno a conveniencia.}
+
+Luego de una conversación con Pablo Cossutta, un ingeniero electrónico especialista en sistemas de potencia, se optó por la configuración encontrada en el documento. Las baterías se encuentran cerca del EDF para alejar las líneas de potencia trifásica correspondientes al motor brushlesss de lo que es la electrónica digital. Al inestabilizar el punto de operación se obtiene una mejora en la respuesta ante actuaciones permitiendo una corrección de trayectoria más rápida.\footnote{Este resultado es deseado cuando se desea tener mejor rendimiento por ángulo de actuación, como sucede con los \textit{aviones caza} que utilizan este fenómeno a conveniencia.}
 
 
 \subsection{Selección de servos} \label{ssec:servoSeleccion}
@@ -157,16 +160,17 @@ El primer diseño consistía en una estructura reticulada, la cual se decidió a
 
 \medskip
 
-El diseño seleccionado consiste en unas patas compuestas de una placa de aluminio vaciada y soldada a la estructura principal del fuselaje. Otorga rigidez a expensas de bajo peso y facilidad de construcción.
+El diseño seleccionado consiste en unas patas compuestas de una placa de aluminio vaciada y soldado a un tubo con vaciados, convirtiendose en la estructura princial del fuselaje. Otorga rigidez, bajo peso y facilidad de construcción.
 
+\todo{Luisito va agregar comentarios de chasis.}
 
 \subsection{Selección de controlador y sensores}
 
-Se pasó por dos etapas hasta llegar a la decisión final del controlador. Se empezó planteando la utilización de una Raspberry Pi 4B+ para controlar los actuadores con PWM. Esta configuración requeriría el diseño de una placa ad-hoc para desacoplar galvánicamente la Raspberry del controlador de velocidad del EDF (\gls{esc}). Se descartó esta idea a favor de usar una combinación de Raspberry Pi y una placa propia de LIA Aerospace.
+Se pasó por dos etapas hasta llegar a la decisión final del controlador. Se empezó planteando la utilización de una Raspberry Pi 4B+ para controlar los actuadores con PWM. Esta configuración requeriría el diseño de una placa ad-hoc para desacoplar galvánicamente a la Raspberry del \gls{esc}. Se descartó esta idea a favor de usar una combinación de Raspberry Pi y una placa propia de LIA Aerospace.
 
 \medskip
 
-El \textbf{controlador} a usar es el ARM Cortex-A72 que sería comprado en el paquete comercial (\gls{soc}) conocido como \textit{Raspberry Pi 4B+}. El producto provee salidas para los siguientes usos
+El \textbf{controlador} que se usó es el ARM Cortex-A72 que fue comprado en el paquete comercial (\gls{soc}) conocido como \textit{Raspberry Pi 4B+}. El producto proveyó salidas para los siguientes usos
 
 \begin{itemize}
     \item \glsxtrshort{uart}
@@ -175,26 +179,25 @@ El \textbf{controlador} a usar es el ARM Cortex-A72 que sería comprado en el pa
     \item \glsxtrshort{gpio}
 \end{itemize}
 
-El controlador ira montado sobre una placa cuyo desarrollo pertenece a LIA Aerospace denominada \textbf{LIA-Board}. Esta placa hace interfaz con el controlador mediante el GPIO header del \gls{soc}. Esto le permite al controlador acceder a los periféricos y salidas disponibles del LIA-Board que controlaran los actuadores y leerán los sensores.
+Se montó sobre una placa cuyo desarrollo pertenece a LIA Aerospace denominada \textbf{LIA-Board}. Esta placa hace interfaz con el controlador mediante el GPIO header del \gls{soc}. Esto le permitió al controlador acceder a los periféricos y salidas disponibles del LIA-Board que controlaran los actuadores y leerán los sensores.
 
 \subsection{Sistema anti rolido}
 
-Para contrarestar el torque generado por la energía rotacional otorgado al flujo de salida se tiene que implementar un sistema \textit{anti-roll}.
+Para contrarestar el torque generado por la energía rotacional otorgado al flujo de salida se tiene que implementar un sistema \textit{anti-roll}, o anti rolido.
 
 \medskip
 
-Se diseño un sistema anti rolido, controlando el movimiento en el eje z del cohete. El mismo
-está compuesto de dos servomotores de actuación espejada. Estos están ubicados por debajo del EDF para utilizar la energía del flujo saliente mitigando este efecto. Los álabes son actuados de forma directa por dos servos. Un anillo ensamblado al EDF desarmable hace que el accionar de los álabes se encuentre en una disposición simplemente apoyada. La extensión de las dos piezas de aluminio que son los
+Se diseño un sistema anti rolido, controlando la rotación en el eje z del cohete. El mismo está compuesto de dos servomotores de actuación espejada. Estos están ubicados por debajo del EDF para utilizar la energía del flujo saliente mitigando este efecto. Los álabes son actuados de forma directa por dos servos. Un anillo ensamblado al EDF desarmable hace que el accionar de los álabes se encuentre en una disposición simplemente apoyada. La extensión de las dos piezas de aluminio que son los
 soportes del EDF hacen posible la fijación de los micro servos para el comando de los flaps.
 
+\todo{Agregar subtitulo a la figura indicando cual es el mecanismo anti-rolido.}
 
 \subsection{Contexto de pandemia}
-Las medidas tomadas durante la pandemia por el gobierno fueron muy estrictas e influenció a todo tipo de acción que se quiso tomar. Durante el primer año de pandemia no nos pudimos reunir físicamente para discutir ideas de diseño, lo cual dificultó el avance físico del proyecto como así también la toma de decisiones y la comunicación entre partes, crucial en el inicio de todos proyectos de ingeniería.
-
+Las medidas tomadas durante la pandemia por el gobierno fueron estrictas e influenció a todo tipo de acción que se quiso tomar. Durante el primer año de pandemia no nos pudimos reunir físicamente para discutir ideas de diseño, lo cual dificultó el avance físico del proyecto como así también la toma de decisiones y la comunicación entre partes, crucial en el inicio de todos proyectos de ingeniería.
+El presente trabajo fue realizado por dos integrantes separados a 2000km de distancia, excluyendo el ensamblaje que fue realizado en el 2021 en las instalaciones de \gls{lia}.
 \medskip
 
 Una de las mayores complicaciones que se tuvo fue la compra de
 componentes, además de la fabricación, que se vio afectada, por las políticas cambiantes de
 nuestro país con respecto a la compra y la entrada de productos importados a suelo argentino.
-Incluso la compra y llegada de los productos fue un motivo de festejo luego de un tortuoso
-trayecto.
+Incluso la compra y llegada de los productos fue un motivo de festejo luego de un tortuoso trayecto.

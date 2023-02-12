@@ -6,13 +6,13 @@ Se hará referencia a la figura \ref{fig:FBD2D} para explicar las variables en j
 \begin{figure}[htb!]
 	\centering
 	\includegraphics[width=0.52\textwidth]{fig/marcosDiagrama.eps}
-	\caption{Marcos de referencia tomados para el análisis de cuerpo rígido. Por simplicidad se toman los centros de masa del cardán y del rotor como coincidentes en el punto $\ogn{R}$.}
+	\caption{Marcos de referencia tomados para el análisis de cuerpo rígido. Por simplicidad se tomaron los centros de masa del cardán y del rotor como coincidentes en el punto $\ogn{R}$.}
 \end{figure}
 
 \newpage
 \subsection{Notación}
 
-La notación es la del libro \textit{Rigid Body Dynamics of Mechanisms, Theoretical Basics} \cite{hahn2013rigid}. Se requiere un tratamiento algebraico explicito de los marcos de referencia y representación debido al caso especial de un \textit{gimballed rotor}. Este tratamiento facilita la programación de la simulación y, en consecuencia, el control, el cual se volvería ambiguo y complejo con un tratamiento más común o simplificado.
+La notación utilizada fue la del libro \textit{Rigid Body Dynamics of Mechanisms, Theoretical Basics} \cite{hahn2013rigid}. Se requirió un tratamiento algebraico explicito de los marcos de referencia y representación debido al caso especial de un \textit{gimballed rotor}. Este tratamiento facilitó la programación de la simulación y, en consecuencia, el control, el cual se volvería ambiguo y complejo con un tratamiento más común o simplificado.
 
 \begin{description}
 	\item[{\(\avec{r}_{\ogn{CO}}=[x,y,z]\)}] : Posición absoluta del centro de masa del vehículo léase ``posición de $\ogn{C}$ respecto $\ogn{O}$'')
@@ -58,7 +58,7 @@ La notación es la del libro \textit{Rigid Body Dynamics of Mechanisms, Theoreti
 
 \subsection{Notación del álgebra a utilizar}
 
-El producto escalar se define como $\bigcdot$ para diferenciarlo de simple multiplicación vectorial ($\cdot$). $\skw{\omega}$ es la matriz skew del vector que reemplaza el producto vectorial ya que $\skw{r}\cdot v = r \times v$
+El producto escalar se definió como $\bigcdot$ para diferenciarlo de simple multiplicación vectorial ($\cdot$). $\skw{\omega}$ es la matriz skew del vector que reemplaza el producto vectorial ya que $\skw{r}\cdot v = r \times v$
 \[
 \skw{\omega}_{L R}^{L}=\left(\begin{array}{ccc}
 0 & -\omega_{z L R}^{L}, & \omega_{y L R}^{L} \\
@@ -67,12 +67,12 @@ El producto escalar se define como $\bigcdot$ para diferenciarlo de simple multi
 \end{array}\right)
 \]
 
-Se dice que $J_\ogn{C}^\frm{B}$ es la matriz de inercia respecto el punto $\ogn{C}$, representado en el marco $\frm{B}$: es decir, las componentes de la matriz de inercia están en la base de $\frm{B}$. Esto se puede escribir así:
+Se definió a $J_\ogn{C}^\frm{B}$ como la matriz de inercia respecto al punto $\ogn{C}$, representada en el marco $\frm{B}$: es decir, las componentes de la matriz de inercia están en la base de $\frm{B}$. Esto se puede escribir así:
 \begin{IEEEeqnarray*}{c}
 J_\ogn{C}^\frm{B} = J_{b1} \bvec{b}_1 + J_{b2} \bvec{b}_2 + J_{b3} \bvec{b}_3
 \end{IEEEeqnarray*}
 
-La derivada del término anterior respecto un marco $N$ quedaría escrito
+La derivada del término anterior respecto un marco $N$ quedó definida
 $${}^\frm{N}\dot{J}_{\ogn{C}}^\frm{B} =\left.^\frm{N} \frac{\di J_\ogn{C}^\frm{B}}{\di t}  \right. = \transform{NB} \cdot \left.^\frm{B} \frac{\di J_\ogn{C}^\frm{B}}{\di t}  \right. $$
 
 
@@ -88,7 +88,7 @@ donde $\omega_{\frm{LR}}^{\frm{L}}$ es la velocidad angular vectorial del marco 
 \newpage
 
 \subsection{Variables de estado}
-Se tendrán las variables de estado de posición y velocidad donde $z$ positivo es alejándose de la tierra.
+Se obtuvieron las variables de estado de posición y velocidad donde $z$ positivo es alejándose de la tierra.
 \[
 \avec{r}_\ogn{CO}^\frm{N} = 
 \begin{bmatrix}
@@ -100,7 +100,7 @@ x & y & z
 \end{bmatrix} 
 \]
 
-El movimiento cuerpo rígido será descrito por 3 ángulos de Euler (Cardán o Bryant en algunas bibliografías) $\phi, \theta$ y $\psi$ (roll, pitch, yaw respectivamente).
+El movimiento cuerpo rígido se describió por 3 ángulos de Euler (Cardán o Bryant en algunas bibliografías) $\phi, \theta$ y $\psi$ (roll, pitch, yaw respectivamente).
 \begin{IEEEeqnarray}{C}
 \avec{\eta} = \begin{bmatrix}
 \phi  &  \theta &  \psi
@@ -114,11 +114,11 @@ El movimiento cuerpo rígido será descrito por 3 ángulos de Euler (Cardán o B
 \end{figure}
 
 
-Los ángulos de la vectorización de la tobera serán $\alpha$ y $\beta$. $\delta$ corresponde a los actuadores que contrarrestan el roll del vehículo mediante dos flaps. Los ángulos $\alpha$ y $\beta$ describen la dirección en la que está apuntando la tobera (equivalente a la orientación $\frm{G}$) respecto la dirección del vehículo (marco $\frm{B}$). $\omega_r=\omega_r^\frm{G}$ es la velocidad angular del rotor.
+Los ángulos de la vectorización de la tobera fueron $\alpha$ y $\beta$. El ángulo $\delta$ correspondió a los actuadores que contrarrestan el roll del vehículo mediante dos flaps. Los ángulos $\alpha$ y $\beta$ describieron la dirección en la que está apuntando la tobera (equivalente a la orientación $\frm{G}$) respecto la dirección del vehículo (marco $\frm{B}$). $\omega_r=\omega_r^\frm{G}$ es la velocidad angular del rotor.
 
 \medskip
 
-Se escriben las variables de estado y el vector input, donde $F$ es la fuerza que hace la tobera sobre el vehículo (la cual depende de la velocidad del vehículo)\footnote{En el código $\phi$, $\theta$ y $\psi$ aparecen como \texttt{q,r,s}}
+Se definieron las variables de estado y el vector input, donde $F$ es la fuerza que hace la tobera sobre el vehículo (la cual depende de la velocidad del vehículo)\footnote{En el código $\phi$, $\theta$ y $\psi$ aparecen como \texttt{q,r,s}}
 \begin{equation} \label{eq:ssVariables3D}
 	\Cx = \left[
 	\begin{array}{cccccccc}
@@ -136,7 +136,7 @@ En la próxima sección se buscará obtener el vector de variables de estado der
 
 \def\scos{\operatorname{c}}
 \def\ssin{\operatorname{s}}
-Definimos la transformación de los ángulos euler con una matriz de transformación $\transform{BN}$ donde $\scos$ y $\ssin$ son las funciones coseno y seno, respectivamente.
+Se definió la transformación de los ángulos euler con una matriz de transformación $\transform{BN}$ donde $\scos$ y $\ssin$ fueron las funciones coseno y seno, respectivamente.
 
 \begin{equation} \label{eq:matrizTransfoVehiculo}
 	\transform{BN} = \begin{bmatrix}
@@ -145,14 +145,14 @@ Definimos la transformación de los ángulos euler con una matriz de transformac
 	\scos\phi \cdot \ssin\theta \cdot \scos\psi + \ssin\phi \cdot \ssin\psi\quad & \scos\phi \cdot \ssin\theta \cdot \ssin\psi - \ssin\phi \cdot \scos\psi \quad& \scos\phi \cdot \scos\theta
 	\end{bmatrix}
 \end{equation}
-La transformación nos servirá para poder pasar de la dinámica que está definida en el marco del vehículo $\frm{B}$ al marco $\frm{N}$ donde se tienen las variables de estado que se desean controlar.
+La transformación nos sirvió para poder pasar de la dinámica que está definida en el marco del vehículo $\frm{B}$ al marco $\frm{N}$ donde se obtienen las variables de estado que se desean controlar.
 
-Podemos obtener la velocidad en el marco del cuerpo
+Se pudo obtener la velocidad en el marco del cuerpo
 \begin{IEEEeqnarray}{rCl}
 	\dot{\avec{r}}_\ogn{CO}^\frm{B} &= &\transform{BN} \cdot \dot{\avec{r}}_\ogn{CO}^\frm{N} 
 \end{IEEEeqnarray}
 
-La obtención de la velocidad angular del cuerpo se complica por el hecho que la razón de cambio de los ángulos de Euler no son vectores cartesianos, si no más bien parámetros que describen la orientación del cuerpo rígido en el espacio.\footnote{ Como bien sabemos la matriz de transformación $\tform$ solo es aplicable para transformar vectores cartesianos de una base ortogonal a otra. Los parámetros $\avec{\eta}$ conforman un vector de configuración, no un vector cartesiano!} Para relacionar la velocidad angular con $\avec{\eta}$ es necesario utilizar la matriz de actitud cinemática $\attitude(\avec{\eta})$.
+La obtención de la velocidad angular del cuerpo se complicó por el hecho de que la razón de cambio de los ángulos de Euler no son vectores cartesianos, si no más bien parámetros que describen la orientación del cuerpo rígido en el espacio.\footnote{ Como bien sabemos la matriz de transformación $\tform$ solo es aplicable para transformar vectores cartesianos de una base ortogonal a otra. Los parámetros $\avec{\eta}$ conforman un vector de configuración, no un vector cartesiano!} Para relacionar la velocidad angular con $\avec{\eta}$ fue necesario utilizar la matriz de actitud cinemática $\attitude(\avec{\eta})$.
 
 \begin{IEEEeqnarray}{c}
 	\attitude(\avec{\eta}) = \left[\begin{array}{ccc}
@@ -162,7 +162,7 @@ La obtención de la velocidad angular del cuerpo se complica por el hecho que la
 	\end{array}\right]
 \end{IEEEeqnarray}
 
-La matriz de actitud cinemática se usa para transformar 
+La matriz de actitud cinemática se usó para transformar 
 \begin{IEEEeqnarray}{rCl}
 	 \dot{\avec{\eta}}& = & \attitude(\avec{\eta}) \cdot  \avec{\omega}_\frm{BN}^\frm{N} \\
 	\avec{\omega}_\frm{BN}^\frm{B} & = &\transform{BN}\cdot \avec{\omega}_\frm{BN}^\frm{N}
@@ -173,12 +173,12 @@ e inversamente
 \end{IEEEeqnarray}
 
 
-La fuerza que impulsa al vehículo en el marco del cuerpo se obtiene transformando del marco del cardán donde se conocen los componentes, al marco cuerpo. La matriz es calculada reemplazando $\phi\equiv\alpha$, $\theta\equiv\beta$, y $\psi = 0$.
+La fuerza que impulsó al vehículo en el marco del cuerpo se obtuvo transformando del marco del cardán donde se conocen los componentes, al marco cuerpo. La matriz fue calculada reemplazando $\phi\equiv\alpha$, $\theta\equiv\beta$, y $\psi = 0$.
 \begin{equation}
 	\avec{F}^\frm{B} = \transform{BG} \cdot \avec{F}^\frm{G} 
 \end{equation}
 
-La aceleración del centro de masa del vehículo medido en el marco del cuerpo $\frm{B}$ es igualada a la fuerza
+La aceleración del centro de masa del vehículo se midió en el marco del cuerpo $\frm{B}$ y fue igualada a  $\avec{F}$
 \begin{equation}
 	{}^\frm{B}\frac{\di }{\di t}\left( \dot{\avec{r}}_\ogn{CO}^\frm{B} \right) = \frac{1}{m+m_r} \cdot \avec{F}^\frm{B}
 \end{equation}
@@ -188,7 +188,7 @@ luego obtenemos la aceleración en coordenadas globales
 	\transform{NB}\cdot {}^\frm{B}\frac{\di }{\di t}\left( \dot{\avec{r}}_\ogn{CO}^\frm{B} \right)- \avec{g}^\frm{N}
 \end{equation}
 
-Los momentos actuantes externos en el marco del vehículo respecto su centro de gravedad $\ogn{C}$ están en función del diseño de los flaps anti roll \cite{romarowski2020edf}.
+Los momentos actuantes externos en el marco del vehículo respecto su centro de gravedad $\ogn{C}$ se calcularon en base al diseño de los flaps anti roll según~\cite{romarowski2020edf}.
 
 \begin{equation}
 	\avec{M}^\frm{B}_\ogn{C} = \skw{\avec{r}}_\ogn{RC}^\frm{B}\cdot \avec{F}^\frm{B} + \transform{BG} \cdot 
@@ -198,8 +198,8 @@ Los momentos actuantes externos en el marco del vehículo respecto su centro de 
 		\omega_r^2 K_{F_L}d_T\delta+\tau_r
 	\end{bmatrix}  
 \end{equation}
-%
-La aceleración angular en el marco $\frm{B}$ sale del desarrollo de la sección \ref{ssec:ecuacionangular} del anexo.
+
+La aceleración angular en el marco $\frm{B}$ se obtuvó del desarrollo de la sección~\ref{ssec:ecuacionangular} del anexo.
 \begin{equation}
 	\hspace{-1cm}
 {}^\frm{B}\frac{\di }{\di t} \left(\avec{\omega}_\frm{BN}^\frm{B} \right) =  \left(\inertia{C}{B}\right)^{-1} \cdot \left( - \skw{\avec{\omega}}_\frm{BN}^\frm{B} \cdot \inertia{C}{B}\cdot \avec{\omega}_{\frm{BN}}^{\frm{B}} - 
@@ -208,48 +208,53 @@ La aceleración angular en el marco $\frm{B}$ sale del desarrollo de la sección
 \transform{{BG}}\cdot  \inertiarotor{C}{G} \cdot  {}^\frm{N} \dot{\avec{\omega}}_{\!r}^{\frm{G}} + \avec{M}_\ogn{C}^\frm{B} \right)
 \end{equation}
 
-El rotor y los servos son modelados como de primer orden por el momento. Son limitados por velocidad máxima según sus especificaciones.
+El rotor y los servos son modelados como de primer orden por el momento. Su valor en las simulaciones fueron limitados por velocidad máxima según sus especificaciones.
 
-Las ecuaciones diferenciales se pueden entonces escribir
+Las ecuaciones diferenciales usadas para el control del vehículo fueron las siguientes
 \begin{equation} \label{eq:ssDiffVariables3D}
 	\dot{\Cx} = \left[
 	\begin{array}{cccccccc}
 		\dot{\avec{r}}_\ogn{CO}^\frm{N}& \dot{\avec{\eta}} &\ddot{\avec{r}}_\ogn{CO}^\frm{N} & {}^\frm{B}\frac{\di }{\di t} \left(\avec{\omega}_\frm{BN}^\frm{B} \right) & \dot{\omega}_r & \dot{\alpha} & \dot{\beta} & \dot{\delta}
-	\end{array}\right] \tp
+	\end{array}\right] \tp~
 \end{equation}
 
 
-\subsection{Dinámica angular del vehículo} \label{ssec:ecuacionangular}
+\subsection{Dinámica angular del vehículo}\label{ssec:ecuacionangular}
 
-
-El momento angular del vehículo respecto de su centro de masa ($\ogn{C}$) y representado en el marco fijo-tierra $\frm{N}$ debe tomar en cuenta el momento angular por tener un cuerpo con velocidad lineal y angular propia. 
+El momento angular del vehículo respecto de su centro de masa ($\ogn{C}$) y representado en el marco fijo-tierra $\frm{N}$ debió tomar en cuenta el momento angular por tener un cuerpo con velocidad lineal y angular propia. 
 
 \begin{equation}
-		L_{\ogn{C}}^{\frm{N}} = \underbrace{\transform{{NB}} \cdot J_{\ogn{C}}^{\frm{B}} \cdot \omega_{\frm{BN}}^{\frm{B}}}_{\text{Vehículo}} + \underbrace{\transform{{NG}}J_{\!g\ogn{R}}^{\frm{G}} \cdot \omega_\frm{GN}^\frm{G} +
+		L_{\ogn{C}}^{\frm{N}} = \underbrace{\transform{{NB}} \cdot J_{\ogn{C}}^{\frm{B}} \cdot \omega_{\frm{BN}}^{\frm{B}}}_{\text{Vehículo}} +
+		\underbrace{\transform{{NG}}J_{\!g\ogn{R}}^{\frm{G}} \cdot \omega_\frm{GN}^\frm{G} +
 		 m_{g}\cdot \skw{\avec{r}}^\frm{N}_\ogn{RC} \cdot\dot{\avec{r}}^\frm{N}_\ogn{RC} }_\text{Cardán \& EDF} + \underbrace{ \transform{NG} \cdot J_{\!r\ogn{R}}^\frm{G} \cdot \omega_{\!r}^\frm{G} + m_{r}\cdot \skw{\avec{r}}^\frm{N}_\ogn{RC} \cdot\dot{\avec{r}}^\frm{N}_\ogn{RC}}_\text{Rotor}
 \end{equation}
 
-Esta ecuación describe los efectos de tener un cardán con un rotor integrado acoplado al vehículo sin embargo algunos términos se podrían considerar despreciables debido al diseño del cardán. 
+Esta ecuación describió los efectos de tener un cardán con un rotor integrado acoplado al vehículo sin embargo algunos términos se pudieron considerar despreciables debido al diseño del cardán. 
 
-Ambos gimbals del cardán tienen su eje de giro cercano a su centro de masa lo cual significa que la velocidad relativa entre los puntos $\ogn{R}$ y $\ogn{C}$ va tener poco impacto sobre los torques internos del vehículo. Se considera que
+Ambos gimbals del cardán tienen su eje de giro cercano a su centro de masa lo cual significó que la velocidad relativa entre los puntos $\ogn{R}$ y $\ogn{C}$ tuvieron poco impacto sobre los torques internos del vehículo. Se consideró que
 \begin{equation}
 \dot{\avec{r}}_\ogn{RC}  = 0
 \end{equation}
 
-La velocidad angular de los gimbals es poca ya que su actuación ocurre en el orden de la décima de grado lo cual implica un bajo impacto del término del cardán cuando es integrado en el tiempo. El término  $\transform{{NG}}J_{\!g\ogn{R}}^{\frm{G}} \cdot \omega_\frm{GN}^\frm{G}$ entonces pasa a formar parte de la inercia del resto del vehículo $\inertia{C}{B}$, el cual ahora solo excluye al rotor.
+La velocidad angular de los gimbals fue poca ya que su actuación ocurrió en el orden de la décima de grado lo cual implicó un bajo impacto del término del cardán cuando fue integrado en el tiempo. El término  $\transform{NG} \cdot J_{\!g\ogn{R}}^{\frm{G}} \cdot \omega_\frm{GN}^\frm{G}$ entonces pasó a formar parte de la inercia del resto del vehículo $\inertia{C}{B}$, el cual solo excluyó al rotor.
 
 
 
-El momento angular nos queda simplificado:
+El momento angular quedó simplificado de la siguiente manera:
 
 
 \begin{equation}
 	L_{\ogn{C}}^{\frm{N}} = \transform{{NB}} \cdot \inertia{C}{B} \cdot \omega_{\frm{BN}}^{\frm{B}} +\transform{NG} \inertiarotor{R}{G} \cdot \omega_{\!r}^\frm{G}
 \end{equation}
-donde $\omega_{\!r}$ es la velocidad del rotor y $\inertiarotor{R}{G}$ es la matriz de inercia del rotor tomado alrededor de su centro de masa representado en coordenadas del marco cardán $\frm{G}$.
+
+donde
+\begin{description}
+	\item[$\omega_{\!r}$] : velocidad del rotor
+	\item[$\inertiarotor{R}{G}$] : matriz de inercia del rotor tomado alrededor de su centro de masa representado en coordenadas del marco cardán $\frm{G}$
+\end{description}
 
 
-Derivamos el momento angular con respecto a $\frm{N}$ y junto con $\inertia{C}{B} \approx \text{constante}$\footnote{La inercia del vehículo en su propio marco $\inertia{C}{B}$ es constante excepto por las variaciones introducidas al agruparlo con el término del cardán $J_{\!g\ogn{C}}^\frm{B}$, el cual varía en función a la actuación $\alpha,\beta$.}
+Se derivó el momento angular con respecto a $\frm{N}$ y junto con $\inertia{C}{B} \approx \text{constante}$\footnote{La inercia del vehículo en su propio marco $\inertia{C}{B}$ fue constante excepto por las variaciones introducidas al agruparlo con el término del cardán $J_{\!g\ogn{C}}^\frm{B}$, el cual varió en función a la actuación $\alpha,\beta$.}
 
 \begin{IEEEeqnarray*}{rCl}
 	\hspace{-1cm}
@@ -260,7 +265,7 @@ Derivamos el momento angular con respecto a $\frm{N}$ y junto con $\inertia{C}{B
   \dottransform{NG}\cdot  \inertiarotor{R}{G} \cdot \omega_{\!r}^\frm{G} +
   \transform{{NG}}\cdot {}^\frm{N}\frac{\di}{\di~t}\left(\inertiarotor{R}{G}  \cdot \omega_r^\frm{G} \right)
 \end{IEEEeqnarray*}
-la derivada de la inercia del cuerpo se anula y luego se aplica la regla de la cadena a la derivada
+la derivada de la inercia del cuerpo se anuló y luego se aplicó la regla de la cadena a la derivada
 %\transform{{NG}}\cdot {}^\frm{N}\frac{\di}{\di t}\left( \inertiarotor{R}{G}  \cdot \omega_r^\frm{G} \right)
 \begin{IEEEeqnarray*}{rCl}
 	\hspace{-1cm}
@@ -274,11 +279,11 @@ la derivada de la inercia del cuerpo se anula y luego se aplica la regla de la c
 \transform{{NG}}\cdot \left( {}^{\frm{N}} \dot{J}_{\! r\ogn{R}}^\frm{G} \cdot \omega_{\!r}^{\frm{G}} + 
  \inertiarotor{R}{G} \cdot {}^\frm{N} \dot{\omega}_{\!r}^{\frm{G}}  \right)
 \end{IEEEeqnarray*}
-donde $ \dot{J}_{\! r\ogn{R}}^\frm{G}$ se puede considerar despreciable por la geometría ligera del conjunto cardán y por actuaciones pequeñas (mencionadas anteriormente).
+donde $ \dot{J}_{\! r\ogn{R}}^\frm{G}$ se consideró despreciable por la geometría ligera del conjunto cardán y por actuaciones pequeñas (mencionadas anteriormente).
 
 \medskip
 
-Como el rotor es fijo a al vehículo alrededor de un punto cercano a $\ogn{R}$ y  el movimiento del gimbal es restringido por los actuadores se supone que el rotor es parte del cuerpo rígido del vehículo y se plantea su momento angular como un vector libre. Así podemos igualar $\inertiarotor{R}{G} \equiv \inertiarotor{C}{G} = \inertiarotor{}{G}$, y por extensión, $J_\ogn{R}^{\frm{B}} \equiv J_\ogn{C}^{\frm{B}} $. 
+Como el rotor fue fijado al vehículo alrededor de un punto cercano a $\ogn{R}$ y  el movimiento del gimbal fue restringido por los actuadores se supuso que el rotor fue parte del cuerpo rígido del vehículo y se planteo su momento angular como un vector libre. Así se logró igualar $\inertiarotor{R}{G} \equiv \inertiarotor{C}{G} = \inertiarotor{}{G}$, y por extensión, $J_\ogn{R}^{\frm{B}} \equiv J_\ogn{C}^{\frm{B}} $. 
 
 
 
@@ -289,7 +294,7 @@ Como el rotor es fijo a al vehículo alrededor de un punto cercano a $\ogn{R}$ y
 \transform{{NG}} \cdot\skw{\omega}_\frm{GN}^\frm{G} \cdot \inertiarotor{}{G}  \cdot \omega_r^\frm{G} +
 \transform{{NG}}\cdot  \inertiarotor{}{G} \cdot  {}^\frm{N} \dot{\omega}_{\!r}^{\frm{G}}
 \end{IEEEeqnarray*}
-multiplicando por $\transform{BN}$
+luego se multiplicó por $\transform{BN}$
 
 
 \begin{IEEEeqnarray*}{rCl}
@@ -309,7 +314,7 @@ donde $\omega_\frm{GN}^\frm{G} =\omega_\frm{GB}^\frm{G} + \omega_\frm{BN}^\frm{G
 
 \vspace{1cm}
 
-continuando el desarrollo matemático
+se continuó el desarrollo matemático simplificando términos
 \begin{IEEEeqnarray*}{rCl}
 \hspace{-1cm}
 \inertia{C}{B}\cdot \dot{\omega}_{\frm{BN}}^{\frm{B}} & = & - \skw{\omega}_\frm{BN}^\frm{B} \cdot \inertia{C}{B}\cdot \omega_{\frm{BN}}^{\frm{B}} - 
@@ -321,5 +326,5 @@ continuando el desarrollo matemático
  \skw{\omega}_\frm{BN}^\frm{B} \cdot \inertiarotor{}{G}  \cdot \omega_r^\frm{G} -
 \transform{{BG}}\cdot  \inertiarotor{}{G} \cdot  {}^\frm{N} \dot{\omega}_{\!r}^{\frm{G}} + \sum_i M_{i\ogn{C}}^\frm{B} \\
 \end{IEEEeqnarray*}
-obteniendose ${}^\frm{N}\dot{\omega}_r^\frm{G} = \transform{GN}\cdot {}^\frm{G}\dot{\omega}_r^\frm{G} = \transform{GN} \cdot  \dot{\omega}_r \bvec{g}_3$
+obteniendosé ${}^\frm{N}\dot{\omega}_r^\frm{G} = \transform{GN}\cdot {}^\frm{G}\dot{\omega}_r^\frm{G} = \transform{GN} \cdot  \dot{\omega}_r \bvec{g}_3$
 %\todo{$\transform{GN}$ debería ser $\transform{NG}$ posiblemente}
