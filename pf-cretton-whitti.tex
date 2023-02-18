@@ -5,7 +5,7 @@
 \input{tex/code.tex}
 % \input{tex/footmult.tex}
 \input{tex/glossary.tex}
-\lhead{ ITBA - First Draft}
+\lhead{ LIA Aerospace -- ITBA}
 \newcommand{\mldivide}{\,{\boldsymbol{\backslash}}\,}
 \usepackage{pdfpages}
 \author{Patricio Whittingslow \and Luis Cretton}
@@ -13,10 +13,17 @@
 \begin{titlepage}
 	
 	\centering
-	{\small LIA Aerospace \par}
+	\vspace{-1cm}
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=3cm]{fig/lia-aerospace-logo.png}
+	\end{figure}
+	\begin{figure}[htb]
+		\centering
+		\includegraphics[width=3cm]{fig/itba-logo.jpg}
+	\end{figure}
 	
-	
-	\vspace{3cm}
+	\vspace{1cm}
 	{\Huge Gimballed EDF propelled VTVL vehicle design, assembly, integration and testing \par}
 	\vspace{2cm}
 	{ \large {
@@ -24,7 +31,7 @@
 		\par}}
 	\vspace{1cm}
 	\today
-	\vspace{3cm}
+	\vspace{2cm}
 	\begin{figure}[htb]
 		\centering
 		\includegraphics[width=\linewidth]{fig/hq/gimbal_close.jpg}
@@ -34,22 +41,24 @@
 \begin{abstract}
 En este documento se encuentran descriptas las secuencias del diseño, simulación, construcción, pruebas, y puesta en marcha de un UAV VTVL. Se evaluaron métodos de propulsión, diseño de fuselaje, software de vuelo, implementación de sistema de control para luego efectuar ensamblaje, integración y testeo en campo. Se logro ensayar el sistema de control a baja escala con el propósito de incorporarlo a un sistema de mayor escala en desarollo paralelo de uso sub-orbital o incluso orbital. 
 
-- Proyecto es punta pie para otros desarrollos mas grandes, i.e: ESA FROG.
-- se propuso un projecto, y se logro
-	- Como se logro?
-	- Que nos propusimos?
-	- No seguimos con las pruebas por el incidente. Nos detuvimos. Llevo a mas mejoras
-	- Se reescribio todo el codigo, mejora de raiz. Se cambiaron componentes.
-	- mas protecciones electricas
-	- El fallo nos mostro el valor del proyecto. Si fuera un VTVL a combustible podria haber sido catastrofico
-	- problema perdida de control podria generar perdidas en proyectos analogos(seguridad/desarrollos) de la empresa donde se usaba este tipo de tecnologia.
-	- pruebas de campo
+Se documentan todos los pasos seguidos para llegar al resultado final y se adjuntan los documentos relevantes del desarrollo para su posible replicación incluyendo los planos de cada parte del vehículo, fotos del ensamble, algunos excerptos de programas y desarrollo de ecuaciones de dinámica de cuerpo rígido y modelos para el control de las mismas usando teoría de control óptimo lineal.
 
-- Flaps: Se diseño en 3D el soporte de sin tener el EDF en la mano. Cuando llego el EDF nos dimos cuenta que el soporte iba arriba de la parte giratoria.
-	- Se tuvo que pausar y pensar en un diseño para el soporte que consolide el resto del diseño entero.
+% - Proyecto es punta pie para otros desarrollos mas grandes, i.e: ESA FROG.
+% - se propuso un projecto, y se logro
+% 	- Como se logro?
+% 	- Que nos propusimos?
+% 	- No seguimos con las pruebas por el incidente. Nos detuvimos. Llevo a mas mejoras
+% 	- Se reescribio todo el codigo, mejora de raiz. Se cambiaron componentes.
+% 	- mas protecciones electricas
+% 	- El fallo nos mostro el valor del proyecto. Si fuera un VTVL a combustible podria haber sido catastrofico
+% 	- problema perdida de control podria generar perdidas en proyectos analogos(seguridad/desarrollos) de la empresa donde se usaba este tipo de tecnologia.
+% 	- pruebas de campo
 
-- Queda mucho más para investigar y desarrollar.
-	- En una proxima iteración podria extenderse el alcance de este desarollo.
+% - Flaps: Se diseño en 3D el soporte de sin tener el EDF en la mano. Cuando llego el EDF nos dimos cuenta que el soporte iba arriba de la parte giratoria.
+% 	- Se tuvo que pausar y pensar en un diseño para el soporte que consolide el resto del diseño entero.
+
+% - Queda mucho más para investigar y desarrollar.
+% 	- En una proxima iteración podria extenderse el alcance de este desarollo.
 
 \end{abstract}
 
