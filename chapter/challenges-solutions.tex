@@ -1,0 +1,24 @@
+\section{Desafíos y soluciones}\label{sec:challenges-solutions}
+
+Durante una prueba de campo el prototipo entró en un estado degenerado. 
+Era una situación donde el ruido del EDF no permitía la comunicación verbal entre
+el equipo present, aún estando a 3 metros de distancia. 
+Se encontraban 2 operadores en situ, uno manejando el control del vehículo a través
+de la interfáz gráfica y otro operador manejando la tanza que prevenía que el vehículo vuele más alto de 3 metros como se había convenido.
+
+Comenzó con un momento de confusión cuando luego de comandar a que se detenga el EDF no se detuvo. El operador de la interfáz intento recuperar el control a través del fail safe pero esto tardaba varios segundos. Mientras tanto el operador de la tanza no se entero de la falla y dejó que el vehículo se acerque al límite de los 3 metros. Al no cortarse el motor como se venía haciendo el vehículo pegó un tirón y al inclinarse comenzó la perdida total de control de la situación mientras el EDF comenzaba a agregar energía a los movimientos rotacionales del vehículo. Esto último sucedió en menos de 3 segundos. Luego el operador de la tanza procedió a realizar una secuencia de apagado forzoso a mano. Para lograr esto había que acercarse al dispositivo, lograr capturarlo y apagarlo manualmente.
+Durante esta maniobra una soga se metió por la admisión del EDF provocando la rotura crítica del EDF. El EDF en este momento estaba girando por arriba de las 10.000 vueltas por minuto, provocando que se desprendan partes de aluminio de los alabes. De esta forma quedó desbalanceado rotando a decena de miles de vueltas por minuto haciendo un ruido que podría ser descrito como ``ensordecedor". El operador de la tanza igual pudo acercarse al dispositivo y desconectar el enchufe de las baterías que estaba en un lugar de difícil acceso. Tuvo que abrazar al dispositivo con los codos y utilizar las manos para desconectar la batería.
+
+Esta situación trajo algunas mejoras con respecto a la seguridad:
+
+Una señal visual para cuando las cosas se salen de control y activar un protocolo de emergencia.
+Protección completa en los brazos.
+Una rejilla en la admisión del EDF para que no pueda succionar por error algún objeto.
+Un cortacorrientes más accesible para un apagado de emergencia.
+Un rediseño para el anclaje en el lugar de ensayo.
+Una corrección del bug de software para evitar que el prototipo entre en un estado degenerado en el que no responde a ningún comando, ni siquiera los supremos de Linux.
+
+
+Cuando se estaba realizando la etapa de diseño, se debía realizar la implementación de flaps antirrolido. Estos flaps tienen como misión desviar el flujo proveniente del EDF para obtener como resultado un control de rolido. Se realizó el diseño en CAD en una etapa temprana del proyecto, con la guía de planos del fabricante que se consiguieron por internet. Estos planos no contenían el nivel de detalle que se hubiera deseado para poder realizar el diseño previo de todo el proyecto antes de que se logren importar todas las piezas aledañas. Se prototipo la pieza que contenía los ejes de los flaps simplemente apoyados, para poder ser fabricada con manufactura aditiva en una impresora 3D con PLA. Se procedió a realizar la pieza y tenerla lista a la espera de la importación del EDF. Cuando el EDF y las piezas faltantes ingresaron a suelo argentino, y se procedió con el armado, se detectó que el anillo contenedor del apoyo de los flaps que había sido diseñado anteriormente, apretaba sobre una pieza móvil del EDF, que no había sido especificada en los planos. Esto llevó a tener que realizar un rediseño completo de flaps y apoyos, con un diseño mucho más complejo al tener algunas piezas ya fabricadas que imponian condiciones bastantes dificultosas para que todo encaje y tenga un accionar correcto del mecanismo antirrolido.
+
+Cuando se probó el sistema antirrolido, los microservos que accionaban el mecanismo de los flaps, dejaron de funcionar, esto sucedió debido a que la caja de engranajes era de plástico y la calidad de este componente no era acorde al tipo de proyecto y utilización que se estaba llevando a cabo. Según los datos del fabricante esta pieza estaba en especificación para la utilización que le estábamos dando, pero las prácticas determinaron que esto no era así. Esta situación llevó a tener que implementar unos servos con caja de engranajes de metal y salida estriada de metal para el accionar del mecanismo flap antirrolido. Como así también un rediseño de los anclajes de la envuelta de los servomotores.

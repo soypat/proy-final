@@ -111,11 +111,16 @@ De la manera que se construye el gimbal puede entregar una rotación entera sin 
 futuro. Las simulaciones indican que con $12^\circ$ de rotación de cada eje de gimbal, ($\pm$6$^\circ$, ver figura~\ref{fig:actuator_edf}) se cubren y sobrepasan los requerimientos para el control del vehículo.
 
 \subsection{Posición de baterías}
-\todo{Mejorar organizacion de seccion}
-La decisión de donde posicionar las baterías surgió de querer simular un vehículo semejante a los VTVL con motores a reacción y también la posibilidad de tener una inercia favorable para los margenes de estabilidad. Estos dos últimos puntos sugieren que la posición ideal para las baterías es arriba de todo. Esto haría que el punto alrededor del cual se linealizó las ecuaciones de movimiento sea más estable.
+La posición de las baterías está determinado en gran parte por donde se quiere 
+tener el centro de masa. Cuanto más abajo esté más dinámico será el comportamiento
+del vehículo. Esto en cambio lo puede hacer más maniobrable al costo de requerir de
+mayores prestaciones en los actuadores en cuanto a velocidad de actuación para mantener el control. Si se quiere un vehículo más estable y lento para maniobrar se posiciona el centro de masa más alto.
+
+Otro factor importante en el posicionamiento de las baterías son las características
+de la instalación electrica a bordo. Luego de una conversación con Pablo Cossutta, un ingeniero electrónico especialista en sistemas de potencia, se optó por la configuración encontrada en el documento. Las baterías se encuentran cerca del EDF para alejar las líneas de potencia trifásica correspondientes al motor brushlesss de lo que es la electrónica digital. Al inestabilizar el punto de operación se obtiene una mejora en la respuesta ante actuaciones permitiendo una corrección de trayectoria más rápida.\footnote{Este resultado es deseado cuando se desea tener mejor rendimiento por ángulo de actuación, como sucede con los \textit{aviones caza} que utilizan este fenómeno a conveniencia.} Esto fue validado con las simulaciones correspondientes en la sección \ref{sec:simulation}.
 
 
-Luego de una conversación con Pablo Cossutta, un ingeniero electrónico especialista en sistemas de potencia, se optó por la configuración encontrada en el documento. Las baterías se encuentran cerca del EDF para alejar las líneas de potencia trifásica correspondientes al motor brushlesss de lo que es la electrónica digital. Al inestabilizar el punto de operación se obtiene una mejora en la respuesta ante actuaciones permitiendo una corrección de trayectoria más rápida.\footnote{Este resultado es deseado cuando se desea tener mejor rendimiento por ángulo de actuación, como sucede con los \textit{aviones caza} que utilizan este fenómeno a conveniencia.}
+
 
 
 \subsection{Selección de servos} \label{ssec:servoSeleccion}
@@ -188,9 +193,7 @@ Para contrarestar el torque generado por la energía rotacional otorgado al fluj
 \medskip
 
 Se diseño un sistema anti rolido, controlando la rotación en el eje z del cohete. El mismo está compuesto de dos servomotores de actuación espejada. Estos están ubicados por debajo del EDF para utilizar la energía del flujo saliente mitigando este efecto. Los álabes son actuados de forma directa por dos servos. Un anillo ensamblado al EDF desarmable hace que el accionar de los álabes se encuentre en una disposición simplemente apoyada. La extensión de las dos piezas de aluminio que son los
-soportes del EDF hacen posible la fijación de los micro servos para el comando de los flaps.
-
-\todo{Agregar subtitulo a la figura indicando cual es el mecanismo anti-rolido.}
+soportes del EDF hacen posible la fijación de los micro servos para el comando de los flaps como se ven en la figura \ref{fig:hq/flaps}.
 
 \subsection{Contexto de pandemia}
 Las medidas tomadas durante la pandemia por el gobierno fueron estrictas e influenció a todo tipo de acción que se quiso tomar. Durante el primer año de pandemia no nos pudimos reunir físicamente para discutir ideas de diseño, lo cual dificultó el avance físico del proyecto como así también la toma de decisiones y la comunicación entre partes, crucial en el inicio de todos proyectos de ingeniería.

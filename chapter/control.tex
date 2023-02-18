@@ -22,7 +22,7 @@ Q = diag(Qdiag);
 R = diag([1e-3  Ract Ract 1e-5]);
 Kr = lqr(A,B,Q,R);
 \end{lstlisting}
-\todo{Estos valores están outdated, se usaban para el control viejo}
+% \todo{Estos valores están outdated, se usaban para el control viejo}
 El sistema es simulado con las ecuaciones no-lineales obtenidas de la sección \ref{subsec:modeloMatematico} donde los inputs $\Cu$ son controlados por el regulador LQR con full-state feedback. Se supone conocido $\Cx$ con precisión arbitraria y sin delay. 
 
 
