@@ -24,7 +24,7 @@ Se modelaron las siguientes imperfecciones en el sistema:
     \item Resolución mínima de actuación del gimbal según lo visto en la sección~\ref{ssec:servoSeleccion}
 \end{itemize}
 
-La matriz costo asociada al equilibrio se construyó asignando los siguientes valores a la diagonal: 5 a las posiciones globales, 1 a las velocidades, $1\times10^{-3}$ a la velocidad del rotor del EDF, $1\times10^{-4}$ a la velocidad angular en pitch y yaw del vehículo, y $1\times10^{-5}$ a las variables restantes (actuadores, ángulos de Euler y velocidad angular en roll).
+La matriz costo del controlador LQR asociada al equilibrio se construyó asignando los siguientes valores a la diagonal: 5 a las posiciones globales, 1 a las velocidades, $1\times10^{-3}$ a la velocidad del rotor del EDF, $1\times10^{-4}$ a la velocidad angular en pitch y yaw del vehículo, y $1\times10^{-5}$ a las variables restantes (actuadores, ángulos de Euler y velocidad angular en roll).
 
 \medskip
 
@@ -33,7 +33,7 @@ La matriz costo asociada a los actuadores es diagonal con los siguientes valores
 
 \subsection{Resultados de simulación}
 
-Los ejes $x$ corresponden al tiempo en segundos. El vehículo comenzó con una perturbación Delta-Dirac en la orientación del ángulo de euler $\phi$ y a una altura de 1m (en $z$).
+Los ejes $x$ corresponden al tiempo en segundos. El vehículo comenzó con una perturbación Delta-Dirac en la orientación del ángulo de euler $\phi$ y a una altura de 1m (en $z$) con velocidad nula. Los gráficos describen la evolución de las variables de estado en el tiempo luego de la perturbación. Durante esta simulación el control estaba activo y, como se puede ver en los gráficos de posición, previnió que el vehículo descienda más de 2 metros de altura. También pudo recuperar su estado de equilibrio con todas las variables de estado de actitud acercandosé asimptoticamente a cero transcurrido 6 segundos desde la perturbación.
 
 \begin{figure}[!ht]
     \centering
