@@ -1,16 +1,19 @@
 \section{Diseño}
 
-En el marco de este proyecto, es de interés el diseño mecánico del mecanismo de control semejante un vehículo propulsado por \gls{tvc}, como es el caso de cohetes reutilizables. Estos últimos suelen ser dirigidos por toberas montadas sobre un cardán. En el caso de un vehículo eléctrico de una hélice se tendría que montar el sistema de propulsión centrado en un gimbal para optimizar el paso del flujo. Se decidió montar el EDF sobre un gimbal para simular el control que tienen los vehículos VTVL a reacción de la industria aeroespacial. Al no usar álabes para controlar el flujo saliente, como es usual en los vehículos VTVL monorrotor se evita el fenómeno de desprendimiento de capa límite para ángulos de ataque altos.
+En el marco de este proyecto, es de interés el diseño mecánico del mecanismo de control semejante un vehículo propulsado por \gls{tvc}, como es el caso de cohetes reutilizables. Estos últimos suelen ser dirigidos por toberas montadas sobre un cardán. En el caso de un vehículo eléctrico de una hélice se tendría que montar el sistema de propulsión centrado en un gimbal para optimizar el paso del flujo. Se decidió montar el EDF sobre un gimbal para simular el control que tienen los vehículos VTVL a reacción de la industria aeroespacial. 
+
+
+% Al no usar álabes para controlar el flujo saliente, como es usual en los vehículos VTVL monorrotor se evita el fenómeno de desprendimiento de capa límite para ángulos de ataque altos.
 
 \subsection{Selección de propulsor}
 
 Los requerimientos para el propulsor son los siguientes
 
 \begin{itemize}
-    \item Empuje que mantenga altura del vehículo para la máxima actuación del gimbal
-    \item Disponible comercialmente
-    \item Precio de propulsor y accesorios relevantes costeables por LIA Aerospace
-    \item Durabilidad ante pruebas físicas en cuanto a la duración del proyecto
+    \item Empuje positivo que mantenga altura del vehículo para la máxima actuación del gimbal con empuje restante para poder aumentar la altura solo y recuperar de maniobras inclinadas. \todo{No es un requerimiento que lleve payload según lo propuesto en nuestro documento.}
+    \item Disponible comercialmente.
+    \item Precio de propulsor y accesorios relevantes costeables por LIA Aerospace.
+    \item Durabilidad ante pruebas físicas en cuanto a la duración del proyecto.
 \end{itemize}
 
 Estos requerimientos fueron los primeros especificados para el diseño del vehículo. El diseño estructural y la selección de componentes electrónicos parten del propulsor seleccionado ya que este es la pieza principal para lograr los objetivos propuestos y la que más puede variar en especificaciones técnicas.
@@ -93,14 +96,14 @@ bulones.
 Los ejes del gimbal estarían en disposición simplemente apoyada y de forma axisimétrica para prevenir perturbaciones dinámicas por desbalanceo.
 
 \medskip
-
+pla
 Con respecto al fuselaje, al inicio se pensó una envolvente cilíndrica para el anillo externo del
 gimbal. Luego se diseñó un desarrollo reticulado optimizado, se pasó por diferentes modelos e
 ideas, hasta que se combinaron varios puntos fuertes de cada idea. La envolvente del gimbal se fabrica de forma rolada y optimizada en peso a raíz de
 una planchuela de aluminio vaciada y luego generando su forma cilíndrica.\footnote{Contiene al
 anillo del gimbal.} Esto distribuye las masas de manera más favorable con menos espacio
 ocupado (dinámica-peso). Aguas arriba del gimbal se opto por un chasis tubular, con diversos
-vaciados, que mediante flejes puede soportar cada elemento que se acopla al cohete por
+vaciados, que mediante flejes e impresiones 3D puede soportar cada elemento que se acopla al cohete por
 medio de uniones abulonadas. Permitiendo mediante sus aberturas el acceso a cada
 componente del vehículo, proporcionando, además, una renovación del aire para una
 evacuación del calor generado, y un flujo abundante hacia la admisión del EDF. Estas piezas fueron construidas en aluminio 6061 T6 debido a la soldabilidad, ductilidad, resitencia mecánica y disponibilidad comercial.
@@ -111,13 +114,13 @@ De la manera que se construye el gimbal puede entregar una rotación entera sin 
 futuro. Las simulaciones indican que con $12^\circ$ de rotación de cada eje de gimbal, ($\pm$6$^\circ$, ver figura~\ref{fig:actuator_edf}) se cubren y sobrepasan los requerimientos para el control del vehículo.
 
 \subsection{Posición de baterías}
-La posición de las baterías está determinado en gran parte por donde se quiere 
+La posición de las baterías está determinada en gran parte por donde se quiere 
 tener el centro de masa. Cuanto más abajo esté más dinámico será el comportamiento
 del vehículo. Esto en cambio lo puede hacer más maniobrable al costo de requerir de
 mayores prestaciones en los actuadores en cuanto a velocidad de actuación para mantener el control. Si se quiere un vehículo más estable y lento para maniobrar se posiciona el centro de masa más alto.
 
 Otro factor importante en el posicionamiento de las baterías son las características
-de la instalación electrica a bordo. Luego de una conversación con Pablo Cossutta, un ingeniero electrónico especialista en sistemas de potencia, se optó por la configuración encontrada en el documento. Las baterías se encuentran cerca del EDF para alejar las líneas de potencia trifásica correspondientes al motor brushlesss de lo que es la electrónica digital. Al inestabilizar el punto de operación se obtiene una mejora en la respuesta ante actuaciones permitiendo una corrección de trayectoria más rápida.\footnote{Este resultado es deseado cuando se desea tener mejor rendimiento por ángulo de actuación, como sucede con los \textit{aviones caza} que utilizan este fenómeno a conveniencia.} Esto fue validado con las simulaciones correspondientes en la sección \ref{sec:simulation}.
+de la instalación electrica a bordo. Luego de una conversación con Pablo Cossutta, un ingeniero electrónico especialista en sistemas de potencia, se optó por la configuración encontrada en el documento. Las baterías se encuentran cerca del EDF para alejar las líneas de potencia trifásica correspondientes al motor brushless de lo que es la electrónica digital. Al inestabilizar el punto de operación se obtiene una mejora en la respuesta ante actuaciones permitiendo una corrección de trayectoria más rápida.\footnote{Este resultado es deseado cuando se desea tener mejor rendimiento por ángulo de actuación, como sucede con los \textit{aviones caza} que utilizan este fenómeno a conveniencia.} Esto fue validado con las simulaciones correspondientes en la sección \ref{sec:simulation}.
 
 
 
@@ -147,7 +150,7 @@ El servo seleccionado es el Savox SC1258TG. Tiene las siguientes especificacione
 
 Se tiene entonces una resolución mínima de 0,3\grad~ con un ancho de pulso de 2000\micro s. Esta cuenta cede la resolución para un servo analógico, en el caso de tener un servo digital se toma el límite superior entre este valor y la resolución del controlador digital. Como el fabricante no especifica el controlador utilizado, se supone el peor de los casos: un controlador de 8 bits. Este caso tiene una resolución de 0,4\grad~.
 
-Esta resolución es alimentada como parámetro de actuación en las simulaciones.
+Esta resolución es alimentada como parámetro de actuación en las simulaciones. \todo{No se dice que es aceptable acá (en base a que información decis eso?). Eso es determinado por las simulaciones.}
 
 \subsection{Tren de aterrizaje}
 Se definen algunos requerimientos para el tren de aterrizaje
@@ -165,7 +168,7 @@ El primer diseño consistía en una estructura reticulada, la cual se decidió a
 
 \medskip
 
-El diseño seleccionado consiste en unas patas compuestas de una placa de aluminio vaciada y soldado a un tubo con vaciados, convirtiendose en la estructura princial del fuselaje. Otorga rigidez, bajo peso y facilidad de construcción (ver sección de análisis estructural \ref{sec:fea}).
+El diseño seleccionado consiste en unas patas compuestas de una placa de aluminio vaciada. Estas son soldadas a un tubo con vaciados, convirtiendose en la estructura princial del fuselaje. Otorga rigidez, bajo peso y facilidad de construcción (ver sección de análisis estructural \ref{sec:fea}).
 
 \subsection{Selección de controlador y sensores}
 
@@ -190,15 +193,23 @@ Para contrarestar el torque generado por la energía rotacional otorgado al fluj
 
 \medskip
 
-Se diseño un sistema anti rolido, controlando la rotación en el eje z del cohete. El mismo está compuesto de dos servomotores de actuación espejada. Estos están ubicados por debajo del EDF para utilizar la energía del flujo saliente mitigando este efecto. Los álabes son actuados de forma directa por dos servos. Un anillo ensamblado al EDF desarmable hace que el accionar de los álabes se encuentre en una disposición simplemente apoyada. La extensión de las dos piezas de aluminio que son los
+Se diseño un sistema anti rolido, controlando la rotación en el eje z del cohete. El mismo está compuesto de dos servomotores de actuación espejada. Estos están ubicados por debajo del EDF para utilizar la energía del flujo saliente mitigando este efecto. Los álabes son actuados de forma directa por dos servos. Un rediseño de los flaps permitio que encastren de forma que se posean dos
+apoyos, uno en la estructura y el otro en los rodamientos de la estria del motor para poder generar una configuracion resistente y confinable, escapando de la configuracion en voladizo de los flaps. La extensión de las dos piezas de aluminio que son los
 soportes del EDF hacen posible la fijación de los micro servos para el comando de los flaps como se ven en la figura \ref{fig:hq/flaps}.
+
+\medskip
+
+En una primera instancia se habia ensamblado al EDF un anillo
+desarmable que proveia una configuracion simplemente apoyada, el problema residio en que ese anillo
+estaba abulonado a una parte del rotor que era giratoria, y al momento del diseño esa informacion no
+se tenia.
 
 \subsection{Contexto de pandemia}
 Las medidas tomadas durante la pandemia por el gobierno fueron estrictas e influenció a todo tipo de acción que se quiso tomar. Durante el primer año de pandemia no nos pudimos reunir físicamente para discutir ideas de diseño, lo cual dificultó el avance físico del proyecto como así también la toma de decisiones y la comunicación entre partes, crucial en el inicio de todos proyectos de ingeniería.
-El presente trabajo fue realizado por dos integrantes separados a 2000km de distancia, excluyendo el ensamblaje que fue realizado en el 2021 en las instalaciones de \gls{lia}.
+El presente trabajo fue realizado por dos integrantes separados a 2000km de distancia, excluyendo el ensamblaje que fue realizado en el 2021 en las instalaciones de \gls{lia} una vez que se pudo coordinar una reunión presencial entre los participantes del proyecto.
 \medskip
 
 Una de las mayores complicaciones que se tuvo fue la compra de
 componentes, además de la fabricación, que se vio afectada, por las políticas cambiantes de
 nuestro país con respecto a la compra y la entrada de productos importados a suelo argentino.
-Incluso la compra y llegada de los productos fue un motivo de festejo luego de un tortuoso trayecto.
+Incluso la compra y llegada de los productos fue un motivo de festejo luego de un largo y complicado trayecto.

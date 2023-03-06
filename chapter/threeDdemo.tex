@@ -188,7 +188,8 @@ luego obtenemos la aceleración en coordenadas globales
 	\transform{NB}\cdot {}^\frm{B}\frac{\di }{\di t}\left( \dot{\avec{r}}_\ogn{CO}^\frm{B} \right)- \avec{g}^\frm{N}
 \end{equation}
 
-Los momentos actuantes externos en el marco del vehículo respecto su centro de gravedad $\ogn{C}$ se calcularon en base al diseño de los flaps anti roll según~\cite{romarowski2020edf}.
+Los momentos actuantes externos en el marco del vehículo respecto su centro de gravedad $\ogn{C}$ se calcularon en base al diseño de los flaps anti roll según~\cite{isaac2022mathematical}.
+\todo{Se tiene que tratar el termino de la vorticidad aqui. Se puede suponer que la vorticidad forma parte del termino de flaps y que se modela como si fuera un offset del angulo de actuacion, es decir, cuando los flaps estan actuados en angulo cero va haber un momento debido a la vorticidad del flujo del EDF. Entonces a la ecuacion de abajo se le agrega un término constante al angulo del flap actuado para tomarlo en cuenta.}
 
 \begin{equation}
 	\avec{M}^\frm{B}_\ogn{C} = \skw{\avec{r}}_\ogn{RC}^\frm{B}\cdot \avec{F}^\frm{B} + \transform{BG} \cdot 

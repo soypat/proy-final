@@ -16,7 +16,7 @@ optimización de los costos, disminución de huella ecológica, y tiempo de desa
 
 \medskip
 
-Los vehículos VTVL son tan viejos como el primer alunizaje. Traen en si varias ventajas frente a otros vehículos voladores como la gran reducción de espacio necesario para despegar y aterrizar. Esto no es un detalle menor dado que la mayor parte de la superficie terrestre de la tierra no son pistas de aterrizaje si no más bien terreno formado naturalmente.
+Los vehículos VTVL son tan viejos como el primer alunizaje. Traen en si varias ventajas frente a otros vehículos voladores como la gran reducción de espacio necesario para despegar y aterrizar. Esto no es un detalle menor dado que la mayor parte de la superficie terrestre no son pistas de aterrizaje si no más bien terreno formado naturalmente.
 
 \medskip
 
@@ -66,12 +66,18 @@ La primera vez que SpaceX logró aterrizar con éxito un cohete Falcon 9 fue en 
 \end{figure}
 
 
-Además de utilizar la tecnología VTVL en sus cohetes, SpaceX está trabajando en una nave espacial reutilizable llamada Starship, que utilizará esta tecnología para aterrizar en la Luna, Marte y otros destinos. La Starship también será capaz de realizar misiones terrestres y de corta duración en la Tierra, como vuelos turísticos suborbitales. La tecnología VTVL es una de las muchas innovaciones que SpaceX está utilizando para hacer que los viajes espaciales sean más asequibles y accesibles para más personas en el futuro.
+Además de utilizar la tecnología VTVL en sus cohetes, SpaceX está trabajando en una nave espacial reutilizable llamada Starship, que utilizará esta tecnología para aterrizar en la Luna, Marte y otros destinos. La Starship también será capaz de realizar misiones terrestres y de corta duración, como vuelos turísticos suborbitales. La tecnología VTVL es una de las muchas innovaciones que SpaceX está utilizando para hacer que los viajes espaciales sean más asequibles y accesibles para más personas en el futuro.
 
 \medskip
 
-Otra organización que está apostando a la tecnología de lanzadores reutilizables es la ESA. Esta tiene un proyecto destinado a acelerar el desarrollo de tecnología de lanzadores reutilizables para las partes interesadas en el sector aeroespacial europeo. Se tiene pensado tener un lanzador reutilizable para 2030 llamado Ariane Next. Uno de los pasos a seguir antes de llegar a ese punto es el desarrollo del proyecto FROG. El proyecto FROG es un demostrador tecnológico para algoritmos de control y de métodos ágiles de proyectos \cite{rmili2019frog}. Cabe destacar que antes del FROG se pasó por una etapa preliminar de desarrollo con un vehículo con prestaciones casi idénticas al vehículo detallado en este documento.
+Otra organización que está apostando a la tecnología de lanzadores reutilizables es la ESA. Esta tiene un proyecto destinado a acelerar el desarrollo de tecnología de lanzadores reutilizables para las partes interesadas en el sector aeroespacial europeo. Se tiene pensado tener un lanzador reutilizable para 2030 llamado Ariane Next. Uno de los pasos a seguir antes de llegar a ese punto es el desarrollo del proyecto FROG. El proyecto FROG es un demostrador tecnológico para algoritmos de control y de métodos ágiles de proyectos \cite{rmili2019frog}. Cabe destacar que antes del FROG se pasó por una etapa preliminar de desarrollo con un vehículo con prestaciones casi idénticas al vehículo detallado en este documento. 
 
+La ESA también ha estado trabajando en un proyecto llamado "Space Rider", que es una nave
+espacial reutilizable que se lanzará al espacio en un cohete Vega-C. Una vez terminada la misión en órbita podrá volver a la tierra y aterrizar horizontalmente o verticalmente en modo VTVL. Space Rider se está diseñando como una
+plataforma multipropósito para la realización de experimentos científicos y tecnológicos en órbita
+terrestre baja LEO. Además, la ESA ha estado colaborando con empresas privadas europeas en el
+desarrollo de cohetes reutilizables que utilizan este tipo de tecnologías. Como la empresa alemana Isar
+Aerospace que está trabajando en el desarrollo de un cohete de lanzamiento de satélites reutilizable.
 
 \begin{figure}[htb]
     \centering
@@ -113,7 +119,7 @@ Para optimizar este problema se modificaba
     \label{fig:bottlerocket}
 \end{figure}
 
-Esto representa un vuelo de gran aceleración inicial, de mucha violencia, que dificulta la comprobación de sistemas en el que se tienen que tunear varios los parámetros de control y resolver los problemas de hardware que se vaya presentando. 
+Esto representa un vuelo de gran aceleración inicial, de mucha violencia, que dificulta la comprobación de sistemas en el que se tienen que tunear los parámetros de control y resolver los problemas de hardware que se vaya presentando. 
 
 \subsection{Turbina a reacción}\label{ssec:turbina}
 Se propuso la construcción de una turbina de combustible líquido, como método de propulsión
@@ -132,21 +138,17 @@ del vehículo y el sistema de control.
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.8\linewidth]{fig/vbat_icarus.png}
-    \caption{Dos vehículos VTVL eléctricos modernos. ``VBat'' (Izq.) y ``\href{https://hackaday.com/2018/08/31/single-rotor-drone-a-thrust-vectoring-monocopter/}{Ikarus}'' (Der.).}
+    \caption{Dos vehículos VTVL eléctricos modernos. ``VBat'' (Izq.) e ``\href{https://hackaday.com/2018/08/31/single-rotor-drone-a-thrust-vectoring-monocopter/}{Ikarus}'' (Der.).}
     \label{fig:vbat_icarus}
 \end{figure}
 
-Luego de descartar las ideas vistas en~\ref{ssec:propAgua} y~\ref{ssec:turbina} se pasó al análisis de la incorporación de una turbina eléctrica que es un dispositivo ya existente en el mercado, no en nuestro país, pero que podría llegar a importarse teniendo en cuenta la pesificación del valor de los componentes en el exterior y los diversos costos asociados a la entrada al país de los mismos, se contemplo desde ese entonces la financiación privada, que la proveyó LIA Aerospace.\footnote{Agradecemos a \gls{lia} por hacerse cargo de la compra de los componentes faltantes que cayeron fuera del presupuesto necesarios para la fabricación del cohete.} 
+Luego de descartar las ideas vistas en~\ref{ssec:propAgua} y~\ref{ssec:turbina} se pasó al análisis de la incorporación de una turbina eléctrica que es un dispositivo ya existente en el mercado, no en nuestro país, pero que podría llegar a importarse. Teniendo en cuenta la pesificación del valor de los componentes en el exterior y los diversos costos asociados a la entrada al país de los mismos, se contemplo desde ese entonces la financiación privada, que la proveyó LIA Aerospace.\footnote{Agradecemos a \gls{lia} por hacerse cargo de la compra de los componentes faltantes que cayeron fuera del presupuesto necesarios para la fabricación del cohete.} 
 
 Dadas las limitaciones de tiempo y alcance de un proyecto de la universidad se decidió por un diseño compuesto por elementos comercialmente disponibles.\footnote{\textit{Commercial off the shelf} (COTS)}
 
 \medskip
 
-Para lograr estas tareas los vehículos VTVL de baja escala generalmente son propulsados por motores eléctricos, como es el caso del proyecto FROG de la ESA \cite{rmili2019frog}.
-
-\medskip
-
-Los vehículos VTVL eléctricos son propulsados por hélices en su mayoría y constan casi siempre de 3 o más propulsores en un arreglo simétrico y plano. Recientemente hay un interés por la construcción de vehículos de una sola hélice por la buena relación empuje--peso que tienen. Sin embargo, estos vehículos no vienen sin sus complicaciones: 
+Los vehículos VTVL eléctricos son propulsados por hélices en su mayoría y constan casi siempre de 3 o más propulsores en un arreglo simétrico y plano. Recientemente hay un interés por la construcción de vehículos de una sola hélice por la buena relación empuje--peso que tienen. Sin embargo, estos vehículos tienen sus complicaciones: 
 
 \begin{itemize}
     \item La rotación dada al aire por la hélice causa un momento en el eje de propulsión que puede ser contrarrestado en vehículos multirrotores.
@@ -157,4 +159,4 @@ El primer punto puede ser mitigado agregando álabes a la salida del chorro para
 
 \medskip
 
-Existen placas pre-programadas para vehículos multirrotores, pero en el caso de vehículos monorrotores de hélice fija se precisa re-programar la placa para compensar por el efecto giroscópico y agregar dinámica de álabes ya que no hay software disponible aún para esta configuración. En el caso de tener una hélice móvil se suma un nivel de complejidad agregada debido al despeje de las ecuaciones de momento angular (ver sección~\ref{sec:ecuacionesRigid}). Al momento de escribir este documento aún no hay desarrollo disponible de carácter público para esta configuración.
+Existen placas pre-programadas para vehículos multirrotores, pero en el caso de vehículos monorrotores de hélice fija se precisa re-programar la placa para compensar el efecto giroscópico y agregar dinámica de álabes ya que no hay software disponible aún para esta configuración. En el caso de tener una hélice móvil se suma un nivel de complejidad agregada debido al despeje de las ecuaciones de momento angular (ver sección~\ref{sec:ecuacionesRigid}). Al momento de escribir este documento aún no hay desarrollo disponible de carácter público para esta configuración.
