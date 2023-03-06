@@ -187,6 +187,14 @@ El \textbf{controlador} que se usó es el ARM Cortex-A72 que fue comprado en el 
 
 Se montó sobre una placa cuyo desarrollo pertenece a LIA Aerospace denominada \textbf{LIA-Board}. Esta placa hace interfaz con el controlador mediante el GPIO header del \gls{soc}. Esto le permitió al controlador acceder a los periféricos y salidas disponibles del LIA-Board que controlaran los actuadores y leerán los sensores.
 
+\medskip
+
+\todo{Esta parte es nueva}
+
+A raiz de los resultados de las pruebas se optó por el diseño de una placa que soportara
+un entorno de alta interferencia electromagnetica. 
+
+
 \subsection{Sistema anti rolido}
 
 Para contrarestar el torque generado por la energía rotacional otorgado al flujo de salida se tiene que implementar un sistema \textit{anti-roll}, o anti rolido.
@@ -204,6 +212,66 @@ desarmable que proveia una configuracion simplemente apoyada, el problema residi
 estaba abulonado a una parte del rotor que era giratoria, y al momento del diseño esa informacion no
 se tenia.
 
+
+\subsection{Diseño de placa electrónica} \label{ssec:electronicsdesign}
+Luego de las primeras pruebas de decidió que se necesitaba una placa que cumpla con los siguientes requerimientos:
+
+\begin{itemize}
+    \item Soportar el arc flash producido al enchufar la batería de 48V sin apagarse o brownout.
+    \item Contar con protecciones para alta tensión en todas las salidas digitales de control, y que 5 de estas sean capaces de PWM.
+    \item Ser resistente a interferencia electromagnética de media tensión en todas las salidas y entradas.
+    \item Tener interfaz para recolectar datos de una IMU.
+    \item Poder ser alimentada por una fuente no regulada.
+    \item Liviana.
+    \item Ser capaz de procesar algoritmos de control y estimación de actitud.
+    \item Poder ser controlada remotamente
+\end{itemize}
+
+Se tomó inspiración de la placa industrial conocido como la CIAA NXP cuyos planos son
+de libre acesso. La CIAA NXP ha sido validada para uso en entornos con interferencia electromagnética causada por motores y dispositivos industriales.
+
+Para el controlador se eligió el RP2040 en el paquete comercial "Raspberry Pi Pico W". 
+Este controlador cumple y excede los requerimientos:
+\begin{itemize}
+    \item Paquete pequeño.
+    \item Capacidades PWM en todas sus salidas digitales.
+    \item Clock de 125MHz es suficiente para un control de actitud fino
+    \item Disponibilidad comercial alta y barata.
+    \item Documentación excelente acerca periféricos a bordo y su uso.
+    \item Posibilidad de programarla en Go para evitar portear código.
+    \item Muy usada por comunidad hobbista.
+    \item Arquitectura ARM extremadamente simple.
+    \item Dos nucleos ARM M0+
+\end{itemize}
+
+La placa fue nombrada PIAA para honrar el desarrollo ingenieríl original hecho por CIAA.
+
+Esta placa no fue fabricada. Se probó una versión prototipo denominada ``VTVLEPowerboard'' cuyo esquemático se puede encontrar en la siguiente sección.
+\null\newpage
+\clearpage
+\subsection{Diseño PIAA} 
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=\linewidth]{fig/piaa3d.png}
+    \caption{Vista 3D de PIAA.}
+    \label{fig:piaa3d}
+\end{figure}
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=\linewidth]{fig/piaa_layout.png}
+    \caption{Layout de pistas de la PIAA.}
+    \label{fig:layoutpiaa}
+\end{figure}
+
+\clearpage
+
+
+\subsection{Planos eléctricos}
+\includepdf[angle=90, page=1]{pdf/piaa_rev0.0.0.pdf}
+\includepdf[angle=90, page=2]{pdf/piaa_rev0.0.0.pdf}
+\includepdf[angle=90, page=1]{pdf/vtvlpowerboard.pdf}
 \subsection{Contexto de pandemia}
 Las medidas tomadas durante la pandemia por el gobierno fueron estrictas e influenció a todo tipo de acción que se quiso tomar. Durante el primer año de pandemia no nos pudimos reunir físicamente para discutir ideas de diseño, lo cual dificultó el avance físico del proyecto como así también la toma de decisiones y la comunicación entre partes, crucial en el inicio de todos proyectos de ingeniería.
 El presente trabajo fue realizado por dos integrantes separados a 2000km de distancia, excluyendo el ensamblaje que fue realizado en el 2021 en las instalaciones de \gls{lia} una vez que se pudo coordinar una reunión presencial entre los participantes del proyecto.
