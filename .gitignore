@@ -1,6 +1,7 @@
 pf-cretton-whitti.pdf
 presentacion.pdf
 
+*.zip
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof

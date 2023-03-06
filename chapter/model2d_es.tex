@@ -25,7 +25,7 @@ Se comenzó con las ecuaciones dinámicas de un vehículo en el plano con contro
 \]
 donde \(\LCG\) y \(F\) están en función del tiempo, $m =m_0 - \int \dot{m} $ y $\theta = \gamma+\beta$. 
 
-Vale la pena aclarar que no se tomaron en cuenta los siguientes efectos:
+Se aclara que no se tomaron en cuenta los siguientes efectos:
 \begin{itemize}
 	\item Viento y efectos aerodinámicos
 	\item \textit{Fuel sloshing}
@@ -48,7 +48,7 @@ El número de variables de estado fue igual a número de almacenadores de energ�
 
 \begin{enumerate}
 	\item[$z$] Energía potencial por la gravedad
-	\item[$\dot{y},\dot{z}$] Energía cinética del vehículo
+	\item[$\dot{z}$,] $\dot{y}$  Energía cinética del vehículo
 	\item[$\dot{\gamma}$] Momento angular del vehículo
 \end{enumerate}
 entonces, las variables de estado fueron las siguientes
@@ -67,7 +67,7 @@ Se aprovecho la expansión de Taylor para la linealización de expresiones trigo
 \sin(x+y)|_{x=x_0+\Delta x,y=y_0+\Delta y} \approx \sin(x_0+y_0) + \cos(x_0 + y_0) (x-x_0) + \cos(x_0 + y_0) (y-y_0)
 \]
 % \todo{Revertir cambios tiempo pasado}
-Las ecuaciones dinámicas de los estados 2,3, y 4 fueron dadas por las ecuaciones mostradas al comienzo de esta sección.
+Las ecuaciones dinámicas de los estados 2, 3, y 4 fueron dadas por las ecuaciones mostradas al comienzo de esta sección.
 
 Abajo se encuentran las ecuaciones de estados
 \begin{equation}
