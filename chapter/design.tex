@@ -10,7 +10,8 @@ En el marco de este proyecto, es de interés el diseño mecánico del mecanismo 
 Los requerimientos para el propulsor son los siguientes
 
 \begin{itemize}
-    \item Empuje positivo que mantenga altura del vehículo para la máxima actuación del gimbal con empuje restante para poder aumentar la altura solo y recuperar de maniobras inclinadas. \todo{No es un requerimiento que lleve payload según lo propuesto en nuestro documento.}
+    \item Empuje positivo que mantenga altura del vehículo para la máxima actuación del gimbal con empuje restante para poder aumentar la altura solo y recuperar de maniobras inclinadas. 
+    \item Posibilidad de llevar un payload para ensayar \textit{fuel-sloshing} a escala.
     \item Disponible comercialmente.
     \item Precio de propulsor y accesorios relevantes costeables por LIA Aerospace.
     \item Durabilidad ante pruebas físicas en cuanto a la duración del proyecto.
@@ -25,7 +26,7 @@ Existen diversas maneras de impulsar un vehículo de forma eléctrica. Luego de 
 
 \medskip
 
-Se generó una lista de EDF's de diferentes diámetros disponibles comercialmente.
+Se generó una lista de EDF's de diferentes diámetros disponibles comercialmente. Los precios fueron calculados en marzo 2020 cuando el dolar estaba a 114 pesos.
 
 \begin{table}[!ht]
     \centering
@@ -96,7 +97,7 @@ bulones.
 Los ejes del gimbal estarían en disposición simplemente apoyada y de forma axisimétrica para prevenir perturbaciones dinámicas por desbalanceo.
 
 \medskip
-pla
+
 Con respecto al fuselaje, al inicio se pensó una envolvente cilíndrica para el anillo externo del
 gimbal. Luego se diseñó un desarrollo reticulado optimizado, se pasó por diferentes modelos e
 ideas, hasta que se combinaron varios puntos fuertes de cada idea. La envolvente del gimbal se fabrica de forma rolada y optimizada en peso a raíz de
@@ -148,9 +149,10 @@ El servo seleccionado es el Savox SC1258TG. Tiene las siguientes especificacione
     \item Controlador digital
 \end{itemize}
 
-Se tiene entonces una resolución mínima de 0,3\grad~ con un ancho de pulso de 2000\micro s. Esta cuenta cede la resolución para un servo analógico, en el caso de tener un servo digital se toma el límite superior entre este valor y la resolución del controlador digital. Como el fabricante no especifica el controlador utilizado, se supone el peor de los casos: un controlador de 8 bits. Este caso tiene una resolución de 0,4\grad~.
+Se tuvo entonces una resolución mínima de 0,3\grad~ con un ancho de pulso de 2000\micro s. Esta cuenta cede la resolución para un servo analógico, en el caso de tener un servo digital se toma el límite superior entre este valor y la resolución del controlador digital. Como el fabricante no especifica el controlador utilizado, se supone el peor de los casos: un controlador de 8 bits. Este caso tiene una resolución de 0,4\grad~.
 
-Esta resolución es alimentada como parámetro de actuación en las simulaciones. \todo{No se dice que es aceptable acá (en base a que información decis eso?). Eso es determinado por las simulaciones.}
+Esta resolución fue alimentada como parámetro de actuación en las simulaciones. En base a los resultados de estas simulaciones se llegó a que el servo cumplía con los requerimientos para el control del vehículo. 
+%\todo{No se dice que es aceptable acá (en base a que información decis eso?). Eso es determinado por las simulaciones.}
 
 \subsection{Tren de aterrizaje}
 Se definen algunos requerimientos para el tren de aterrizaje
@@ -197,7 +199,7 @@ un entorno de alta interferencia electromagnetica.
 
 \subsection{Sistema anti rolido}
 
-Para contrarestar el torque generado por la energía rotacional otorgado al flujo de salida se tiene que implementar un sistema \textit{anti-roll}, o anti rolido.
+Para contrarestar el torque generado por la energía rotacional otorgado al flujo de salida se tuvo que implementar un sistema \textit{anti-roll}, o anti rolido.
 
 \medskip
 

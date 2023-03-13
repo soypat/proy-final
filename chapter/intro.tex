@@ -45,7 +45,7 @@ investigación del \textit{fuel sloshing} en vehículos con tanques esbeltos.
 
 \medskip
 
-El vehículo provee la capacidad de testear sistemas de control a escala pequeña que en caso de devenir en una falla, el costo total de perdidas seria mucho menor con respecto a un vehículo mas grande con sistemas caros y complejos.  Al tener un sistema de control definido en términos de parámetros del vehículo, se puede escalar para luego ser probado en un vehículo mas grande. Al ser también un sistema más chico y manipulable qué el vehículo de escala grande, tornándose más fácil las pruebas y los problemas de software y hardware de vuelo.
+El vehiculo al ser de escalas reducidas, provee la capacidad de testear sistemas de control, que al devenir en una falla, el costo total de perdidas seria mucho menor con respecto a un vehículo mas grande con sistemas caros y complejos.  Al tener un sistema de control definido en términos de parámetros del vehículo, se puede escalar para luego ser probado en un vehículo mas grande. Al ser también un sistema más chico y manipulable qué el vehículo de escala grande, tornándose más fácil las pruebas y los problemas de software y hardware de vuelo.
 
 \medskip
 
@@ -119,7 +119,7 @@ Para optimizar este problema se modificaba
     \label{fig:bottlerocket}
 \end{figure}
 
-Esto representa un vuelo de gran aceleración inicial, de mucha violencia, que dificulta la comprobación de sistemas en el que se tienen que tunear los parámetros de control y resolver los problemas de hardware que se vaya presentando. 
+Esto representa un vuelo de gran aceleración inicial, de mucha violencia, que dificulta la comprobación de sistemas en el que se tienen que tunear los parámetros de control y resolver los problemas de hardware que se vayan presentando. 
 
 \subsection{Turbina a reacción}\label{ssec:turbina}
 Se propuso la construcción de una turbina de combustible líquido, como método de propulsión
@@ -148,14 +148,14 @@ Dadas las limitaciones de tiempo y alcance de un proyecto de la universidad se d
 
 \medskip
 
-Los vehículos VTVL eléctricos son propulsados por hélices en su mayoría y constan casi siempre de 3 o más propulsores en un arreglo simétrico y plano. Recientemente hay un interés por la construcción de vehículos de una sola hélice por la buena relación empuje--peso que tienen. Sin embargo, estos vehículos tienen sus complicaciones: 
+Los vehículos VTVL eléctricos son propulsados por hélices en su mayoría y constan casi siempre de 4 o más propulsores en un arreglo simétrico y plano. Recientemente hay un interés por la construcción de vehículos de una sola hélice por la buena relación empuje--peso que tienen. Sin embargo, estos vehículos tienen sus complicaciones: 
 
 \begin{itemize}
-    \item La rotación dada al aire por la hélice causa un momento en el eje de propulsión que puede ser contrarrestado en vehículos multirrotores.
+    \item La rotación dada al aire por la hélice causa un momento en el eje de propulsión que puede ser contrarrestado en vehículos multirrotores pero no asi en el caso de tener una sola hélice.
     \item Inclinar al rotor durante su funcionamiento causa una fuerza perpendicular a la dirección de inclinación conocido como el efecto giroscópico. 
 \end{itemize}
 
-El primer punto puede ser mitigado agregando álabes a la salida del chorro para enderezar el flujo y contrarrestar la rotación. El segundo punto se resuelve conociendo las ecuaciones de momento angular y controlando actuadores con un sistema de control a lazo cerrado. Los sistemas vistos en la figura~\ref{fig:vbat_icarus} suelen tener la particularidad de poder ser representados con relativa facilidad usando un solo marco de referencia sobre el vehículo para calcular las ecuaciones de momento angular.
+El primer punto puede ser mitigado agregando álabes a la salida del flujo de aire por debajo del EDF para modificar el flujo y contrarestar la rotación. El segundo punto se resuelve conociendo las ecuaciones de momento angular y controlando actuadores con un sistema de control a lazo cerrado. Los sistemas vistos en la figura~\ref{fig:vbat_icarus} suelen tener la particularidad de poder ser representados con relativa facilidad usando un solo marco de referencia sobre el vehículo para calcular las ecuaciones de momento angular.
 
 \medskip
 
