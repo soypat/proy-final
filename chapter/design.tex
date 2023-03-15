@@ -11,7 +11,7 @@ Los requerimientos para el propulsor son los siguientes
 
 \begin{itemize}
     \item Empuje positivo que mantenga altura del vehículo para la máxima actuación del gimbal con empuje restante para poder aumentar la altura solo y recuperar de maniobras inclinadas. 
-    \item Posibilidad de llevar un payload para ensayar \textit{fuel-sloshing} a escala.
+    \item Posibilidad de llevar un payload, para ensayar \textit{fuel-sloshing} a escala o llevar una cámara, por ejemplo.
     \item Disponible comercialmente.
     \item Precio de propulsor y accesorios relevantes costeables por LIA Aerospace.
     \item Durabilidad ante pruebas físicas en cuanto a la duración del proyecto.
@@ -26,19 +26,20 @@ Existen diversas maneras de impulsar un vehículo de forma eléctrica. Luego de 
 
 \medskip
 
-Se generó una lista de EDF's de diferentes diámetros disponibles comercialmente. Los precios fueron calculados en marzo 2020 cuando el dolar estaba a 114 pesos.
+Se generó una lista de EDF's de diferentes diámetros disponibles comercialmente y para cada EDF se armó un BOM con los materiales requeridos para fabricar el vehículo para obtener el costo total del vehículo entero.
+Los precios fueron calculados en marzo 2020 cuando el dolar estaba a 114 pesos.
 
 \begin{table}[!ht]
     \centering
     \begin{tabular}{l|r|r|r}
 Diámetro de EDF    & \multicolumn{1}{l|}{70mm} & \multicolumn{1}{l|}{90mm} & \multicolumn{1}{l}{120mm} \\ \hline
     Masa estructural {[}kg{]}           & 0,4                       & 1                         & 2                          \\ \hline
-    Masa batería       {[}kg{]}                 & 0,9                       & 1,9                       & 2                          \\ \hline
+    Masa batería       {[}kg{]}         & 0,9                       & 1,9                       & 2                          \\ \hline
     Mas electrónica {[}kg{]}            & 0,5                       & 1                         & 1                          \\ \hline
     Empuje restante {[}kgf{]}           & 0,01                      & 0,478                     & 3,116                      \\ \hline
     Tiempo vuelo {[}s{]}                & 253              & 184              & 132                \\ \hline
-    Precio baterías-propulsor {[}usd{]} & 165                   & 365                   & 693                   \\ \hline
-    Costo total {[}ars{]}               & 23968              & 53017              & 101313                 \\ \hline
+    Precio baterías + propulsor {[}USD{]} & 165                   & 365                   & 693                   \\ \hline
+    Costo total del vehículo {[}USD{]}               & 210              & 465              & 880                 \\ \hline
     \end{tabular}
     \caption{Estudio de diferentes EDF's disponibles en el mercado. El requerimiento excluyente para la selección de batería fue que permita vuelo sostenido por 2 minutos.}
     \label{tab:edfseleccion}
@@ -155,7 +156,7 @@ Esta resolución fue alimentada como parámetro de actuación en las simulacione
 %\todo{No se dice que es aceptable acá (en base a que información decis eso?). Eso es determinado por las simulaciones.}
 
 \subsection{Tren de aterrizaje}
-Se definen algunos requerimientos para el tren de aterrizaje
+Se definen requerimientos para el tren de aterrizaje
 \begin{itemize}
     \item Las patas se dimensionaron para soportar 10 veces el peso del vehículo. Este factor de seguridad toma en cuenta la posibilidad de aterrizaje desparejo y el factor dinámico de un impacto. %\todo{20 veces? Cuantas veces?}
     \item Facilidad de fabricación y armado.
