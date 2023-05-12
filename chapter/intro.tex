@@ -1,27 +1,28 @@
 
 \section{Introducción}
 El diseño, desarrollo, fabricación, armado, simulación y lanzamiento de cohetes, no es una tarea
-sencilla ni repetida en intervalos de cortos de tiempo, al contrario, suelen llevar décadas y una
-fuerte inversión para que sean posibles estos logros. El diseño y auge de vehículos VTVL viene
-a subsanar estos factores ya que una vez terminada la misión el vehículo se puede reutilizar,
-con mínimas intervenciones, y estaría listo para una nueva misión, atacando estos dos puntos principales anteriormente mencionados, el tiempo y el costo. Esto difiere del método convencional donde el vehículo, luego de completar la misión, pasa a formar parte de basura espacial o, en el mejor de los casos, es recuperado del mar como el caso del Space Shuttle. 
+sencilla ni es repetida en intervalos de cortos de tiempo, al contrario, suelen llevar décadas y una
+fuerte inversión para que sean posibles estos logros. Cuando se completa el desarrollo de estos vehiculos son lanzados y generalmente una vez completada la misión pasan a ser parte de la basura espacial o reeingresan a la atmosfera terrestre sin posibilidad de reutilización. En los últimos años se ha buscado subsanar el costo incurrido por la incapacidad de volver a reutlizar el vehículo. Es allí donde nace el interés del desarrollo de vehículos reutilizables. Lo beneficios de un vehíclo reutilizable
+
+\begin{itemize}
+    \item El vehículo se puede reutilizar con mínimas intervenciones, minimizando el tiempo entre misiones
+    \item Reducción de costos: Los cohetes reutilizables permiten que se utilicen los mismos vehículos para múltiples misiones, lo que reduce significativamente los costos de producción y operación.
+    \item Mayor confiabilidad: Los cohetes reutilizables tienen un historial de éxito probado en múltiples misiones, lo que aumenta la confiabilidad y la seguridad en los lanzamientos.
+    \item Flexibilidad: Los cohetes reutilizables son más flexibles y pueden ser utilizados para una variedad de misiones, lo que los hace más versátiles que los cohetes desechables.
+    \item Reducción del impacto ambiental: La reutilización de cohetes reduce la cantidad de residuos y desechos generados por los lanzamientos.
+    \item Innovación tecnológica: El desarrollo de cohetes reutilizables ha impulsado la innovación tecnológica en el campo de los cohetes y ha llevado a mejoras en la tecnología de propulsión y sistemas de recuperación.
+\end{itemize}
+
+\medskip
 
 \medskip
 
 El concepto de un vehículo VTVL es tan viejo como el primer alunizaje: despega verticalmente (como la mayoría de los cohetes
-convencionales) y aterriza verticalmente, por sí solo sin necesidad de ser tripulado con el
-objetivo de completar una misión. Esto supone una gran variante de ventajas, como ser una de
+convencionales) y aterriza verticalmente con el objetivo de completar una misión. Esto supone una gran variante de ventajas, como ser una de
 las más destacadas el reutilizamiento del vehículo, con todo lo que ello implica, logrando una
-optimización de los costos, disminución de huella ecológica, y tiempo de desarrollo para las empresas interesadas. Traen en si varias ventajas frente a otros vehículos voladores como la gran reducción de espacio necesario para despegar y aterrizar. Esto no es un detalle menor dado que la mayor parte de la superficie terrestre no son pistas de aterrizaje si no más bien terreno formado naturalmente.
+optimización de los costos, disminución de huella ecológica, y disminución del tiempo entre lanzamientos. Con solo agregar unos actuadores y el control correspondiente al vehículo se puede pasar de ser un cohete convencional a ser un VTVL y asi tener amplio dominio sobre donde aterrizará.
 
 \medskip
-
-
-\medskip
-
-Este documento propone el diseño, simulación, control y fabricación de un vehículo con capacidades VTVL siendo un prototipo de baja escala. 
-Este prototipo serviría como punta pie inicial
-para vehículos de escala mayor que puedan completar misiones espaciales. Existen varias ventajas de implementar este tipo de tecnología.
 
 \medskip
 
@@ -34,13 +35,11 @@ en zonas de acceso limitado.
 
 \medskip
 
-En la última década hay un interés renovado en imágenes espaciales. El vehículo podría adquirir imágenes para fines de sistemas de monitoreo y análisis geoespacial como hacen las empresas \textit{Ceres Imaging} y \textit{Satellogic}. %de una situación en la que no se disponga del tiempo suficiente para el accionar convencional a bajas velocidades como ser un helicóptero o un dron.  
+Una variante de estos vehículos se logra cuando se cierra el lazo de control obteniendosé un vehículo autónomo. La autonomía se refiere a la capacidad del vehículo para tomar decisiones y realizar tareas sin la necesidad de intervención humana durante la misión. La autonomía también incluye la capacidad del vehículo para realizar tareas adicionales, como la navegación y el mantenimiento de la trayectoria, la evitación de obstáculos y la toma de decisiones en tiempo real en función de los datos recopilados por los sensores del vehículo. En la última década hay un interés renovado en imágenes espaciales. Un vehículo VTVL, reutilizable autónomo, eléctrico podría adquirir imágenes para fines de sistemas de monitoreo y análisis geoespacial como hacen las empresas \textit{Ceres Imaging} y \textit{Martin UAV} con su vehículo V-BAT. Estas empresas dependen de vehículos autonomos no tripulados para obtener sus imágenes aéreas.
 
 \medskip
 
-El vehículo una vez desarrollado y funcionando, puede servir de plataforma para diversos
-estudios de fenómenos de dinámica de fluidos, como ser, mediciones aerodinámicas,
-investigación del \textit{fuel sloshing} en vehículos con tanques esbeltos.
+%El vehículo una vez desarrollado y funcionando, puede servir de plataforma para diversos estudios de fenómenos de dinámica de fluidos, como ser, mediciones aerodinámicas, investigación del \textit{fuel sloshing} en vehículos con tanques esbeltos.
 
 \medskip
 
@@ -53,8 +52,7 @@ Los sistemas de vehículos orbitales tienen sistemas complejos que deben ser tes
 
 \medskip
 
-La tecnología VTVL permite a los cohetes de SpaceX aterrizar verticalmente después de su lanzamiento, en lugar de caer en el océano o en tierra y luego ser recuperados. Esto significa que los cohetes pueden ser reutilizados para misiones futuras, lo que reduce significativamente los costos de los lanzamientos espaciales. Antes de la introducción de la tecnología VTVL, la mayoría de los cohetes eran diseñados para ser utilizados solo una vez, lo que hacía que los costos de los lanzamientos fueran mucho más altos.
-La primera vez que SpaceX logró aterrizar con éxito un cohete Falcon 9 fue en diciembre de 2015, y desde entonces ha logrado muchos otros aterrizajes exitosos, tanto en plataformas en tierra como en barcos en el mar. El aterrizaje vertical de los cohetes de SpaceX es una hazaña técnica impresionante, ya que los cohetes deben desacelerar y estabilizarse en el aire antes de aterrizar de manera segura en una plataforma pequeña.
+La tecnología VTVL permite a los cohetes de SpaceX aterrizar verticalmente después de su lanzamiento, en lugar de caer en el océano o en tierra y luego ser recuperados. La primera vez que SpaceX logró aterrizar con éxito un cohete Falcon 9 fue en diciembre de 2015, y desde entonces ha logrado muchos otros aterrizajes exitosos, tanto en plataformas en tierra como en barcos en el mar. El aterrizaje vertical de los cohetes de SpaceX es una hazaña técnica impresionante, ya que los cohetes deben desacelerar y estabilizarse en el aire antes de aterrizar de manera segura en una plataforma pequeña.
 
 
 \begin{figure}[htb]
@@ -69,7 +67,9 @@ Además de utilizar la tecnología VTVL en sus cohetes, SpaceX está trabajando 
 
 \medskip
 
-Otra organización que está apostando a la tecnología de lanzadores reutilizables es la ESA. Esta tiene un proyecto destinado a acelerar el desarrollo de tecnología de lanzadores reutilizables para las partes interesadas en el sector aeroespacial europeo. Se tiene pensado tener un lanzador reutilizable para 2030 llamado Ariane Next. Uno de los pasos a seguir antes de llegar a ese punto es el desarrollo del proyecto FROG. El proyecto FROG es un demostrador tecnológico para algoritmos de control y de métodos ágiles de proyectos \cite{rmili2019frog}. Cabe destacar que antes del FROG se pasó por una etapa preliminar de desarrollo con un vehículo con prestaciones casi idénticas al vehículo detallado en este documento. 
+Otra organización que está apostando a la tecnología de lanzadores reutilizables es la ESA. Esta tiene un proyecto destinado a acelerar el desarrollo de tecnología de lanzadores reutilizables para las partes interesadas en el sector aeroespacial europeo. Se tiene pensado tener un lanzador reutilizable para 2030 llamado Ariane Next. Uno de los pasos a seguir antes de llegar a ese punto es el desarrollo del proyecto FROG. El proyecto FROG es un demostrador tecnológico para algoritmos de control y de métodos ágiles de proyectos \cite{rmili2019frog}.
+
+\medskip
 
 La ESA también ha estado trabajando en un proyecto llamado "Space Rider", que es una nave
 espacial reutilizable que se lanzará al espacio en un cohete Vega-C. Una vez terminada la misión en órbita podrá volver a la tierra y aterrizar horizontalmente o verticalmente en modo VTVL. Space Rider se está diseñando como una
@@ -87,6 +87,45 @@ Aerospace que está trabajando en el desarrollo de un cohete de lanzamiento de s
 
 \null\newpage
 \clearpage
+
+\section{Alcance de este proyecto}
+Este documento propone el diseño, simulación, control y fabricación de un vehículo con capacidades VTVL, reutilizable, autonomo-- siendo un prototipo de baja escala. Este prototipo serviría como punta pie inicial para vehículos de escala mayor que puedan completar misiones espaciales. 
+
+Se establecieron las siguientes etapas para el desarrollo del proyecto en el formulario de alta del proyecto 201-129 el 2 de mayo de 2020:
+\begin{enumerate}
+    \item Preparación inicial (3meses) [3]
+    \begin{itemize}
+        \item Teoría de sistema de control. Variables de estado.
+        \item Proponer solución full state feedback con LQR + filtro Kalman.
+        \item Práctica usando Simulink.
+    \end{itemize}
+    \item Diseño de sistema 3D (4 meses) [7]
+    \begin{itemize}
+        \item Selección del propulsor ducted fan.
+        \item Diseño de estructura de cohete.
+        \item Teoría de control automático.
+        \item Diseño de control 3D.
+    \end{itemize}
+    \item Validación experimental del sistema de control (3 meses) [10]
+    \begin{itemize}
+        \item Seleccionar computadora de vuelo y componentes para el funcionamiento en la práctica.
+        \item Manufactura de componentes del cohete.
+        \item Puesta a prueba del sistema de control en cohete.
+        \item Efectuar correcciones/ajustes al sistema de control.
+    \end{itemize}
+    \item Elaboración de informes
+    \begin{itemize}
+        \item Informe 1: Agosto 2020 -- Etapa 2.
+        \item Informe 2: Diciembre 2020 -- Informe experimental.
+        \item Informe 3: Enero 2021 -- Informe de diseño.
+        \item Informe preliminar: Febrero 2021.
+        \item Informe final: Marzo 2021 (considerando las correcciones previas realizadas por el tutor)
+    \end{itemize}
+\end{enumerate}
+
+\todo{Agregar FROG a como hicimos nuestro proyecto: Cabe destacar que antes del FROG se pasó por una etapa preliminar de desarrollo con un vehículo con prestaciones casi idénticas al vehículo detallado en este documento. }
+
+
 
 \section{Estudios}
 En lo que se refiere a la construcción del vehículo, el diseño propuesto paso por varias etapas y
