@@ -19,22 +19,14 @@ Se comenzó con las ecuaciones dinámicas de un vehículo en el plano con contro
 \begin{array}{l}
 	\ddot{y}=\frac{F}{m} \sin(\gamma+\beta) \\
 	\ddot{z}=\frac{F}{m} \cos (\gamma+\beta)-g \\
-	\ddot{\gamma} = \frac{L_{\CG}\cdot F}{I_{xx}}\sin\beta
+	\ddot{\gamma} = -\frac{L_{\CG}\cdot F}{I_{xx}}\sin(\beta)
 \end{array}
 \right.
 \]
-donde \(\LCG\) y \(F\) están en función del tiempo, $m =m_0 - \int \dot{m} $ y $\theta = \gamma+\beta$. 
-
-Se aclara que no se tomaron en cuenta los siguientes efectos:
-\begin{itemize}
-	\item Viento y efectos aerodinámicos
-	\item \textit{Fuel sloshing}
-	\item Efectos relativistas
-\end{itemize}
+donde \(\LCG\) y \(F\) están en función del tiempo, $m =m_0 - \int \dot{m} $ y $\theta = \gamma+\beta$. Por cuestiones demostrativas de este ejercicio se desprecia el rozamiento con el aire.
 
 \subsection{Armado de sistema lineal}
-
-Se propuso un punto de operación alrededor del cual se efectuó la linealización de las ecuaciones. El estado del vehículo alrededor del cual se linealizó fue \textit{vertical y quieto en el espacio}.\footnote{La linealización es valida solo para un vehículo vertical. Se deberá modificar el método para modelar un vehículo orbital.} 
+Para controlar el sistema se aplicará la teoría de control óptimo. Para ello se deberá linealizar el sistema alrededor de un punto de operación. El estado del vehículo alrededor del cual se linealizó en este caso fue \textit{vertical y quieto en el espacio}.\footnote{La linealización es valida solo para un vehículo vertical. Se deberá modificar el método para modelar un vehículo que se inclina para volar correctamente.} 
 
 \begin{align*}
 	\gamma^* = 0 \\
@@ -77,7 +69,7 @@ Abajo se encuentran las ecuaciones de estados
 \dot{x_4} = \frac{F}{m} - g =\frac{F-F_0}{m}= \frac{u_1}{m}
 \end{equation}
 \begin{equation}
-\dot{x_6} = \frac{\LCG \cdot F}{I_{xx}} \beta = \frac{\LCG \cdot mg}{I_{xx}} u_2 
+\dot{x_6} = -\frac{\LCG \cdot F}{I_{xx}} \beta = -\frac{\LCG \cdot mg}{I_{xx}} u_2 
 \end{equation}
 
 donde $\Ts$ es el periodo de muestreo.
@@ -119,6 +111,6 @@ Se calcularon las matrices del sistema y de control ($\Mme{D} = [0]$)
 \begin{equation} \label{eq:ssmatrices}
 	\Mme{A} = 
 	\left[\begin{array}{cccccc} 0 & 1 & 0 & 0 & 0 & 0\\ 0 & 0 & 0 & 0 & g & 0\\ 0 & 0 & 0 & 1 & 0 & 0\\ 0 & 0 & 0 & 0 & 0 & 0\\ 0 & 0 & 0 & 0 & 0 & 1\\ 0 & 0 & 0 & 0 & 0 & 0 \end{array}\right],\quad \Mme{B} = 
-	\left[\begin{array}{cc} 0 & 0\\ 0 & g\\ 0 & 0\\ \frac{1}{m} & 0\\ 0 & 0\\ 0 & \frac{\LCG \cdot mg}{I_{xx}} \end{array}\right], \quad \Mme{C} =  \left[\begin{array}{cccccc} 1 & 0 & 0 & 0 & 0 & 0\\ 0 & 0 & 1 & 0 & 0 & 0\\ 0 & 0 & 0 & 0 & 1 & 0 \end{array}\right]
+	\left[\begin{array}{cc} 0 & 0\\ 0 & g\\ 0 & 0\\ \frac{1}{m} & 0\\ 0 & 0\\ 0 & -\frac{\LCG \cdot mg}{I_{xx}} \end{array}\right], \quad \Mme{C} =  \left[\begin{array}{cccccc} 1 & 0 & 0 & 0 & 0 & 0\\ 0 & 0 & 1 & 0 & 0 & 0\\ 0 & 0 & 0 & 0 & 1 & 0 \end{array}\right]
 \end{equation}
 El sistema mostrado en \eqref{eq:ssmatrices} es \textit{fully state controllable}.

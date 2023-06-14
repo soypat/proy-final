@@ -128,7 +128,7 @@ Se definieron las variables de estado y el vector input, donde $F$ es la fuerza 
 		\tau_c & \dot{\alpha} & \dot{\beta} & \dot{\delta}
 	\end{bmatrix} \tp
 \end{equation}
-En la próxima sección se buscará obtener el vector de variables de estado derivado en el tiempo $\dot{\Cx}$.
+En la próxima sección se buscará obtener el vector de variables de estado derivado en el tiempo: $\dot{\Cx}$.
 
 \subsection{Ecuaciones diferenciales} \label{subsec:modeloMatematico}
 
@@ -150,7 +150,7 @@ Se pudo obtener la velocidad en el marco del cuerpo
 	\dot{\avec{r}}_\ogn{CO}^\frm{B} &= &\transform{BN} \cdot \dot{\avec{r}}_\ogn{CO}^\frm{N} 
 \end{IEEEeqnarray}
 
-La obtención de la velocidad angular del cuerpo se complicó por el hecho de que la razón de cambio de los ángulos de Euler no son vectores cartesianos, si no más bien parámetros que describen la orientación del cuerpo rígido en el espacio.\footnote{ Como bien sabemos la matriz de transformación $\tform$ solo es aplicable para transformar vectores cartesianos de una base ortogonal a otra. Los parámetros $\avec{\eta}$ conforman un vector de configuración, no un vector cartesiano!} Para relacionar la velocidad angular con $\avec{\eta}$ fue necesario utilizar la matriz de actitud cinemática $\attitude(\avec{\eta})$.
+La obtención de la velocidad angular del cuerpo no se puede obtener directamente por el hecho de que la razón de cambio de los ángulos de Euler no son vectores cartesianos, si no más bien parámetros que describen la orientación del cuerpo rígido en el espacio.\footnote{ Como bien sabemos la matriz de transformación $\tform$ solo es aplicable para transformar vectores cartesianos de una base ortogonal a otra. Los parámetros $\avec{\eta}$ conforman un vector de configuración, no un vector cartesiano!} Para relacionar la velocidad angular con $\avec{\eta}$ fue necesario utilizar la matriz de actitud cinemática $\attitude(\avec{\eta})$.
 
 \begin{IEEEeqnarray}{c}
 	\attitude(\avec{\eta}) = \left[\begin{array}{ccc}
@@ -171,7 +171,7 @@ e inversamente
 \end{IEEEeqnarray}
 
 
-La fuerza que impulsó al vehículo en el marco del cuerpo se obtuvo transformando del marco del cardán donde se conocen los componentes, al marco cuerpo. La matriz fue calculada reemplazando $\phi\equiv\alpha$, $\theta\equiv\beta$, y $\psi = 0$.
+La fuerza que impulsa al vehículo en el marco del cuerpo se obtuvo transformando del marco del cardán donde se conocen los componentes, al marco cuerpo. La matriz fue calculada reemplazando $\phi\equiv\alpha$, $\theta\equiv\beta$, y $\psi = 0$.
 \begin{equation}
 	\avec{F}^\frm{B} = \transform{BG} \cdot \avec{F}^\frm{G} 
 \end{equation}
@@ -186,8 +186,7 @@ luego obtenemos la aceleración en coordenadas globales
 	\transform{NB}\cdot {}^\frm{B}\frac{\di }{\di t}\left( \dot{\avec{r}}_\ogn{CO}^\frm{B} \right)- \avec{g}^\frm{N}
 \end{equation}
 
-Los momentos actuantes externos en el marco del vehículo respecto su centro de gravedad $\ogn{C}$ se calcularon en base al diseño de los flaps anti roll según~\cite{isaac2022mathematical}.
-%\todo{Se tiene que tratar el termino de la vorticidad aqui. Se puede suponer que la vorticidad forma parte del termino de flaps y que se modela como si fuera un offset del angulo de actuacion, es decir, cuando los flaps estan actuados en angulo cero va haber un momento debido a la vorticidad del flujo del EDF. Entonces a la ecuacion de abajo se le agrega un término constante al angulo del flap actuado para tomarlo en cuenta.}
+A continuación se calcula el torque reacción del EDF en el marco del cuerpo $\frm{B}$. Los momentos actuantes externos a causa de los flaps en el marco del vehículo respecto su centro de gravedad $\ogn{C}$ se calcularon en base al diseño de los flaps anti roll según~\cite{isaac2022mathematical}. El torque de rotación del EDF es incluido en la ecuación como $\tau_r$ según \cite{WANG20131439} e incluye el torque debido a la vorticidad del flujo del EDF. Su valor es inicialmente desconocido ya que se debe caracterizar el EDF para obtenerlo. Para nuestros propósitos se usa un valor de $K_t=7.6\times10^{-9}$ para aproximarlo y ser irá ajustando en base a las pruebas de vuelo o hasta caracterizar la curva del motor.
 
 \begin{equation}
 	\avec{M}^\frm{B}_\ogn{C} = \skw{\avec{r}}_\ogn{RC}^\frm{B}\cdot \avec{F}^\frm{B} + \transform{BG} \cdot 
@@ -207,7 +206,7 @@ La aceleración angular en el marco $\frm{B}$ se obtuvó del desarrollo de la se
 \transform{{BG}}\cdot  \inertiarotor{C}{G} \cdot  {}^\frm{N} \dot{\avec{\omega}}_{\!r}^{\frm{G}} + \avec{M}_\ogn{C}^\frm{B} \right)
 \end{equation}
 
-El rotor y los servos son modelados como de primer orden por el momento. Su valor en las simulaciones fueron limitados por velocidad máxima según sus especificaciones.
+El rotor y los servos son modelados como de primer orden por cuestiones de simplicidad. Esto vale a medida que los servos tomen su velocidad máxima mucho más rápido que el tiempo caracteristico del sistema. Si esta suposición no es valida se observará que el sistema no va poder controlar ante perturbaciones grandes o bruscas o que habrá comportamientos oscilatorios que no se observan en las simulaciones. 
 
 Las ecuaciones diferenciales usadas para el control del vehículo fueron las siguientes
 \begin{equation} \label{eq:ssDiffVariables3D}
@@ -235,8 +234,7 @@ Ambos gimbals del cardán tienen su eje de giro cercano a su centro de masa lo c
 \dot{\avec{r}}_\ogn{RC}  = 0
 \end{equation}
 
-La velocidad angular de los gimbals fue poca ya que su actuación ocurrió en el orden de la décima de grado lo cual implicó un bajo impacto del término del cardán cuando fue integrado en el tiempo. El término  $\transform{NG} \cdot J_{\!g\ogn{R}}^{\frm{G}} \cdot \omega_\frm{GN}^\frm{G}$ entonces pasó a formar parte de la inercia del resto del vehículo $\inertia{C}{B}$, el cual solo excluyó al rotor.
-
+La velocidad angular de los gimbals durante una perturbación abrupta llega a 20 grados por segundo en las simulaciones, lo cual es 0.4 radianes por segundo. Se observa que su inercia a estas velocidades tiene un bajo impacto en la diná,ica del vehículo y que podría considerarse una perturbación externa para simplificar el modelo. El término  $\transform{NG} \cdot J_{\!g\ogn{R}}^{\frm{G}} \cdot \omega_\frm{GN}^\frm{G}$ entonces pasó a formar parte de la inercia del resto del vehículo $\inertia{C}{B}$, el cual solo excluyó al rotor.
 
 
 El momento angular quedó simplificado de la siguiente manera:
