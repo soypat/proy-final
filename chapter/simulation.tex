@@ -57,9 +57,7 @@ El problema más pertinente respecto a la estimación de estado es la actitud de
     \item Filtros alternativos: Hay muchos filtros alternativos que se pueden usar para estimar la actitud. Por ejemplo, el filtro de Madgwick, el filtro de Mahony, el filtro de Davenport, etc.
 \end{itemize}
 
-Durante el transcurso del proyecto se probaron dos implementaciones de filtro kalman, una implementación de filtro complementario hasta que se optó por un filtro de Madgwick para resolver el problema de estimación de actitud debido a la efectividad y disponibilidad de código.
-
-Para la evaluación del filtro de madgwick se programó una visualización \href{https://www.youtube.com/watch?v=M0_s6UW86cs&ab_channel=PatricioWhittingslow}{(Link)} de los resultados del filtro para poder rapidamente evaluar la efectividad del filtro. Se puede ver en el video que el filtro de Madgwick es capaz de estimar la actitud mediante un solo sensor inercial (IMU). El video muestra una revisión del programa preliminar y cabe destacar que el algoritmo recibió varios bugs fixes y mejoras en la implementación. 
+Durante el transcurso del proyecto se probaron dos implementaciones de filtro Kalman, una implementación de filtro complementario hasta que se optó por un filtro de Madgwick para resolver el problema de estimación de actitud debido a la efectividad y disponibilidad de código.
 
 \subsection{Resultados de simulación}
 
@@ -67,35 +65,35 @@ Los ejes $x$ corresponden al tiempo en segundos. El vehículo comenzó con una p
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=0.8\linewidth]{fig/pos_edf}
+    \includegraphics[width=1.4\linewidth, angle=90]{fig/pos_edf}
     \caption{Posición del vehículo}
     \label{fig:pos_edf}
 \end{figure}
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=0.6\linewidth]{fig/eulerang_edf}
+    \includegraphics[width=1\linewidth]{fig/eulerang_edf}
     \caption{Ángulos de euler. Note que solo hubo perturbación inicial en $\phi$ sin embargo la actuación del gimbal ($\alpha$) generó una perturbación interna en $\theta$ por el efecto giroscópico.}
     \label{fig:eulerang_edf}
 \end{figure}
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=0.6\linewidth]{fig/angvel_edf.eps}
+    \includegraphics[width=1\linewidth]{fig/angvel_edf.eps}
     \caption{Velocidad angular del vehículo}
     \label{fig:angvel_edf.eps}
 \end{figure}
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=0.6\linewidth]{fig/actuator_edf}
+    \includegraphics[width=1\linewidth]{fig/actuator_edf}
     \caption{Actuación angular del gimbal.}
     \label{fig:actuator_edf}
 \end{figure}
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=0.6\linewidth]{fig/rotor_edf}
+    \includegraphics[width=1\linewidth]{fig/omega_simu.eps}
     \caption{Velocidad y aceleración angular del rotor.}
     \label{fig:rotor_edf}
 \end{figure}

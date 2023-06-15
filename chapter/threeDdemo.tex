@@ -206,7 +206,7 @@ La aceleración angular en el marco $\frm{B}$ se obtuvó del desarrollo de la se
 \transform{{BG}}\cdot  \inertiarotor{C}{G} \cdot  {}^\frm{N} \dot{\avec{\omega}}_{\!r}^{\frm{G}} + \avec{M}_\ogn{C}^\frm{B} \right)
 \end{equation}
 
-El rotor y los servos son modelados como de primer orden por cuestiones de simplicidad. Esto vale a medida que los servos tomen su velocidad máxima mucho más rápido que el tiempo caracteristico del sistema. Si esta suposición no es valida se observará que el sistema no va poder controlar ante perturbaciones grandes o bruscas o que habrá comportamientos oscilatorios que no se observan en las simulaciones. 
+El rotor y los servos son modelados como de primer orden por cuestiones de simplicidad. Esto vale a medida que los servos tomen su velocidad máxima mucho más rápido que el tiempo caracteristico del sistema. Si esta suposición no es valida se observará que el sistema no va poder controlar ante perturbaciones grandes o bruscas, o que habrá comportamientos oscilatorios que no se observan en las simulaciones. 
 
 Las ecuaciones diferenciales usadas para el control del vehículo fueron las siguientes
 \begin{equation} \label{eq:ssDiffVariables3D}
@@ -234,7 +234,7 @@ Ambos gimbals del cardán tienen su eje de giro cercano a su centro de masa lo c
 \dot{\avec{r}}_\ogn{RC}  = 0
 \end{equation}
 
-La velocidad angular de los gimbals durante una perturbación abrupta llega a 20 grados por segundo en las simulaciones, lo cual es 0.4 radianes por segundo. Se observa que su inercia a estas velocidades tiene un bajo impacto en la diná,ica del vehículo y que podría considerarse una perturbación externa para simplificar el modelo. El término  $\transform{NG} \cdot J_{\!g\ogn{R}}^{\frm{G}} \cdot \omega_\frm{GN}^\frm{G}$ entonces pasó a formar parte de la inercia del resto del vehículo $\inertia{C}{B}$, el cual solo excluyó al rotor.
+La velocidad angular de los gimbals durante una perturbación abrupta llega a 20 grados por segundo en las simulaciones, lo cual es 0.4 radianes por segundo. Se observa que su inercia a estas velocidades tiene un bajo impacto en la dinámica del vehículo y que podría considerarse una perturbación externa para simplificar el modelo. El término  $\transform{NG} \cdot J_{\!g\ogn{R}}^{\frm{G}} \cdot \omega_\frm{GN}^\frm{G}$ entonces pasó a formar parte de la inercia del resto del vehículo $\inertia{C}{B}$, el cual solo excluyó al rotor.
 
 
 El momento angular quedó simplificado de la siguiente manera:
@@ -280,8 +280,7 @@ donde $ \dot{J}_{\! r\ogn{R}}^\frm{G}$ se consideró despreciable por la geometr
 
 \medskip
 
-Como el rotor fue fijado al vehículo alrededor de un punto cercano a $\ogn{R}$ y  el movimiento del gimbal fue restringido por los actuadores se supuso que el rotor fue parte del cuerpo rígido del vehículo y se planteo su momento angular como un vector libre. Así se logró igualar $\inertiarotor{R}{G} \equiv \inertiarotor{C}{G} = \inertiarotor{}{G}$, y por extensión, $J_\ogn{R}^{\frm{B}} \equiv J_\ogn{C}^{\frm{B}} $. 
-
+Como el rotor fue fijado al vehículo alrededor de un punto cercano a $\ogn{R}$ y  el movimiento del gimbal fue restringido por los actuadores se supuso que el rotor fue parte del cuerpo rígido del vehículo y se planteo su momento angular como un vector libre. Así se logró igualar $\inertiarotor{R}{G} \equiv \inertiarotor{C}{G} = \inertiarotor{}{G}$, y por extensión, $J_\ogn{R}^{\frm{B}} \equiv J_\ogn{C}^{\frm{B}} $. Al hacer esta suposición se desprecian momentos externos que pueden actuar sobre el vehículo cuando se actua el gimbal. Estos momentos serían mayores a medida que el angulo de actuación es mayor, ya que cuando esta en su estado de equilibrio el rotor es colineal al eje de rotación del gimbal. Un observador vería que el vehículo ``tiembla'' si el valor de el momento externo es significativo.
 
 
 

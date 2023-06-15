@@ -88,7 +88,7 @@ Aerospace que está trabajando en el desarrollo de un cohete de lanzamiento de s
 \null\newpage
 \clearpage
 
-\section{Alcance de este proyecto}
+\section{Alcance de este proyecto}\label{sec:scope}
 Este documento propone el diseño, simulación, control y fabricación de un vehículo con capacidades VTVL, reutilizable, autonomo-- siendo un prototipo de baja escala. Este prototipo serviría como punta pie inicial para vehículos de escala mayor que puedan completar misiones espaciales. 
 
 Se establecieron las siguientes etapas para el desarrollo del proyecto en el formulario de alta del proyecto 201--129 el 2 de mayo de 2020:
@@ -131,9 +131,10 @@ La perseverancia y la determinación resultaron fundamentales para superar los c
 Para poder llevar a cabo el proyecto del vehículo VTVL, reutilizable, autonomo a baja escala; fabricado por un equipo de dos personas con el presupuesto de un proyecto final de facultad se requiere lo siguiente:
 \begin{itemize}
     \item Cumplir con el presupuesto establecido
-    \item Que el tiempo de vuelo esté comprendido en un valor a 60 segundos
+    \item Que el tiempo de vuelo sea capaz de superar 60 segundos
     \item Que soporte los aterrizajes necesarios para poder probar el sistema de control
     \item Capacidad de 1kg de payload
+  %  \item Capacidad de mantener el equilibrio durante el vuelo sin perturbaciones externas excepto por las del ambiente
     \item Sistema de control que recupere de una perturbación delta-dirac de 15 grados de actitud en un eje a una altura de 1.5 metros durante funcionamiento
     \item Sistema de control completamente bajo el mando del equipo
     \item Capacidad de despegar y aterrizar en atmosfera terrestre
@@ -162,7 +163,6 @@ Para optimizar este problema se modificaba
     \item Volumen de agua -- más tiempo de vuelo vs. mayor peso de vehículo
 \end{itemize}
 
-\todo{Sacar caja de ahi}
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=0.8\linewidth]{fig/bottlerocket}
@@ -176,7 +176,7 @@ Esto representa un vuelo de gran aceleración inicial, de mucha violencia, que d
 Se estudió la construcción de una turbina de combustible líquido como método de propulsión
 del vehículo para poder comprobar el sistema de control, debido al excelente cociente de peso-empuje.
 
-Esta idea se vio descartada por la complejidad asociada a la construcción de un elemento mecánico con constraints\todo{constrains} geométricos para alabes en múltiples dimensiones y balanceo a altas vueltas por minutos. Sumandosé a esto, no se tenía acceso al taller de la institución para poder realizar en tiempo y forma el dispositivo mecánico, que era la primer tarea inmediata a tener en banco de pruebas
+Esta idea se vio descartada por la complejidad asociada a la construcción de un elemento mecánico con constraints geométricos para alabes en múltiples dimensiones y balanceo a altas vueltas por minutos. Sumandosé a esto, no se tenía acceso al taller de la institución para poder realizar en tiempo y forma el dispositivo mecánico, que era la primer tarea inmediata a tener en banco de pruebas
 asegurando su funcionamiento en optimas condiciones, para luego proseguir con el desarrollo
 del vehículo y el sistema de control. Tampoco se contaba con las herramientas adecuadas para asegurar el éxito de la construcción dejando como opción acudir a prácticas no-convencionales con las herramientas existentes para generar el dispositivo.
 

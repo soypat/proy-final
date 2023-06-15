@@ -1,7 +1,9 @@
 
 \section{Modelo 2D simplificado} \label{sec:model2d}
 
-Esta siguiente sección detallará el tratamiento matemático efectuado para controlar un vehículo con propulsión vectorizada en el plano. El propósito es ilustrar a un nivel simple las herramientas que se aplicaron para controlar el vehículo diseñado.
+Esta siguiente sección detallará el tratamiento matemático efectuado para controlar un vehículo con propulsión vectorizada en el plano. El propósito es ilustrar a un nivel simple las herramientas que se aplicaron para controlar un vehículo VTVL propulsado por un motor cohete. Se asume que el vehículo se encuentra en el plano y que el control de propulsión vectorizada se efectúa por medio de un ángulo de inclinación del motor.
+
+
 
 \begin{figure}[htb!]
 	\centering
@@ -23,7 +25,7 @@ Se comenzó con las ecuaciones dinámicas de un vehículo en el plano con contro
 \end{array}
 \right.
 \]
-donde \(\LCG\) y \(F\) están en función del tiempo, $m =m_0 - \int \dot{m} $ y $\theta = \gamma+\beta$. Por cuestiones demostrativas de este ejercicio se desprecia el rozamiento con el aire.
+donde \(\LCG\) y \(F\) están en función del tiempo, $m =m_0 - \int \dot{m} $ y $\theta = \gamma+\beta$. Por cuestiones demostrativas de este ejercicio se desprecia el rozamiento con el aire. 
 
 \subsection{Armado de sistema lineal}
 Para controlar el sistema se aplicará la teoría de control óptimo. Para ello se deberá linealizar el sistema alrededor de un punto de operación. El estado del vehículo alrededor del cual se linealizó en este caso fue \textit{vertical y quieto en el espacio}.\footnote{La linealización es valida solo para un vehículo vertical. Se deberá modificar el método para modelar un vehículo que se inclina para volar correctamente.} 
